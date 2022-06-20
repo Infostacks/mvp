@@ -9,6 +9,7 @@ import { BsCart2 } from "react-icons/bs";
 import { GrClose } from "react-icons/gr";
 import ToggleButton from "@mui/material/ToggleButton";
 import FormatAlignLeftIcon from "@mui/icons-material/FormatAlignLeft";
+import Sidebar from "../components/Sidebar";
 
 const Home: NextPage = () => {
   const router = useRouter();
@@ -72,7 +73,7 @@ const Home: NextPage = () => {
                   >
                     <img
                       src="	https://candlefish-assets.s3.amazonaws.com/assets/panel-expanded-icon.png"
-                      className="w-20 h-20"
+                      className="w-20 h-20 hover:shadow-2xl"
                     />
                   </motion.div>
                   <motion.h1
@@ -116,7 +117,7 @@ const Home: NextPage = () => {
                         x: 0,
                         transition: { duration: 0.25 },
                       }}
-                      className=" hover:cursor-pointer hover:bg-gradient-to-t from-slate-200"
+                      className=" hover:cursor-pointer hover:underline"
                     >
                       <Link href="/login">
                         <a>By Collections</a>
@@ -134,7 +135,7 @@ const Home: NextPage = () => {
                         x: 0,
                         transition: { duration: 0.25 },
                       }}
-                      className=" hover:cursor-pointer hover:bg-gradient-to-t from-slate-200"
+                      className=" hover:cursor-pointer hover:underline"
                     >
                       <Link href="/login">
                         <a>Seasonal Picks</a>
@@ -152,7 +153,7 @@ const Home: NextPage = () => {
                         x: 0,
                         transition: { duration: 0.25 },
                       }}
-                      className=" hover:cursor-pointer hover:bg-gradient-to-t from-slate-200"
+                      className=" hover:cursor-pointer hover:underline"
                     >
                       <Link href="/login">
                         <a>Top Sellers</a>
@@ -170,7 +171,7 @@ const Home: NextPage = () => {
                         x: 0,
                         transition: { duration: 0.25 },
                       }}
-                      className=" hover:cursor-pointer hover:bg-gradient-to-t from-slate-200"
+                      className=" hover:cursor-pointer hover:underline"
                     >
                       <Link href="/login">
                         <a>Gift Cards</a>
@@ -225,7 +226,6 @@ const Home: NextPage = () => {
                     <motion.h1
                       animate={{
                         scale: block2 ? 2 : 1,
-                        letterSpacing: block2 ? 5 : 0,
                         transition: { duration: 0.25 },
                       }}
                       exit={{
@@ -336,7 +336,6 @@ const Home: NextPage = () => {
                     <motion.h1
                       animate={{
                         scale: block3 ? 2 : 1,
-                        letterSpacing: block3 ? 5 : 0,
                         transition: { duration: 0.25 },
                       }}
                       exit={{
@@ -428,11 +427,9 @@ const Home: NextPage = () => {
                   <div className="flex flex-row justify-center items-center gap-2">
                     {/* sidebar icon  */}
                     <span style={{ color: "white", width: "30px" }}>
-                      <Link href="/login">
-                        <a>
+                        <a className="hover:cursor-pointer">
                           <FormatAlignLeftIcon />
                         </a>
-                      </Link>
                     </span>
                     {/* logo candlefish  */}
 
@@ -440,6 +437,14 @@ const Home: NextPage = () => {
                       <a>
                         <h3 className="text-2xl text-white tracking-widest">
                           CANDLEFISH
+                        </h3>
+                      </a>
+                    </Link>
+
+                    <Link href="/characters">
+                      <a>
+                        <h3 className="text-xl text-white ml-10">
+                          Characters
                         </h3>
                       </a>
                     </Link>
