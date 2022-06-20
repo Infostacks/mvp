@@ -43,23 +43,25 @@ const Home: NextPage = () => {
               </div>
               <div className="w-full flex px-0 justify-between">
                 <div className="flex flex-row justify-center">
-                  <div className="flex flex-col justify-between bg-yellow-200 w-full h-full min-w-210 hide-scrollbar">
-                    {/* style editing ======================================================================== */}
-                    <div className="flex flex-col justify-start items-center mt-8 mr-3 mb-8">
+                  <div className="flex flex-col min-w-210">
+                    {/* sidebar bg image  */}
+                    <img
+                      src="	https://candlefish-assets.s3.amazonaws.com/assets/side-nav-background.png"
+                      className="w-72 h-screen"
+                    />
+                    <div className="absolute flex flex-col mt-8 mr-3">
+                      {/* close button  */}
                       <button
                         type="button"
-                        className="absolute hover:bg-slate-600 hover:rounded-full"
+                        className="hover:bg-slate-600 hover:rounded-full ml-8"
                       >
                         <GrClose
                           style={{ color: "white" }}
-                          className="text-2xl hover:bg-slate-100 hover:rounded-full"
+                          className="text-xl hover:bg-slate-100 hover:rounded-full"
                         />
                       </button>
+                      {/* side bar */}
                       <div className="flex flex-col justify-center ml-8 mt-8 gap-5 text-white">
-                        <img
-                          src="	https://candlefish-assets.s3.amazonaws.com/assets/side-nav-background.png"
-                          className="w-full h-height-full"
-                        />
                         <div className="flex flex-col gap-2">
                           <h1 className="text-xl font-extrabold">Shop</h1>
                           <div className="flex flex-col ml-5 text-lg font-semibold">
@@ -98,17 +100,17 @@ const Home: NextPage = () => {
                         </div>
                         <div>
                           <div className="text-xl font-extrabold">
-                            <a href="">Candle Making</a>
-                          </div>
-                          <div className="text-xl font-extrabold">
-                            <a href="">Classes</a>
+                            <a href="">Candle Making Classes</a>
                           </div>
                         </div>
                       </div>
-                      <div className="flex flex-rowe mt-12 bg-black text-white px-16 py-1 text-sm font-extrabold">
+                      {/* login button  */}
+                      <div className="flex items-center justify-center">
                         <Link href="/login">
                           <a>
-                            <button className="rounded-sm">Login</button>
+                            <button className="font-extrabold bg-black text-white text-xs tracking-widest flex justify-center items-center mb-5 w-52 h-8 ">
+                              LOGIN
+                            </button>
                           </a>
                         </Link>
                       </div>
@@ -116,6 +118,7 @@ const Home: NextPage = () => {
                   </div>
                   <h3 className="text-4xl mt-3 text-white">CANDLEFISH</h3>
                 </div>
+                {/* cart icon  */}
                 <span>
                   <BsCart2
                     style={{ color: "white" }}
