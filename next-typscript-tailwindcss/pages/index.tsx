@@ -78,14 +78,14 @@ const Home: NextPage = () => {
                   <motion.h1
                     animate={{
                       scale: block1 ? 2 : 1,
-                      letterSpacing: block1 ? 5 : 0,
                       transition: { duration: 0.25 },
                     }}
                     exit={{
                       scale: 1,
                       transition: { duration: 0.25 },
                     }}
-                    className="text-white text-5xl font-bold"
+                    className={`text-white text-5xl font-bold
+                    ${block1 ? "tracking-widest" : "tracking-normal"}`}
                   >
                     SHOP
                   </motion.h1>
@@ -102,7 +102,7 @@ const Home: NextPage = () => {
                       opacity: 0,
                       transition: { duration: 0.25 },
                     }}
-                    className="text-white text-3xl font-bold underline underline-offset-8 flex flex-col gap-3"
+                    className="text-white text-3xl font-semibold flex flex-col gap-3"
                   >
                     <motion.li
                       initial={{
@@ -116,7 +116,7 @@ const Home: NextPage = () => {
                         x: 0,
                         transition: { duration: 0.25 },
                       }}
-                      className=" hover:cursor-pointer"
+                      className=" hover:cursor-pointer hover:bg-gradient-to-t from-slate-200"
                     >
                       <Link href="/login">
                         <a>By Collections</a>
@@ -134,7 +134,7 @@ const Home: NextPage = () => {
                         x: 0,
                         transition: { duration: 0.25 },
                       }}
-                      className=" hover:cursor-pointer"
+                      className=" hover:cursor-pointer hover:bg-gradient-to-t from-slate-200"
                     >
                       <Link href="/login">
                         <a>Seasonal Picks</a>
@@ -152,7 +152,7 @@ const Home: NextPage = () => {
                         x: 0,
                         transition: { duration: 0.25 },
                       }}
-                      className=" hover:cursor-pointer"
+                      className=" hover:cursor-pointer hover:bg-gradient-to-t from-slate-200"
                     >
                       <Link href="/login">
                         <a>Top Sellers</a>
@@ -170,7 +170,7 @@ const Home: NextPage = () => {
                         x: 0,
                         transition: { duration: 0.25 },
                       }}
-                      className=" hover:cursor-pointer"
+                      className=" hover:cursor-pointer hover:bg-gradient-to-t from-slate-200"
                     >
                       <Link href="/login">
                         <a>Gift Cards</a>
@@ -438,7 +438,9 @@ const Home: NextPage = () => {
 
                     <Link href="/login">
                       <a>
-                        <h3 className="text-2xl text-white tracking-widest">CANDLEFISH</h3>
+                        <h3 className="text-2xl text-white tracking-widest">
+                          CANDLEFISH
+                        </h3>
                       </a>
                     </Link>
                   </div>
