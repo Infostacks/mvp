@@ -4,13 +4,16 @@ import Link from "next/link";
 import styles from "../styles/Home.module.css";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { BsCart2 } from "react-icons/bs";
 import { GrClose } from "react-icons/gr";
 
 const Home: NextPage = () => {
   const router = useRouter();
   const [closeToggle, setCloseToggle] = useState(false);
+  const [block1, setBlock1] = useState(false);
+  const [block2, setBlock2] = useState(false);
+  const [block3, setBlock3] = useState(false);
 
   const handleCloseSidebar = () => {
     if (closeToggle) setCloseToggle(false);
@@ -26,9 +29,12 @@ const Home: NextPage = () => {
 
       <main className="m-0 w-screen h-screen">
         <div className="w-full h-full">
-          <div className="w-full h-full flex">
+          <div className="h-full flex">
             {/* navbar area */}
-            <div className="absolute top-0 left-0 right-0 z-10 flex items-center flex-col pointer-events-none justify-between">
+            <div
+              className={`absolute top-0 left-0 right-0 z-50 flex items-center flex-col justify-between
+            ${closeToggle ? "" : "pointer-events-none"}`}
+            >
               <div className="w-full flex py-2 px-0 bg-black justify-center">
                 <div className="w-full flex justify-center">
                   <a
@@ -41,166 +47,404 @@ const Home: NextPage = () => {
                   </a>
                 </div>
               </div>
-              <div className="w-full flex px-0 justify-between">
-                <div className="flex flex-row justify-center">
-                  <div className="flex flex-col min-w-210">
-                    {/* sidebar bg image  */}
-                    <img
-                      src="	https://candlefish-assets.s3.amazonaws.com/assets/side-nav-background.png"
-                      className="w-72 h-screen"
-                    />
-                    <div className="absolute flex flex-col mt-8 mr-3">
-                      {/* close button  */}
-                      <button
-                        type="button"
-                        className="hover:bg-slate-600 hover:rounded-full ml-8"
-                      >
-                        <GrClose
-                          style={{ color: "white" }}
-                          className="text-xl hover:bg-slate-100 hover:rounded-full"
-                        />
-                      </button>
-                      {/* side bar */}
-                      <div className="flex flex-col justify-center ml-8 mt-8 gap-5 text-white">
-                        <div className="flex flex-col gap-2">
-                          <h1 className="text-xl font-extrabold">Shop</h1>
-                          <div className="flex flex-col ml-5 text-lg font-semibold">
-                            <a href="">By Collections</a>
-                            <a href="">Seasonal Picks</a>
-                            <a href="">Top Sellers</a>
-                            <a href="">Gift Cards</a>
-                          </div>
-                        </div>
-                        <div className="text-xl font-extrabold">
-                          <a href="">Discover</a>
-                        </div>
-                        <div className="text-xl font-extrabold">
-                          <a href="">The Library</a>
-                        </div>
-                        <div className="text-xl font-extrabold">
-                          <a href="">The Blog</a>
-                        </div>
-                        <div className="flex flex-col gap-2">
-                          <h1 className="text-xl font-extrabold">About</h1>
-                          <div className="flex flex-col ml-5 text-lg font-semibold">
-                            <a href="">Our Story</a>
-                            <a href="">Contach Us</a>
-                            <a href="">Location and Hours</a>
-                            <a href="">Shop Wholesale</a>
-                          </div>
-                        </div>
-                        <div className="flex flex-col gap-3">
-                          <h1 className="text-xl font-extrabold">
-                            Custom Candles
-                          </h1>
-                          <div className="flex flex-col ml-5 text-lg font-semibold">
-                            <a href="">Private Lable Services</a>
-                            <a href="">Wedding Candles</a>
-                          </div>
-                        </div>
-                        <div>
-                          <div className="text-xl font-extrabold">
-                            <a href="">Candle Making Classes</a>
-                          </div>
-                        </div>
-                      </div>
-                      {/* login button  */}
-                      <div className="flex items-center justify-center">
-                        <Link href="/login">
-                          <a>
-                            <button className="font-extrabold bg-black text-white text-xs tracking-widest flex justify-center items-center mb-5 w-52 h-8 ">
-                              LOGIN
-                            </button>
-                          </a>
-                        </Link>
-                      </div>
-                    </div>
+
+              <div className="absolute w-full flex">
+                <div className="flex flex-row ">
+                  <div className="flex flex-row">
+                    {/* sidebar icon  */}
+                    <span>
+                      <BsCart2
+                        style={{ color: "white" }}
+                        className="w-12 h-12 mr-5"
+                      />
+                    </span>
+                    {/* logo candlefish  */}
+                    <h3 className="text-4xl mt-3 text-white">CANDLEFISH</h3>
                   </div>
-                  <h3 className="text-4xl mt-3 text-white">CANDLEFISH</h3>
+                  {/* cart icon  */}
+                  <span>
+                    <BsCart2
+                      style={{ color: "white" }}
+                      className="w-12 h-12 mr-5"
+                    />
+                  </span>
                 </div>
-                {/* cart icon  */}
-                <span>
-                  <BsCart2
-                    style={{ color: "white" }}
-                    className="w-12 h-12 mr-5"
-                  />
-                </span>
+
+                {/* sidebar  */}
               </div>
             </div>
 
             {/* main content area */}
             <div className="flex flex-row m-0 w-full h-full">
-              <div className="relative flex flex-col justify-center items-center w-2/6 hover:w-3/5">
+              {/* block 1 */}
+              <motion.div
+                initial={{
+                  width: "33%",
+                }}
+                whileHover={{
+                  width: "50%",
+                  transition: { duration: 0.25 },
+                }}
+                exit={{
+                  width: "33%",
+                  transition: { duration: 0.25 },
+                }}
+                onHoverStart={() => setBlock1(true)}
+                onHoverEnd={() => setBlock1(false)}
+                className="relative flex flex-col justify-center items-center w-2/6"
+              >
                 <img
                   src="https://candlefish-assets.s3.amazonaws.com/assets/shop-home.jpg"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute w-full h-full bg-black bg-opacity-30 flex flex-col justify-center items-center gap-y-16">
-                  <img
-                    src="	https://candlefish-assets.s3.amazonaws.com/assets/panel-expanded-icon.png"
-                    className="w-20 h-20"
-                  />
-                  <h1 className="text-white text-5xl font-bold">SHOP</h1>
-                  <ul className="text-white text-4xl font-bold underline underline-offset-8 flex flex-col gap-3">
-                    <li className=" hover:cursor-pointer hover:text-right">
-                      By Collections
-                    </li>
-                    <li className=" hover:cursor-pointer">Seasonal Picks</li>
-                    <li className=" hover:cursor-pointer">Top Sellers</li>
-                    <li className=" hover:cursor-pointer">Gift Cards</li>
-                  </ul>
+                  <motion.div
+                    initial={{
+                      opacity: 0,
+                    }}
+                    animate={{
+                      opacity: block1 ? 1 : 0,
+                      y: block1 ? -30 : 0,
+                      transition: { duration: 0.25 },
+                    }}
+                    exit={{
+                      opacity: 0,
+                      transition: { duration: 0.25 },
+                    }}
+                  >
+                    <img
+                      src="	https://candlefish-assets.s3.amazonaws.com/assets/panel-expanded-icon.png"
+                      className="w-20 h-20"
+                    />
+                  </motion.div>
+                  <motion.h1
+                    animate={{
+                      scale: block1 ? 2 : 1,
+                      letterSpacing: block1 ? 5 : 0,
+                      transition: { duration: 0.25 },
+                    }}
+                    exit={{
+                      scale: 1,
+                      transition: { duration: 0.25 },
+                    }}
+                    className="text-white text-5xl font-bold"
+                  >
+                    SHOP
+                  </motion.h1>
+                  <motion.ul
+                    initial={{
+                      opacity: 0,
+                    }}
+                    animate={{
+                      opacity: block1 ? 1 : 0,
+                      y: block1 ? 30 : 0,
+                      transition: { duration: 0.25 },
+                    }}
+                    exit={{
+                      opacity: 0,
+                      transition: { duration: 0.25 },
+                    }}
+                    className="text-white text-3xl font-bold underline underline-offset-8 flex flex-col gap-3"
+                  >
+                    <motion.li
+                      initial={{
+                        x: 0,
+                      }}
+                      whileHover={{
+                        x: 30,
+                        transition: { duration: 0.25 },
+                      }}
+                      exit={{
+                        x: 0,
+                        transition: { duration: 0.25 },
+                      }}
+                      className=" hover:cursor-pointer"
+                    >
+                      <Link href="/login">
+                        <a>By Collections</a>
+                      </Link>
+                    </motion.li>
+                    <motion.li
+                      initial={{
+                        x: 0,
+                      }}
+                      whileHover={{
+                        x: 30,
+                        transition: { duration: 0.25 },
+                      }}
+                      exit={{
+                        x: 0,
+                        transition: { duration: 0.25 },
+                      }}
+                      className=" hover:cursor-pointer"
+                    >
+                      <Link href="/login">
+                        <a>Seasonal Picks</a>
+                      </Link>
+                    </motion.li>
+                    <motion.li
+                      initial={{
+                        x: 0,
+                      }}
+                      whileHover={{
+                        x: 30,
+                        transition: { duration: 0.25 },
+                      }}
+                      exit={{
+                        x: 0,
+                        transition: { duration: 0.25 },
+                      }}
+                      className=" hover:cursor-pointer"
+                    >
+                      <Link href="/login">
+                        <a>Top Sellers</a>
+                      </Link>
+                    </motion.li>
+                    <motion.li
+                      initial={{
+                        x: 0,
+                      }}
+                      whileHover={{
+                        x: 30,
+                        transition: { duration: 0.25 },
+                      }}
+                      exit={{
+                        x: 0,
+                        transition: { duration: 0.25 },
+                      }}
+                      className=" hover:cursor-pointer"
+                    >
+                      <Link href="/login">
+                        <a>Gift Cards</a>
+                      </Link>
+                    </motion.li>
+                  </motion.ul>
                 </div>
-              </div>
-              <div className="relative flex flex-col justify-center items-center w-2/6 hover:w-3/5">
+              </motion.div>
+
+              {/* block 2 */}
+              <motion.div
+                initial={{
+                  width: "33%",
+                }}
+                whileHover={{
+                  width: "50%",
+                  transition: { duration: 0.25 },
+                }}
+                exit={{
+                  width: "33%",
+                  transition: { duration: 0.25 },
+                }}
+                onHoverStart={() => setBlock2(true)}
+                onHoverEnd={() => setBlock2(false)}
+                className="relative flex flex-col justify-center items-center w-2/6"
+              >
                 <img
                   src="https://candlefish-assets.s3.amazonaws.com/assets/discover-home.jpg"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute w-full h-full bg-black bg-opacity-30 flex flex-col justify-center items-center gap-y-16">
-                  <img
-                    src="	https://candlefish-assets.s3.amazonaws.com/assets/panel-expanded-icon.png"
-                    className="w-20 h-20"
-                  />
+                  <motion.div
+                    initial={{
+                      opacity: 0,
+                    }}
+                    animate={{
+                      opacity: block2 ? 1 : 0,
+                      y: block2 ? -30 : 0,
+                      transition: { duration: 0.25 },
+                    }}
+                    exit={{
+                      opacity: 0,
+                      transition: { duration: 0.25 },
+                    }}
+                  >
+                    <img
+                      src="	https://candlefish-assets.s3.amazonaws.com/assets/panel-expanded-icon.png"
+                      className="w-20 h-20"
+                    />
+                  </motion.div>
                   <div className="flex flex-col gap-2 justify-center items-center">
-                    <h1 className="text-white text-5xl font-bold">DISCOVER</h1>
-                    <p className="text-white text-lg">
+                    <motion.h1
+                      animate={{
+                        scale: block2 ? 2 : 1,
+                        letterSpacing: block2 ? 5 : 0,
+                        transition: { duration: 0.25 },
+                      }}
+                      exit={{
+                        scale: 1,
+                        transition: { duration: 0.25 },
+                      }}
+                      className="text-white text-5xl font-bold"
+                    >
+                      DISCOVER
+                    </motion.h1>
+                    <motion.p
+                      initial={{
+                        opacity: 0,
+                      }}
+                      animate={{
+                        opacity: block2 ? 1 : 0,
+                        y: block2 ? 30 : 0,
+                        transition: { duration: 0.25 },
+                      }}
+                      exit={{
+                        opacity: 0,
+                        transition: { duration: 0.25 },
+                      }}
+                      className="text-white text-lg"
+                    >
                       See what fragrance you are feeling today
-                    </p>
+                    </motion.p>
                   </div>
-                  <ul className="text-white text-4xl font-bold underline underline-offset-8 flex flex-col gap-3">
-                    <li className=" hover:cursor-pointer hover:text-right">
-                      DISCOVER NOW
-                    </li>
-                  </ul>
+                  <motion.ul
+                    initial={{
+                      opacity: 0,
+                    }}
+                    animate={{
+                      opacity: block2 ? 1 : 0,
+                      y: block2 ? 30 : 0,
+                      transition: { duration: 0.25 },
+                    }}
+                    exit={{
+                      opacity: 0,
+                      transition: { duration: 0.25 },
+                    }}
+                    className="text-white text-4xl font-bold underline underline-offset-8 flex flex-col gap-3"
+                  >
+                    <motion.li
+                      initial={{
+                        x: 0,
+                      }}
+                      whileHover={{
+                        x: 30,
+                        transition: { duration: 0.25 },
+                      }}
+                      exit={{
+                        x: 0,
+                        transition: { duration: 0.25 },
+                      }}
+                      className=" hover:cursor-pointer hover:text-right"
+                    >
+                      <Link href="/login">
+                        <a>DISCOVER NOW</a>
+                      </Link>
+                    </motion.li>
+                  </motion.ul>
                 </div>
-              </div>
-              <div className="relative flex flex-col justify-center items-center w-2/6 hover:w-3/5">
+              </motion.div>
+
+              {/* block 3 */}
+              <motion.div
+                initial={{
+                  width: "33%",
+                }}
+                whileHover={{
+                  width: "50%",
+                  transition: { duration: 0.25 },
+                }}
+                exit={{
+                  width: "33%",
+                  transition: { duration: 0.25 },
+                }}
+                onHoverStart={() => setBlock3(true)}
+                onHoverEnd={() => setBlock3(false)}
+                className="relative flex flex-col justify-center items-center w-2/6"
+              >
                 <img
                   src="https://candlefish-assets.s3.amazonaws.com/assets/library-home.jpg"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute w-full h-full bg-black bg-opacity-30 flex flex-col justify-center items-center gap-y-16">
-                  <img
-                    src="	https://candlefish-assets.s3.amazonaws.com/assets/panel-expanded-icon.png"
-                    className="w-20 h-20"
-                  />
+                  <motion.div
+                    initial={{
+                      opacity: 0,
+                    }}
+                    animate={{
+                      opacity: block3 ? 1 : 0,
+                      y: block3 ? -30 : 0,
+                      transition: { duration: 0.25 },
+                    }}
+                    exit={{
+                      opacity: 0,
+                      transition: { duration: 0.25 },
+                    }}
+                  >
+                    <img
+                      src="	https://candlefish-assets.s3.amazonaws.com/assets/panel-expanded-icon.png"
+                      className="w-20 h-20"
+                    />
+                  </motion.div>
                   <div className="flex flex-col gap-2 justify-center items-center">
-                    <h1 className="text-white text-5xl font-bold">
+                    <motion.h1
+                      animate={{
+                        scale: block3 ? 2 : 1,
+                        letterSpacing: block3 ? 5 : 0,
+                        transition: { duration: 0.25 },
+                      }}
+                      exit={{
+                        scale: 1,
+                        transition: { duration: 0.25 },
+                      }}
+                      className="text-white text-5xl font-bold"
+                    >
                       BROWSE
                       <br />
                       LIBRARY
-                    </h1>
-                    <p className="text-white text-lg">
+                    </motion.h1>
+                    <motion.p
+                      initial={{
+                        opacity: 0,
+                      }}
+                      animate={{
+                        opacity: block3 ? 1 : 0,
+                        y: block3 ? 30 : 0,
+                        transition: { duration: 0.25 },
+                      }}
+                      exit={{
+                        opacity: 0,
+                        transition: { duration: 0.25 },
+                      }}
+                      className="text-white text-lg"
+                    >
                       See what fragrance you are feeling today
-                    </p>
+                    </motion.p>
                   </div>
-                  <ul className="text-white text-4xl font-bold underline underline-offset-8 flex flex-col gap-3">
-                    <li className=" hover:cursor-pointer hover:text-right">
-                      LIBRARY CARD
-                    </li>
-                  </ul>
+                  <motion.ul
+                    initial={{
+                      opacity: 0,
+                    }}
+                    animate={{
+                      opacity: block3 ? 1 : 0,
+                      y: block3 ? 30 : 0,
+                      transition: { duration: 0.25 },
+                    }}
+                    exit={{
+                      opacity: 0,
+                      transition: { duration: 0.25 },
+                    }}
+                    className="text-white text-4xl font-bold underline underline-offset-8 flex flex-col gap-3"
+                  >
+                    <motion.li
+                      initial={{
+                        x: 0,
+                      }}
+                      whileHover={{
+                        x: 30,
+                        transition: { duration: 0.25 },
+                      }}
+                      exit={{
+                        x: 0,
+                        transition: { duration: 0.25 },
+                      }}
+                      className=" hover:cursor-pointer hover:text-right"
+                    >
+                      <Link href="/login">
+                        <a>LIBRARY CARD</a>
+                      </Link>
+                    </motion.li>
+                  </motion.ul>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </div>
         </div>
