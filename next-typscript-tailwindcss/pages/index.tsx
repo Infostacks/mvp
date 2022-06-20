@@ -7,6 +7,8 @@ import { useRouter } from "next/router";
 import { AnimatePresence, motion } from "framer-motion";
 import { BsCart2 } from "react-icons/bs";
 import { GrClose } from "react-icons/gr";
+import ToggleButton from "@mui/material/ToggleButton";
+import FormatAlignLeftIcon from "@mui/icons-material/FormatAlignLeft";
 
 const Home: NextPage = () => {
   const router = useRouter();
@@ -30,50 +32,6 @@ const Home: NextPage = () => {
       <main className="m-0 w-screen h-screen">
         <div className="w-full h-full">
           <div className="h-full flex">
-            {/* navbar area */}
-            <div
-              className={`absolute top-0 left-0 right-0 z-50 flex items-center flex-col justify-between
-            ${closeToggle ? "" : "pointer-events-none"}`}
-            >
-              <div className="w-full flex py-2 px-0 bg-black justify-center">
-                <div className="w-full flex justify-center">
-                  <a
-                    className="underline text-white text-sm"
-                    href="https://www.candlefish.com/collections/seasonal-favorites"
-                    target="_blank"
-                  >
-                    We are ready for Spring! Shop our fresh and floral Spring
-                    Collection here.
-                  </a>
-                </div>
-              </div>
-
-              <div className="absolute w-full flex">
-                <div className="flex flex-row ">
-                  <div className="flex flex-row">
-                    {/* sidebar icon  */}
-                    <span>
-                      <BsCart2
-                        style={{ color: "white" }}
-                        className="w-12 h-12 mr-5"
-                      />
-                    </span>
-                    {/* logo candlefish  */}
-                    <h3 className="text-4xl mt-3 text-white">CANDLEFISH</h3>
-                  </div>
-                  {/* cart icon  */}
-                  <span>
-                    <BsCart2
-                      style={{ color: "white" }}
-                      className="w-12 h-12 mr-5"
-                    />
-                  </span>
-                </div>
-
-                {/* sidebar  */}
-              </div>
-            </div>
-
             {/* main content area */}
             <div className="flex flex-row m-0 w-full h-full">
               {/* block 1 */}
@@ -446,6 +404,61 @@ const Home: NextPage = () => {
                 </div>
               </motion.div>
             </div>
+
+            {/* navbar area */}
+            <div
+              className={`absolute top-0 left-0 right-0 z-50 flex items-center flex-col justify-between`}
+            >
+              <div className="w-full flex py-2 px-0 bg-black justify-center">
+                <div className="w-full flex justify-center">
+                  <a
+                    className="underline text-white text-base"
+                    href="https://www.candlefish.com/collections/seasonal-favorites"
+                    target="_blank"
+                  >
+                    We are ready for Spring! Shop our fresh and floral Spring
+                    Collection here.
+                  </a>
+                </div>
+              </div>
+
+              {/* navbar area */}
+              <div className="w-full">
+                <div className="flex flex-row justify-between ml-6 mr-5 mt-4">
+                  <div className="flex flex-row justify-center items-center gap-2">
+                    {/* sidebar icon  */}
+                    <span style={{ color: "white", width: "30px" }}>
+                      <Link href="/login">
+                        <a>
+                          <FormatAlignLeftIcon />
+                        </a>
+                      </Link>
+                    </span>
+                    {/* logo candlefish  */}
+
+                    <Link href="/login">
+                      <a>
+                        <h3 className="text-2xl text-white tracking-widest">CANDLEFISH</h3>
+                      </a>
+                    </Link>
+                  </div>
+                  {/* cart icon  */}
+                  <span>
+                    <Link href="/login">
+                      <a>
+                        <BsCart2
+                          style={{ color: "white" }}
+                          className="w-10 h-10 mr-5"
+                        />
+                      </a>
+                    </Link>
+                  </span>
+                </div>
+
+                {/* sidebar  */}
+              </div>
+            </div>
+            {/* end navbar area */}
           </div>
         </div>
       </main>
