@@ -13,14 +13,17 @@ import Sidebar from "../components/Sidebar";
 
 const Home: NextPage = () => {
   const router = useRouter();
-  const [closeToggle, setCloseToggle] = useState(false);
+  const [sidebar, setsidebar] = useState(false);
+
   const [block1, setBlock1] = useState(false);
   const [block2, setBlock2] = useState(false);
   const [block3, setBlock3] = useState(false);
 
+
   const handleCloseSidebar = () => {
-    if (closeToggle) setCloseToggle(false);
+    setsidebar(!sidebar);
   };
+
 
   return (
     <div className={styles.container}>
@@ -34,7 +37,7 @@ const Home: NextPage = () => {
         <div className="w-full h-full">
           <div className="h-full flex">
             {/* main content area */}
-            <div className="flex flex-row m-0 w-full h-full">
+            <div className="sticky flex flex-row m-0 w-full h-screen">
               {/* block 1 */}
               <motion.div
                 initial={{
@@ -406,7 +409,7 @@ const Home: NextPage = () => {
 
             {/* navbar area */}
             <div
-              className={`absolute top-0 left-0 right-0 z-50 flex items-center flex-col justify-between`}
+              className={`absolute top-0 left-0 right-0 z-30 flex items-center flex-col justify-between`}
             >
               <div className="w-full flex py-2 px-0 bg-black justify-center">
                 <div className="w-full flex justify-center">
@@ -426,11 +429,13 @@ const Home: NextPage = () => {
                 <div className="flex flex-row justify-between ml-6 mr-5 mt-4">
                   <div className="flex flex-row justify-center items-center gap-2">
                     {/* sidebar icon  */}
-                    <span style={{ color: "white", width: "30px" }}>
-                        <a className="hover:cursor-pointer">
-                          <FormatAlignLeftIcon />
-                        </a>
-                    </span>
+                    <button
+                      style={{ color: "white", width: "30px" }}
+                      className="hover:cursor-pointer"
+                      onClick={handleCloseSidebar}
+                    >
+                      <FormatAlignLeftIcon />
+                    </button>
                     {/* logo candlefish  */}
 
                     <Link href="/login">
@@ -443,9 +448,7 @@ const Home: NextPage = () => {
 
                     <Link href="/characters">
                       <a>
-                        <h3 className="text-xl text-white ml-10">
-                          Characters
-                        </h3>
+                        <h3 className="text-xl text-white ml-10">Characters</h3>
                       </a>
                     </Link>
                   </div>
@@ -461,9 +464,157 @@ const Home: NextPage = () => {
                     </Link>
                   </span>
                 </div>
-
-                {/* sidebar  */}
               </div>
+            </div>
+
+            {/* sidebar  */}
+            <div
+              className={`flex flex-col absolute top-0 z-50 overflow-y-scroll transition-all duration-300 min-w-210 hide-scrollbar
+              ${sidebar ? "left-0" : "-left-96"}`}
+            >
+              <>
+                <div className="flex flex-col z-50 overflow-y-auto top-0">
+                  {/* sidebar bg image  */}
+                  <img
+                    src="	https://candlefish-assets.s3.amazonaws.com/assets/side-nav-background.png"
+                    className="w-80 h-full"
+                  />
+                  <div className="absolute flex flex-col mt-8 mr-3">
+                    {/* close button  */}
+                    <button
+                      type="button"
+                      onClick={handleCloseSidebar}
+                      className="hover:bg-slate-600 bg-slate-500 hover:rounded-full ml-8"
+                    >
+                      <GrClose style={{ color: "white" }} className="text-xl" />
+                    </button>
+                    {/* side bar */}
+                    <div className="flex flex-col justify-center ml-8 mt-8 gap-5 text-white">
+                      <div className="flex flex-col gap-2">
+                        <h1 className="text-2xl font-extrabold">Shop</h1>
+                        <div className="flex flex-col ml-5 text-xl font-semibold">
+                          <a
+                            href=""
+                            className="hover:underline underline-offset-2"
+                          >
+                            By Collections
+                          </a>
+                          <a
+                            href=""
+                            className="hover:underline underline-offset-2"
+                          >
+                            Seasonal Picks
+                          </a>
+                          <a
+                            href=""
+                            className="hover:underline underline-offset-2"
+                          >
+                            Top Sellers
+                          </a>
+                          <a
+                            href=""
+                            className="hover:underline underline-offset-2"
+                          >
+                            Gift Cards
+                          </a>
+                        </div>
+                      </div>
+                      <div className="text-2xl font-extrabold">
+                        <a
+                          href=""
+                          className="hover:underline underline-offset-2"
+                        >
+                          Discover
+                        </a>
+                      </div>
+                      <div className="text-2xl font-extrabold">
+                        <a
+                          href=""
+                          className="hover:underline underline-offset-2"
+                        >
+                          The Library
+                        </a>
+                      </div>
+                      <div className="text-2xl font-extrabold">
+                        <a
+                          href=""
+                          className="hover:underline underline-offset-2"
+                        >
+                          The Blog
+                        </a>
+                      </div>
+                      <div className="flex flex-col gap-2">
+                        <h1 className="text-2xl font-extrabold">About</h1>
+                        <div className="flex flex-col ml-5 text-xl font-semibold">
+                          <a
+                            href=""
+                            className="hover:underline underline-offset-2"
+                          >
+                            Our Story
+                          </a>
+                          <a
+                            href=""
+                            className="hover:underline underline-offset-2"
+                          >
+                            Contach Us
+                          </a>
+                          <a
+                            href=""
+                            className="hover:underline underline-offset-2"
+                          >
+                            Location and Hours
+                          </a>
+                          <a
+                            href=""
+                            className="hover:underline underline-offset-2"
+                          >
+                            Shop Wholesale
+                          </a>
+                        </div>
+                      </div>
+                      <div className="flex flex-col gap-3">
+                        <h1 className="text-2xl font-extrabold">
+                          Custom Candles
+                        </h1>
+                        <div className="flex flex-col ml-5 text-2xl font-semibold">
+                          <a
+                            href=""
+                            className="hover:underline underline-offset-2"
+                          >
+                            Private Lable Services
+                          </a>
+                          <a
+                            href=""
+                            className="hover:underline underline-offset-2"
+                          >
+                            Wedding Candles
+                          </a>
+                        </div>
+                      </div>
+                      <div>
+                        <div className="text-2xl font-extrabold">
+                          <a
+                            href=""
+                            className="hover:underline underline-offset-2"
+                          >
+                            Candle Making Classes
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                    {/* login button  */}
+                    <div className="flex justify-center">
+                      <Link href="/login">
+                        <a>
+                          <button className="font-extrabold bg-black text-white text-xs tracking-widest flex justify-center items-center mb-5 w-56 h-8 ">
+                            LOGIN
+                          </button>
+                        </a>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </>
             </div>
             {/* end navbar area */}
           </div>

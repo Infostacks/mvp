@@ -3,15 +3,21 @@ import Link from "next/link";
 import { useState } from "react";
 import { GrClose } from "react-icons/gr";
 
-const Sidebar = () => {
-  const [closeToggle, setCloseToggle] = useState(false);
+const Sidebar = ({setToggle} : {setToggle : boolean}) => {
+  const [closeToggle, setCloseToggle] = useState(setToggle);
 
-  const handleCloseSidebar = () => {
-    if (closeToggle) setCloseToggle(false);
-  };
+console.log("setToggle: ", setToggle);
+
+  const handleClose = () => {
+    console.log("setToggle: ", setToggle);
+      setCloseToggle(true);
+
+    setToggle = true;
+  }
 
   return (
-    <div>
+    <div className={`flex flex-col absolute mt-0 z-50 overflow-y-scroll transition-all min-w-210 hide-scrollbar
+    ${!setToggle ? "visible" : "hidden"}`}>
       <AnimatePresence initial={false}>
         <motion.div
           variants={{
@@ -19,10 +25,10 @@ const Sidebar = () => {
               opacity: 0,
             },
             visible: {
-              x: closeToggle ? [20] : -20,
+              width: !closeToggle ? "100%" : 0,
               transition: {
                 y: {
-                  duration: 2,
+                  duration: 4,
                   ease: "easeOut",
                 },
               },
@@ -34,7 +40,7 @@ const Sidebar = () => {
           initial="hidden"
           animate="visible"
           exit="removed"
-          className="flex flex-col min-w-210 z-50 overflow-y-auto top-0"
+          className="flex flex-col z-50 overflow-y-auto top-0"
         >
           {/* sidebar bg image  */}
           <img
@@ -45,8 +51,8 @@ const Sidebar = () => {
             {/* close button  */}
             <button
               type="button"
-              onClick={handleCloseSidebar}
-              className="hover:bg-slate-600 hover:rounded-full ml-8"
+              onClick={handleClose}
+              className="hover:bg-slate-600 bg-slate-500 hover:rounded-full ml-8"
             >
               <GrClose style={{ color: "white" }} className="text-xl" />
             </button>
