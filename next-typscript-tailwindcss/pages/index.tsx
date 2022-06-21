@@ -4,12 +4,10 @@ import Link from "next/link";
 import styles from "../styles/Home.module.css";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { BsCart2 } from "react-icons/bs";
-import { GrClose } from "react-icons/gr";
-import ToggleButton from "@mui/material/ToggleButton";
+import { MdClose } from "react-icons/md";
 import FormatAlignLeftIcon from "@mui/icons-material/FormatAlignLeft";
-import Sidebar from "../components/Sidebar";
 
 const Home: NextPage = () => {
   const router = useRouter();
@@ -53,7 +51,7 @@ const Home: NextPage = () => {
                 }}
                 onHoverStart={() => setBlock1(true)}
                 onHoverEnd={() => setBlock1(false)}
-                className="relative flex flex-col justify-center items-center w-2/6"
+                className="relative flex flex-col items-center w-2/6"
               >
                 <img
                   src="https://candlefish-assets.s3.amazonaws.com/assets/shop-home.jpg"
@@ -66,7 +64,7 @@ const Home: NextPage = () => {
                     }}
                     animate={{
                       opacity: block1 ? 1 : 0,
-                      y: block1 ? -30 : 0,
+                      // y: block1 ? -30 : 0,
                       transition: { duration: 0.25 },
                     }}
                     exit={{
@@ -81,6 +79,7 @@ const Home: NextPage = () => {
                   </motion.div>
                   <motion.h1
                     animate={{
+                      y: 40,
                       scale: block1 ? 2 : 1,
                       transition: { duration: 0.25 },
                     }}
@@ -440,7 +439,7 @@ const Home: NextPage = () => {
 
                     <Link href="/login">
                       <a>
-                        <h3 className="text-2xl text-white tracking-widest">
+                        <h3 className="text-2xl text-white tracking-wider">
                           CANDLEFISH
                         </h3>
                       </a>
@@ -469,30 +468,32 @@ const Home: NextPage = () => {
 
             {/* sidebar  */}
             <div
-              className={`flex flex-col absolute top-0 z-50 overflow-y-scroll transition-all duration-300 min-w-210 hide-scrollbar
-              ${sidebar ? "left-0" : "-left-96"}`}
+              className={`flex flex-col absolute top-0 z-50 overflow-y-auto  w-screen transition-all duration-100 min-w-210 h-screen hide-scrollbar drop-shadow-xl
+              ${sidebar ? "left-0" : "-left-full"} 
+              ${sidebar ? "bg-black bg-opacity-30" : ""}`}
+              onClick={handleCloseSidebar}
             >
               <>
-                <div className="flex flex-col z-50 overflow-y-auto top-0">
+                <div className="flex flex-col z-50 top-0">
                   {/* sidebar bg image  */}
                   <img
                     src="	https://candlefish-assets.s3.amazonaws.com/assets/side-nav-background.png"
-                    className="w-80 h-full"
+                    className={`h-full min-h-screen w-fit object-cover`}
                   />
-                  <div className="absolute flex flex-col mt-8 mr-3">
-                    {/* close button  */}
-                    <button
-                      type="button"
-                      onClick={handleCloseSidebar}
-                      className="hover:bg-slate-600 bg-slate-500 hover:rounded-full ml-8"
-                    >
-                      <GrClose style={{ color: "white" }} className="text-xl" />
-                    </button>
+                  {/* close button  */}
+                  <button
+                    type="button"
+                    onClick={handleCloseSidebar}
+                    className="absolute mt-8 ml-8 z-50 p-3 hover:bg-black hover:bg-opacity-10 hover:rounded-full"
+                  >
+                    <MdClose style={{ color: "white" }} className="text-2xl" />
+                  </button>
+                  <div className="absolute flex flex-col mt-20 mr-3">
                     {/* side bar */}
                     <div className="flex flex-col justify-center ml-8 mt-8 gap-5 text-white">
                       <div className="flex flex-col gap-2">
-                        <h1 className="text-2xl font-extrabold">Shop</h1>
-                        <div className="flex flex-col ml-5 text-xl font-semibold">
+                        <h1 className="text-xl font-extrabold">Shop</h1>
+                        <div className="flex flex-col ml-5 text-xl">
                           <a
                             href=""
                             className="hover:underline underline-offset-2"
@@ -519,7 +520,7 @@ const Home: NextPage = () => {
                           </a>
                         </div>
                       </div>
-                      <div className="text-2xl font-extrabold">
+                      <div className="text-xl font-extrabold">
                         <a
                           href=""
                           className="hover:underline underline-offset-2"
@@ -527,7 +528,7 @@ const Home: NextPage = () => {
                           Discover
                         </a>
                       </div>
-                      <div className="text-2xl font-extrabold">
+                      <div className="text-xl font-extrabold">
                         <a
                           href=""
                           className="hover:underline underline-offset-2"
@@ -535,7 +536,7 @@ const Home: NextPage = () => {
                           The Library
                         </a>
                       </div>
-                      <div className="text-2xl font-extrabold">
+                      <div className="text-xl font-extrabold">
                         <a
                           href=""
                           className="hover:underline underline-offset-2"
@@ -544,8 +545,8 @@ const Home: NextPage = () => {
                         </a>
                       </div>
                       <div className="flex flex-col gap-2">
-                        <h1 className="text-2xl font-extrabold">About</h1>
-                        <div className="flex flex-col ml-5 text-xl font-semibold">
+                        <h1 className="text-xl font-extrabold">About</h1>
+                        <div className="flex flex-col ml-5 text-xl">
                           <a
                             href=""
                             className="hover:underline underline-offset-2"
@@ -573,10 +574,10 @@ const Home: NextPage = () => {
                         </div>
                       </div>
                       <div className="flex flex-col gap-3">
-                        <h1 className="text-2xl font-extrabold">
+                        <h1 className="text-xl font-extrabold">
                           Custom Candles
                         </h1>
-                        <div className="flex flex-col ml-5 text-2xl font-semibold">
+                        <div className="flex flex-col ml-5 text-xl">
                           <a
                             href=""
                             className="hover:underline underline-offset-2"
@@ -592,7 +593,7 @@ const Home: NextPage = () => {
                         </div>
                       </div>
                       <div>
-                        <div className="text-2xl font-extrabold">
+                        <div className="text-xl font-extrabold">
                           <a
                             href=""
                             className="hover:underline underline-offset-2"
@@ -603,10 +604,10 @@ const Home: NextPage = () => {
                       </div>
                     </div>
                     {/* login button  */}
-                    <div className="flex justify-center">
+                    <div className="flex justify-center mt-8">
                       <Link href="/login">
                         <a>
-                          <button className="font-extrabold bg-black text-white text-xs tracking-widest flex justify-center items-center mb-5 w-56 h-8 ">
+                          <button className="font-extrabold bg-black text-white text-xs tracking-widest flex justify-center items-center w-56 h-8 mb8">
                             LOGIN
                           </button>
                         </a>
