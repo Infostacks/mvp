@@ -14,6 +14,14 @@ module.exports = {
       //     "url('https://candlefish-assets.s3.amazonaws.com/assets/library-home.jpg')",
       // },
     },
+    letterSpacing: {
+      tightest: "-.075em",
+      tighter: "-.05em",
+      tight: "-.025em",
+      normal: "0",
+      wider: ".05em",
+      widest: ".25em",
+    },
   },
   plugins: [],
 };

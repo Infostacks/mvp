@@ -26,9 +26,13 @@ const Home: NextPage<{ characters: Character[] }> = ({ characters }) => {
 
       <main className="flex flex-col justify-center items-center">
         <div className="flex flex-row items-center justify-between h-20 w-full bg-slate-500 drop-shadow-xl">
-          <h1 className="ml-5 text-2xl font-bold text-white">NavBar Logo</h1>
+          <h1 className="ml-5 text-2xl font-bold text-white tracking-widest">
+            <Link href="/">
+              <a>CANDLEFISH</a>
+            </Link>
+          </h1>
           <div className="mr-10 font-semibold text-lg flex items-center gap-5">
-            <Link href="/characters">
+            <Link href="/">
               <a className="text-white hover:text-xl hover:underline hover:text-orange-400">
                 Home
               </a>
