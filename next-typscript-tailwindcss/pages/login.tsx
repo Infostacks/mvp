@@ -4,43 +4,38 @@ import Link from "next/link";
 import Image from "next/image";
 import imageLoader from "../imageLoader";
 import styles from "../styles/Home.module.css";
-import formImage from "../public/assets/formicon.png";
+import { BsFillCloudLightningRainFill } from "react-icons/bs";
+import bgImage from "../public/assets/bg.jpg";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import useAuth from "../hooks/useAuth";
 import Joi from "joi-browser";
 import AnimatedBorderDiv from "./AnimatedBorderDiv";
 
 const Login: NextPage = () => {
-
-
-  const [isAnimating, setIsAnimating] = useState(false);  
+  const [isAnimating, setIsAnimating] = useState(false);
   // const [borderAnimate, setBorderAnimate] = useState(false);
   const { signIn } = useAuth();
   const [errors, setErrors] = useState(null);
 
   const [formData, setFormData] = useState({
-    email:"",
-    password:"",
+    email: "",
+    password: "",
   });
 
-
-
-
   useEffect(() => {
-  setTimeout(() => {
-    setErrors(null);
-  }, 3000);
+    setTimeout(() => {
+      setErrors(null);
+    }, 3000);
   }, [errors]);
-  
 
-
-  const schema = {      // Joi schema for validation
-   email: Joi.string()
-        .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } }).label("Email"),
-     password: Joi.string().required().label("Password"),
-   
-   };
+  const schema = {
+    // Joi schema for validation
+    email: Joi.string()
+      .email({ minDomainSegments: 2, tlds: { allow: ["com", "net"] } })
+      .label("Email"),
+    password: Joi.string().required().label("Password"),
+  };
 
   const validate = () => {
     // Validation function for Joi schema
@@ -55,26 +50,27 @@ const Login: NextPage = () => {
       errors[item.path[0]] = item.message;
     }
     return errors;
-  };;
+  };
 
-
-
-  const handleSubmit = async () => {      // Function to handle submit
+  const handleSubmit = async () => {
+    // Function to handle submit
     setErrors(null);
-    let data = validate();    // Validation function call
-    if (data) {               // If validation fails
+    let data = validate(); // Validation function call
+    if (data) {
+      // If validation fails
       setErrors(data);
-      setIsAnimating(true);           // Set isAnimating to true
+      setIsAnimating(true); // Set isAnimating to true
       setTimeout(() => {
         setIsAnimating(false);
-      }
-      , 1500);
-    } else {                  // If validation passes
-      try{
-        await signIn(formData.email, formData.password);    // Sign in function call
-      }catch(err){                                          // If sign in fails
+      }, 1500);
+    } else {
+      // If validation passes
+      try {
+        await signIn(formData.email, formData.password); // Sign in function call
+      } catch (err) {
+        // If sign in fails
         console.log(err);
-        setIsAnimating(true);                               // Set isAnimating to true
+        setIsAnimating(true); // Set isAnimating to true
         setTimeout(() => {
           setIsAnimating(false);
         }, 1500);
@@ -82,11 +78,10 @@ const Login: NextPage = () => {
     }
   };
 
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-  }
+  };
 
   return (
     <div className={styles.container}>
@@ -96,178 +91,227 @@ const Login: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="flex justify-center flex-col items-center m-0 bg-slate-800 w-screen h-screen">
-        <AnimatePresence initial={false}>
-          <motion.div
-            variants={{
-              hidden: {
-                opacity: 1,
-              },
-              visible: {
-                x: isAnimating ? [0, 25, -25, 25, -25, 0] : 0,
-                transition: {
-                  y: {
-                    // yoyo: Infinity,
-                    duration: 1.5,
-                    ease: "easeOut",
+      <main
+        className="absolute flex justify-center flex-col items-center m-0 w-screen h-screen bg-no-repeat bg-cover 
+        bg-[url('https://images.unsplash.com/photo-1438382458652-54431bf59e01?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=874&q=80')]"
+        //  style={{backgroundColor: "#171123"}}
+      >
+        <div className="flex justify-center items-center w-screen h-screen bg-opacity-90 bg-slate-700 shadow-lg z-50">
+          
+          <div className="absolute h-3/4 w-3/4 bg-white flex flex-row md:flex-col xl:flex-row lg:flex-row max-w-5xl">
+            {/* Left Side Logo  */}
+            <div
+              className="w-1/3 flex flex-col gap-5 items-center justify-center text-white"
+              style={{ backgroundColor: "#414770" }}
+            >
+              <motion.span
+                variants={{
+                  hidden: {
+                    opacity: 1,
                   },
-                },
-              },
-              removed: {
-                opacity: 1,
-              },
-            }}
-            initial="hidden"
-            animate="visible"
-            exit="removed"
-          >
-            <AnimatePresence>
-              <motion.div
-                animate={{
-                  // x: [0, 0, 0, -100, -100, 100, 100, 0],
-                  // rotate: [0, 45, -45, 45, -45, 0],
-                  rotate: 360,
+                  visible: {
+                    y: [25, -25],
+                    transition: {
+                      y: {
+                        yoyo: Infinity,
+                        duration: 1.5,
+                        delay: 1.5,
+                        ease: "easeOut",
+                      },
+                    },
+                  },
+                  removed: {
+                    opacity: 1,
+                  },
                 }}
-                initial={{
-                  opacity: 1,
-                }}
-                transition={{
-                  type: "spring",
-                  stiffness: 50,
-                  duration: 1.5,
-                }}
-                exit={{
-                  opacity: 0,
-                }}
+                initial="hidden"
+                animate="visible"
               >
-                <div
-                  id="SignIn"
-                  className="flex justify-center flex-row items-center  bg-white p-2 shadow-lg rounded-lg"
+                <BsFillCloudLightningRainFill className="w-32 h-32" />
+              </motion.span>
+              <h1 className="text-2xl font-extrabold drop-shadow-2xl">
+                CANDLEFISH
+              </h1>
+            </div>
+
+            {/* LogIn Card  */}
+            <div className="w-2/3 bg-slate-200 flex justify-center items-center">
+              <AnimatePresence initial={false}>
+                <motion.div
+                  variants={{
+                    hidden: {
+                      opacity: 1,
+                    },
+                    visible: {
+                      x: isAnimating ? [0, 25, -25, 25, -25, 0] : 0,
+                      transition: {
+                        y: {
+                          // yoyo: Infinity,
+                          duration: 1.5,
+                          ease: "easeOut",
+                        },
+                      },
+                    },
+                    removed: {
+                      opacity: 1,
+                    },
+                  }}
+                  initial="hidden"
+                  animate="visible"
+                  exit="removed"
+                  className="w-3/5"
                 >
-                  <Image
-                    loader={imageLoader}
-                    unoptimized
-                    src={formImage}
-                    alt="Form"
-                    width="200"
-                    height="200"
-                  />
-
-                  <div className="flex flex-col items-start gap-3 mt-3 mr-5">
-                    <div>
-                      {isAnimating ? (
-                        <div className="flex flex-col">
-                          <label htmlFor="email">Email: </label>
-                          <AnimatedBorderDiv>
-                            <input
-                              id="email"
-                              name="email"
-                              type="email"
-                              value={formData.email}
-                              placeholder="Enter your Email"
-                              onChange={handleChange}
-                              className={`w-72 h-7 pl-2 bg-white text-slate-800 text-lg z-12 focus:outline-none`}
-                            />
-                          </AnimatedBorderDiv>
-                          <label htmlFor="password">Password:</label>
-                          <AnimatedBorderDiv>
-                            <input
-                              id="password"
-                              name="password"
-                              type="password"
-                              value={formData.password}
-                              placeholder="Enter your password"
-                              onChange={handleChange}
-                              className={`w-72 h-7 pl-2 bg-white text-slate-800 text-lg z-12 focus:outline-none`}
-                            />
-                          </AnimatedBorderDiv>
-                        </div>
-                      ) : (
-                        <div className="flex flex-col">
-                          <label htmlFor="email">Email: </label>
-                          <input
-                            id="email"
-                            name="email"
-                            type="email"
-                            value={formData.email}
-                            placeholder="Enter your Email"
-                            onChange={handleChange}
-                            className={`w-72 h-7 pl-2 bg-slate-100 text-slate-800 text-lg z-12 focus:outline-none`}
-                          />
-                          <label htmlFor="password">Password:</label>
-                          <input
-                            id="password"
-                            name="password"
-                            type="password"
-                            value={formData.password}
-                            placeholder="Enter your password"
-                            onChange={handleChange}
-                            className={`w-72 h-7 pl-2 bg-slate-100 text-slate-800 text-lg rounded-t-md z-12 focus:outline-none`}
-                          />
-                        </div>
-                      )}
-                    </div>
-
-                    {/* <div className="flex flex-col">
-                      {isAnimating ? (
-                        <AnimatedBorderDiv>
-                          <input
-                            id="password"
-                            name="password"
-                            type="password"
-                            value={formData.password}
-                            placeholder="Enter your password"
-                            onChange={handleChange}
-                            className={`w-72 h-7 pl-2 bg-white text-slate-800 text-l z-12 focus:outline-none`}
-                          />
-                        </AnimatedBorderDiv>
-                      ) : (
-                        <input
-                          id="password"
-                          name="password"
-                          type="password"
-                          value={formData.password}
-                          placeholder="Enter your password"
-                          onChange={handleChange}
-                          className={`w-72 h-7 mr-5 pl-2 bg-slate-100 text-slate-800 text-l rounded-t-md z-12 focus:outline-none`}
-                        />
-                      )}
-                    </div> */}
-
-                    <div className="flex flex-row gap-2 items-center">
-                      <button
-                        type="submit"
-                        className={`bg-blue-800 rounded-sm text-white pl-2 pr-2 pt-1 pb-1 text-sm `}
-                        onClick={handleSubmit}
+                  <AnimatePresence>
+                    <motion.div
+                      animate={{
+                        // x: [0, 0, 0, -100, -100, 100, 100, 0],
+                        // rotate: [0, 45, -45, 45, -45, 0],
+                        rotate: 360,
+                      }}
+                      initial={{
+                        opacity: 1,
+                      }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 50,
+                        duration: 1.5,
+                      }}
+                      exit={{
+                        opacity: 0,
+                      }}
+                    >
+                      <div
+                        id="SignIn"
+                        className="flex justify-center items-center flex-col bg-white shadow-lg max-w-max"
                       >
-                        Sign in
-                      </button>
-                      <div>or</div>
+                        <div className="flex items-start p-8 flex-col">
+                          <div className="mt-10 mb-5 flex gap-3 flex-col">
+                            <h2 className="text-xs text-slate-400">
+                              Welcom to Candlefish
+                            </h2>
+                            <h1 className="text-2xl text-slate-800">
+                              Log into your Account
+                            </h1>
+                          </div>
 
-                      <Link href="/register">
-                        <a>
-                          <button
-                            className={`rounded-sm text-blue-800 pl-2 pr-2 pt-1 pb-1 text-sm`}
-                          >
-                            Sign Up
-                          </button>
-                        </a>
-                      </Link>
-                    </div>
+                          <div className="flex flex-col items-start gap-5 mb-5">
+                            <div className="flex flex-col gap-3">
+                              {isAnimating ? (
+                                <div className="flex flex-col gap-2">
+                                  <label
+                                    htmlFor="email"
+                                    className="text-xs text-slate-500"
+                                  >
+                                    Email:{" "}
+                                  </label>
+                                  <AnimatedBorderDiv>
+                                    <input
+                                      id="email"
+                                      name="email"
+                                      type="email"
+                                      value={formData.email}
+                                      placeholder="Enter your Email"
+                                      onChange={handleChange}
+                                      className={`w-72 h-7 pl-2 bg-white border-2 rounded-sm text-lg z-12 focus:outline-none`}
+                                    />
+                                  </AnimatedBorderDiv>
+                                  <label
+                                    htmlFor="password"
+                                    className="text-xs text-slate-500"
+                                  >
+                                    Password:
+                                  </label>
+                                  <AnimatedBorderDiv>
+                                    <input
+                                      id="password"
+                                      name="password"
+                                      type="password"
+                                      value={formData.password}
+                                      placeholder="Enter your password"
+                                      onChange={handleChange}
+                                      className={`w-72 h-7 pl-2 bg-white border-2 rounded-sm text-lg z-12 focus:outline-none`}
+                                    />
+                                  </AnimatedBorderDiv>
+                                </div>
+                              ) : (
+                                <div className="flex flex-col gap-2">
+                                  <label
+                                    htmlFor="email"
+                                    className="text-xs text-slate-500"
+                                  >
+                                    Email:{" "}
+                                  </label>
+                                  <input
+                                    id="email"
+                                    name="email"
+                                    type="email"
+                                    value={formData.email}
+                                    placeholder="Enter your Email"
+                                    onChange={handleChange}
+                                    className={`w-72 h-7 pl-2 border-2 rounded-sm text-md z-12 focus:outline-none`}
+                                  />
+                                  <label
+                                    htmlFor="password"
+                                    className="text-xs text-slate-500"
+                                  >
+                                    Password:
+                                  </label>
+                                  <input
+                                    id="password"
+                                    name="password"
+                                    type="password"
+                                    value={formData.password}
+                                    placeholder="Enter your password"
+                                    onChange={handleChange}
+                                    className={`w-72 h-7 pl-2 border-2 rounded-sm text-md z-12 focus:outline-none`}
+                                  />
+                                </div>
+                              )}
+                            </div>
 
-                    <Link href="/resetpassword">
-                      <a>
-                        <button className="rounded-sm text-blue-800 pl-2 pr-2 pt-1 pb-1 text-sm hover:underline">
-                          Forgot password?
-                        </button>
-                      </a>
-                    </Link>
-                  </div>
-                </div>
-              </motion.div>
-            </AnimatePresence>
-          </motion.div>
-        </AnimatePresence>
+                            <div className="flex flex-row gap-2 items-center">
+                              <button
+                                type="submit"
+                                className={`bg-blue-800 rounded-sm text-white pl-2 pr-2 pt-1 pb-1 text-sm`}
+                                onClick={handleSubmit}
+                                style={{ backgroundColor: "#5B85AA" }}
+                              >
+                                Sign in
+                              </button>
+                              <div>or</div>
+
+                              <Link href="/register">
+                                <a>
+                                  <button
+                                    className={`rounded-sm pl-2 pr-2 pt-1 pb-1 text-sm`}
+                                    style={{ color: "#5B85AA" }}
+                                  >
+                                    Sign Up
+                                  </button>
+                                </a>
+                              </Link>
+                            </div>
+
+                            <Link href="/resetpassword">
+                              <a>
+                                <button
+                                  className="rounded-sm pl-2 pr-2 pt-1 pb-1 text-sm hover:underline"
+                                  style={{ color: "#5B85AA" }}
+                                >
+                                  Forgot password?
+                                </button>
+                              </a>
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+                    </motion.div>
+                  </AnimatePresence>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
+        </div>
       </main>
     </div>
   );
