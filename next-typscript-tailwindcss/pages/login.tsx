@@ -111,6 +111,7 @@ const Login: NextPage = () => {
                   },
                   visible: {
                     y: [25, -25],
+                    color: "#DCE1E9",
                     transition: {
                       y: {
                         yoyo: Infinity,
@@ -129,8 +130,8 @@ const Login: NextPage = () => {
               >
                 <BsFillCloudLightningRainFill className="w-32 h-32" />
               </motion.span>
-              <h1 className="text-2xl font-extrabold drop-shadow-2xl">
-                CANDLEFISH
+              <h1 id="logoFont" className="text-3xl font-bold drop-shadow-2xl tracking-wider">
+                candlefish
               </h1>
             </div>
 
@@ -189,7 +190,7 @@ const Login: NextPage = () => {
                             <h2 className="text-xs text-slate-400">
                               Welcom to Candlefish
                             </h2>
-                            <h1 className="text-2xl text-slate-800">
+                            <h1 className="text-2xl text-slate-600 font-semibold" id="logoFont">
                               Log into your Account
                             </h1>
                           </div>
@@ -210,7 +211,7 @@ const Login: NextPage = () => {
                                       name="email"
                                       type="email"
                                       value={formData.email}
-                                      placeholder="Enter your Email"
+                                      // placeholder="Enter your Email"
                                       onChange={handleChange}
                                       className={`w-72 h-7 pl-2 bg-white border-2 rounded-sm text-lg z-12 focus:outline-none`}
                                     />
@@ -227,7 +228,7 @@ const Login: NextPage = () => {
                                       name="password"
                                       type="password"
                                       value={formData.password}
-                                      placeholder="Enter your password"
+                                      // placeholder="Enter your password"
                                       onChange={handleChange}
                                       className={`w-72 h-7 pl-2 bg-white border-2 rounded-sm text-lg z-12 focus:outline-none`}
                                     />
@@ -246,7 +247,7 @@ const Login: NextPage = () => {
                                     name="email"
                                     type="email"
                                     value={formData.email}
-                                    placeholder="Enter your Email"
+                                    // placeholder="Enter your Email"
                                     onChange={handleChange}
                                     className={`w-72 h-7 pl-2 border-2 rounded-sm text-md z-12 focus:outline-none`}
                                   />
@@ -261,7 +262,7 @@ const Login: NextPage = () => {
                                     name="password"
                                     type="password"
                                     value={formData.password}
-                                    placeholder="Enter your password"
+                                    // placeholder="Enter your password"
                                     onChange={handleChange}
                                     className={`w-72 h-7 pl-2 border-2 rounded-sm text-md z-12 focus:outline-none`}
                                   />
