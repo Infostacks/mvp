@@ -1,9 +1,9 @@
-import Link from "next/link";
 import AnimatedBorderDiv from "../../pages/AnimatedBorderDiv";
 
 export interface InputProps {
   isAnimating: boolean;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChangeCP: (e: React.ChangeEvent<HTMLInputElement>) => void;
   valueEmail: string;
   valuePass: string;
   valueConfPass: string;
@@ -44,11 +44,11 @@ const SignUpCard = (props: InputProps) => {
           <label className="text-xs text-slate-500">Confirm Password:</label>
           <AnimatedBorderDiv>
             <input
-              id="password"
-              name="password"
+              id="confirmPassword"
+              name="confirmPassword"
               type="password"
               value={props.valueConfPass}
-              onChange={props.onChange}
+              onChange={props.onChangeCP}
               className={`w-72 h-7 pl-2 border-2 rounded-sm text-md z-12 focus:outline-none`}
             />
           </AnimatedBorderDiv>
@@ -79,11 +79,11 @@ const SignUpCard = (props: InputProps) => {
           />
           <label className="text-xs text-slate-500">Confirm Password:</label>
           <input
-            id="password"
-            name="password"
+            id="confirmPassword"
+            name="confirmPassword"
             type="password"
             value={props.valueConfPass}
-            onChange={props.onChange}
+            onChange={props.onChangeCP}
             className={`w-72 h-7 pl-2 border-2 rounded-sm text-md z-12 focus:outline-none`}
           />
         </div>

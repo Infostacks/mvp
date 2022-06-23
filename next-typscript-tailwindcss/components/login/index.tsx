@@ -10,6 +10,7 @@ export interface InputProps {
 }
 
 const LogInCard = (props: InputProps) => {
+  
   return (
     <div className="flex flex-col gap-3">
       {props.isAnimating ? (

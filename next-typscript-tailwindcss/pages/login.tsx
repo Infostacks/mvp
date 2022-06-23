@@ -13,20 +13,22 @@ import Link from "next/link";
 const Login: NextPage = () => {
   const [isAnimating, setIsAnimating] = useState(false);
   const [logIn, setLogIn] = useState(false);
+  const [cPass, setCPass] = useState({ confirmPassword: "" });
+  const [confirmPassError, setConfirmPassError] = useState(false);
   const { signIn, signUp } = useAuth();
   const [errors, setErrors] = useState(null);
 
   const [formData, setFormData] = useState({
     email: "",
     password: "",
-    confirmPassword: "",
   });
 
   useEffect(() => {
     setTimeout(() => {
       setErrors(null);
+      setConfirmPassError(false)
     }, 3000);
-  }, [errors]);
+  }, [errors,confirmPassError]);
 
   const schema = {
     // Joi schema for validation
@@ -34,10 +36,6 @@ const Login: NextPage = () => {
       .email({ minDomainSegments: 2, tlds: { allow: ["com", "net"] } })
       .label("Email"),
     password: Joi.string().required().label("Password"),
-    confirmPassword: Joi.string()
-      .required()
-      .valid(Joi.ref("password"))
-      .label("Password did not match"),
   };
 
   const validate = () => {
@@ -69,11 +67,18 @@ const Login: NextPage = () => {
     } else {
       // If validation passes
       try {
-        {logIn? 
-        (await signIn(formData.email, formData.password)) // Sign in function call
-        :(await signUp(formData.email, formData.password)) // Sign in function call
-      }
-        
+        if (logIn) {
+          await signIn(formData.email, formData.password);
+        } else {
+          if (formData.password !== cPass.confirmPassword) {
+            setConfirmPassError(true);
+          }else{
+            await signUp(formData.email, formData.password);
+            alert("Successfully Signed Up. Login Now!");
+            setLogIn(true);
+            resetForm();
+          }
+        }
       } catch (err) {
         // If sign in fails
         console.log(err);
@@ -90,13 +95,19 @@ const Login: NextPage = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-   const resetForm = () => {
-     setFormData({
-       email: "",
-       password: "",
-       confirmPassword: "",
-     });
-   };
+  const handleCPass = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setCPass({ ...cPass, [name]: value });
+  };
+
+  const resetForm = () => {
+    setConfirmPassError(false)
+    setFormData({
+      email: "",
+      password: "",
+    });
+    setCPass({ confirmPassword: "" });
+  };
 
   return (
     <div className={styles.container}>
@@ -222,7 +233,7 @@ const Login: NextPage = () => {
 
                           <div className="flex flex-col items-start gap-5 mb-5">
                             {/* place code here */}
-                            <div className="flex w-full justify-center">
+                            <div className="flex flex-col gap-3 w-full justify-center">
                               {logIn ? (
                                 <LogInCard
                                   isAnimating={isAnimating}
@@ -237,11 +248,24 @@ const Login: NextPage = () => {
                                   onChange={handleChange}
                                   valueEmail={formData.email}
                                   valuePass={formData.password}
-                                  valueConfPass={formData.confirmPassword}
+                                  valueConfPass={cPass.confirmPassword}
                                   onClick={handleSubmit}
+                                  onChangeCP={handleCPass}
                                 />
                               )}
+                              <span
+                                style={{
+                                  display: confirmPassError ? "block" : "none",
+                                  color: "red",
+                                  fontSize: "12px",
+                                  alignSelf: "flex-end",
+                                  marginRight: "5px",
+                                }}
+                              >
+                                *Confirm Password is not same!
+                              </span>
                             </div>
+
                             <div className="flex flex-row gap-2 items-center">
                               <button
                                 type="submit"
