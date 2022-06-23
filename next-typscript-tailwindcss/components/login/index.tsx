@@ -1,5 +1,5 @@
 import Link from "next/link";
-import AnimatedBorderDiv from "../pages/AnimatedBorderDiv";
+import AnimatedBorderDiv from "../../pages/AnimatedBorderDiv";
 
 export interface InputProps {
   isAnimating: boolean;
@@ -36,7 +36,6 @@ const LogInCard = (props: InputProps) => {
                     name="email"
                     type="email"
                     value={props.valueEmail}
-                    // placeholder="Enter your Email"
                     onChange={props.onChange}
                     className={`w-72 h-7 pl-2 bg-white border-2 rounded-sm text-lg z-12 focus:outline-none`}
                   />
@@ -50,7 +49,6 @@ const LogInCard = (props: InputProps) => {
                     name="password"
                     type="password"
                     value={props.valuePass}
-                    // placeholder="Enter your password"
                     onChange={props.onChange}
                     className={`w-72 h-7 pl-2 bg-white border-2 rounded-sm text-lg z-12 focus:outline-none`}
                   />
@@ -66,7 +64,6 @@ const LogInCard = (props: InputProps) => {
                   name="email"
                   type="email"
                   value={props.valueEmail}
-                  // placeholder="Enter your Email"
                   onChange={props.onChange}
                   className={`w-72 h-7 pl-2 border-2 rounded-sm text-md z-12 focus:outline-none`}
                 />
@@ -78,7 +75,6 @@ const LogInCard = (props: InputProps) => {
                   name="password"
                   type="password"
                   value={props.valuePass}
-                  // placeholder="Enter your password"
                   onChange={props.onChange}
                   className={`w-72 h-7 pl-2 border-2 rounded-sm text-md z-12 focus:outline-none`}
                 />

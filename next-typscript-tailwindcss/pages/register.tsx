@@ -140,7 +140,7 @@ const Register: NextPage = () => {
                 }}
               >
                 <div
-                  id="SignIn"
+                  id="SignUp"
                   className="flex justify-center flex-row items-center  bg-white p-2 shadow-lg rounded-lg"
                 >
                   <Image

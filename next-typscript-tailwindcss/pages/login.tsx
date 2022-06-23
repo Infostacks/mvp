@@ -3,10 +3,10 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { BsFillCloudLightningRainFill } from "react-icons/bs";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import useAuth from "../hooks/useAuth";
 import Joi from "joi-browser";
-import LogInCard from "../components/LogInCard";
+import LogInCard from "../components/login";
 
 const Login: NextPage = () => {
   const [isAnimating, setIsAnimating] = useState(false);
@@ -91,7 +91,6 @@ const Login: NextPage = () => {
       <main
         className="absolute flex justify-center flex-col items-center m-0 w-screen h-screen bg-no-repeat bg-cover 
         bg-[url('https://images.unsplash.com/photo-1438382458652-54431bf59e01?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=874&q=80')]"
-        //  style={{backgroundColor: "#171123"}}
       >
         <div className="flex justify-center items-center w-screen h-screen bg-opacity-90 bg-slate-700 shadow-lg z-50">
           <div className="absolute h-3/4 w-3/4 bg-white flex flex-row xl:flex-row lg:flex-row md:flex-col sm:flex-col max-w-5xl">
@@ -180,7 +179,15 @@ const Login: NextPage = () => {
                         opacity: 0,
                       }}
                     >
-                      <LogInCard isAnimating={isAnimating} onChange={handleChange} valueEmail={formData.email} valuePass={formData.password} onClick={handleSubmit}/>
+                      <div className="flex w-full justify-center">
+                        <LogInCard
+                          isAnimating={isAnimating}
+                          onChange={handleChange}
+                          valueEmail={formData.email}
+                          valuePass={formData.password}
+                          onClick={handleSubmit}
+                        />
+                      </div>
                     </motion.div>
                   </AnimatePresence>
                 </motion.div>
