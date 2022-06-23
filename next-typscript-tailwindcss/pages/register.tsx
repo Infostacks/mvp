@@ -70,7 +70,7 @@ const Register: NextPage = () => {
     } else {
       // If validation passes
       try {
-        await signUp(formData.email, formData.password); // Sign in function call
+        await signUp(formData.email, formData.password); // Sign up function call
       } catch (err) {
         // If sign in fails
         console.log(err);
