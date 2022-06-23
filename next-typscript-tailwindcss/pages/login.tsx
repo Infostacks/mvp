@@ -1,16 +1,12 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import Link from "next/link";
-import Image from "next/image";
-import imageLoader from "../imageLoader";
 import styles from "../styles/Home.module.css";
 import { BsFillCloudLightningRainFill } from "react-icons/bs";
-import bgImage from "../public/assets/bg.jpg";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState, useEffect} from "react";
 import useAuth from "../hooks/useAuth";
 import Joi from "joi-browser";
-import AnimatedBorderDiv from "./AnimatedBorderDiv";
+import LogInCard from "../components/LogInCard";
 
 const Login: NextPage = () => {
   const [isAnimating, setIsAnimating] = useState(false);
@@ -21,6 +17,7 @@ const Login: NextPage = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
+    confirmPassword: "",
   });
 
   useEffect(() => {
@@ -97,11 +94,10 @@ const Login: NextPage = () => {
         //  style={{backgroundColor: "#171123"}}
       >
         <div className="flex justify-center items-center w-screen h-screen bg-opacity-90 bg-slate-700 shadow-lg z-50">
-          
-          <div className="absolute h-3/4 w-3/4 bg-white flex flex-row md:flex-col xl:flex-row lg:flex-row max-w-5xl">
+          <div className="absolute h-3/4 w-3/4 bg-white flex flex-row xl:flex-row lg:flex-row md:flex-col sm:flex-col max-w-5xl">
             {/* Left Side Logo  */}
             <div
-              className="w-1/3 flex flex-col gap-5 items-center justify-center text-white"
+              className="xl:w-1/3 lg:w-1/3 md:h-1/3 sm:h-1/3 xl:h-full lg:h-full md:w-full sm:w-full flex flex-col gap-5 items-center justify-center text-white"
               style={{ backgroundColor: "#414770" }}
             >
               <motion.span
@@ -130,13 +126,16 @@ const Login: NextPage = () => {
               >
                 <BsFillCloudLightningRainFill className="w-32 h-32" />
               </motion.span>
-              <h1 id="logoFont" className="text-3xl font-bold drop-shadow-2xl tracking-wider">
+              <h1
+                id="logoFont"
+                className="text-3xl font-bold drop-shadow-2xl tracking-wider"
+              >
                 candlefish
               </h1>
             </div>
 
             {/* LogIn Card  */}
-            <div className="w-2/3 bg-slate-200 flex justify-center items-center">
+            <div className="xl:w-2/3 lg:w-2/3 md:h-2/3 sm:h-2/3 xl:h-full lg:h-full md:w-full sm:w-full bg-slate-200 flex justify-center items-center">
               <AnimatePresence initial={false}>
                 <motion.div
                   variants={{
@@ -181,131 +180,7 @@ const Login: NextPage = () => {
                         opacity: 0,
                       }}
                     >
-                      <div
-                        id="SignIn"
-                        className="flex justify-center items-center flex-col bg-white shadow-lg max-w-max"
-                      >
-                        <div className="flex items-start p-8 flex-col">
-                          <div className="mt-10 mb-5 flex gap-3 flex-col">
-                            <h2 className="text-xs text-slate-400">
-                              Welcom to Candlefish
-                            </h2>
-                            <h1 className="text-2xl text-slate-600 font-semibold" id="logoFont">
-                              Log into your Account
-                            </h1>
-                          </div>
-
-                          <div className="flex flex-col items-start gap-5 mb-5">
-                            <div className="flex flex-col gap-3">
-                              {isAnimating ? (
-                                <div className="flex flex-col gap-2">
-                                  <label
-                                    htmlFor="email"
-                                    className="text-xs text-slate-500"
-                                  >
-                                    Email:{" "}
-                                  </label>
-                                  <AnimatedBorderDiv>
-                                    <input
-                                      id="email"
-                                      name="email"
-                                      type="email"
-                                      value={formData.email}
-                                      // placeholder="Enter your Email"
-                                      onChange={handleChange}
-                                      className={`w-72 h-7 pl-2 bg-white border-2 rounded-sm text-lg z-12 focus:outline-none`}
-                                    />
-                                  </AnimatedBorderDiv>
-                                  <label
-                                    htmlFor="password"
-                                    className="text-xs text-slate-500"
-                                  >
-                                    Password:
-                                  </label>
-                                  <AnimatedBorderDiv>
-                                    <input
-                                      id="password"
-                                      name="password"
-                                      type="password"
-                                      value={formData.password}
-                                      // placeholder="Enter your password"
-                                      onChange={handleChange}
-                                      className={`w-72 h-7 pl-2 bg-white border-2 rounded-sm text-lg z-12 focus:outline-none`}
-                                    />
-                                  </AnimatedBorderDiv>
-                                </div>
-                              ) : (
-                                <div className="flex flex-col gap-2">
-                                  <label
-                                    htmlFor="email"
-                                    className="text-xs text-slate-500"
-                                  >
-                                    Email:{" "}
-                                  </label>
-                                  <input
-                                    id="email"
-                                    name="email"
-                                    type="email"
-                                    value={formData.email}
-                                    // placeholder="Enter your Email"
-                                    onChange={handleChange}
-                                    className={`w-72 h-7 pl-2 border-2 rounded-sm text-md z-12 focus:outline-none`}
-                                  />
-                                  <label
-                                    htmlFor="password"
-                                    className="text-xs text-slate-500"
-                                  >
-                                    Password:
-                                  </label>
-                                  <input
-                                    id="password"
-                                    name="password"
-                                    type="password"
-                                    value={formData.password}
-                                    // placeholder="Enter your password"
-                                    onChange={handleChange}
-                                    className={`w-72 h-7 pl-2 border-2 rounded-sm text-md z-12 focus:outline-none`}
-                                  />
-                                </div>
-                              )}
-                            </div>
-
-                            <div className="flex flex-row gap-2 items-center">
-                              <button
-                                type="submit"
-                                className={`bg-blue-800 rounded-sm text-white pl-2 pr-2 pt-1 pb-1 text-sm`}
-                                onClick={handleSubmit}
-                                style={{ backgroundColor: "#5B85AA" }}
-                              >
-                                Sign in
-                              </button>
-                              <div>or</div>
-
-                              <Link href="/register">
-                                <a>
-                                  <button
-                                    className={`rounded-sm pl-2 pr-2 pt-1 pb-1 text-sm`}
-                                    style={{ color: "#5B85AA" }}
-                                  >
-                                    Sign Up
-                                  </button>
-                                </a>
-                              </Link>
-                            </div>
-
-                            <Link href="/resetpassword">
-                              <a>
-                                <button
-                                  className="rounded-sm pl-2 pr-2 pt-1 pb-1 text-sm hover:underline"
-                                  style={{ color: "#5B85AA" }}
-                                >
-                                  Forgot password?
-                                </button>
-                              </a>
-                            </Link>
-                          </div>
-                        </div>
-                      </div>
+                      <LogInCard isAnimating={isAnimating} onChange={handleChange} valueEmail={formData.email} valuePass={formData.password} onClick={handleSubmit}/>
                     </motion.div>
                   </AnimatePresence>
                 </motion.div>
