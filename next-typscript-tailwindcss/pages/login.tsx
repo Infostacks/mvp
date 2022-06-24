@@ -6,31 +6,124 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect, ChangeEvent, MouseEvent } from "react";
 import useAuth from "../hooks/useAuth";
 import Joi from "joi-browser";
+import _ from "lodash";
 import LogInCard from "../components/login";
 import SignUpCard from "../components/signup";
-import Link from "next/link";
+import ResetPassCard from "../components/resetPassword/index";
 
 const Login: NextPage = () => {
   const [isAnimating, setIsAnimating] = useState(false);
-  const [logIn, setLogIn] = useState(false);
-  const [cPass, setCPass] = useState({ confirmPassword: "" });
+  const [authType, setAuthType] = useState(2);
   const [confirmPassError, setConfirmPassError] = useState(false);
-  const { signIn, signUp } = useAuth();
+  const { signIn, signUp, resetPassword } = useAuth();
   const [errors, setErrors] = useState(null);
 
   const [formData, setFormData] = useState({
     email: "",
     password: "",
+    confirmPassword: "",
   });
+
+  const [logInFormData, setLogInFormData] = useState(_.omit(formData, ["confirmPassword"]));
+  const [resetPassFormData, setResetPassFormData] = useState(
+    _.omit(formData, ["password", "confirmPassword"])
+  );
+
+  const showCardTitleText = () => {
+    // show title card Text
+    if (authType === 1) {
+      return "Sign Up for new Account";
+    } else if (authType === 2) {
+      return "Log In to your Account";
+    } else {
+      return "Enter Email to reset password";
+    }
+  };
+
+  const showSubmitBtnText = () => {
+    // show Submit button text
+    if (authType === 1) {
+      return "Sign Up";
+    } else if (authType === 2) {
+      return "Log In";
+    } else {
+      return "Reset Password";
+    }
+  };
+
+  const showChangeCardBtnText = () => {
+    // show Change Card button text
+    if (authType === 1 || authType === 3) {
+      return "Log In";
+    } else {
+      return "Sign Up";
+    }
+  };
+
+  const changeAuthCard = () => {
+    // show Change Card button text
+    if (authType === 1 || authType === 3) {
+      return setAuthType(2);    // if (login/resetPass then change to signup)
+    } else {
+      return setAuthType(1);    // if ()
+    }
+  };
+
+  const showAuthComponents = () => {
+    // show auth components
+    if (authType === 1) {
+      return (
+        <SignUpCard
+          isAnimating={isAnimating}
+          onChange={handleChange}
+          valueEmail={formData.email}
+          valuePass={formData.password}
+          valueConfPass={formData.confirmPassword}
+          onClick={handleSubmit}
+        />
+      );
+    } else if (authType === 2) {
+      return (
+        <LogInCard
+          isAnimating={isAnimating}
+          onChange={handleChange}
+          valueEmail={logInFormData.email}
+          valuePass={logInFormData.password}
+          onClick={handleSubmit}
+        />
+      );
+    } else {
+      return (
+        <ResetPassCard
+          isAnimating={isAnimating}
+          onChange={handleChange}
+          valueEmail={resetPassFormData.email}
+          onClick={handleSubmit}
+        />
+      );
+    }
+  };
 
   useEffect(() => {
     setTimeout(() => {
       setErrors(null);
-      setConfirmPassError(false)
+      setConfirmPassError(false);
     }, 3000);
-  }, [errors,confirmPassError]);
+  }, [errors, confirmPassError]);
 
-  const schema = {
+  const signUpSchema = {
+    // Joi schema for validation
+    email: Joi.string()
+      .email({ minDomainSegments: 2, tlds: { allow: ["com", "net"] } })
+      .label("Email"),
+    password: Joi.string().required().label("Password"),
+    confirmPassword: Joi.string()
+      .required()
+      .valid(Joi.ref("password"))
+      .label("Password did not match"),
+  };
+
+  const signInSchema = {
     // Joi schema for validation
     email: Joi.string()
       .email({ minDomainSegments: 2, tlds: { allow: ["com", "net"] } })
@@ -38,10 +131,34 @@ const Login: NextPage = () => {
     password: Joi.string().required().label("Password"),
   };
 
+  const resetPassSchema = {
+    // Joi schema for validation
+    email: Joi.string()
+      .email({ minDomainSegments: 2, tlds: { allow: ["com", "net"] } })
+      .label("Email"),
+  };
+
   const validate = () => {
     // Validation function for Joi schema
     let options = { abortEarly: false }; // abortEarly: false = return all errors
-    let { error } = Joi.validate(formData, schema, options); // error = Joi error object
+
+    let schemaValidation;
+    let cardData;
+    if (authType === 1) {
+      schemaValidation = signUpSchema;
+      cardData = formData;
+    }else if(authType ===2){
+      schemaValidation = signInSchema;
+      cardData = logInFormData;
+      console.log("in validaiton: ", schemaValidation)
+    }else{
+      schemaValidation = resetPassSchema;
+      cardData = resetPassFormData;
+    }
+
+    console.log("in validaiton: ", authType)
+
+    let { error } = Joi.validate(cardData, schemaValidation, options); // error = Joi error object
     if (!error) return null; // if no error, return null
 
     let errors = []; // if error, create an empty array of errors
@@ -51,12 +168,13 @@ const Login: NextPage = () => {
       errors[item.path[0]] = item.message;
     }
     return errors;
-  };
+  };;
 
   const handleSubmit = async () => {
     // Function to handle submit
     setErrors(null);
     let data = validate(); // Validation function call
+    console.log("data: ", data)
     if (data) {
       // If validation fails
       setErrors(data);
@@ -67,17 +185,22 @@ const Login: NextPage = () => {
     } else {
       // If validation passes
       try {
-        if (logIn) {
-          await signIn(formData.email, formData.password);
-        } else {
-          if (formData.password !== cPass.confirmPassword) {
+        if (authType===1) {
+          if (formData.password !== formData.confirmPassword) {
             setConfirmPassError(true);
-          }else{
+          } else {
+            
+            console.log("sign up method called");
             await signUp(formData.email, formData.password);
-            alert("Successfully Signed Up. Login Now!");
-            setLogIn(true);
+            alert("Successfully Signed Up. authType Now!");
+            setAuthType(2);
             resetForm();
           }
+        } else if(authType === 2) {
+          console.log("sign in method called")
+          await signIn(logInFormData.email, logInFormData.password);
+        }else{
+          await resetPassword(resetPassFormData.email);
         }
       } catch (err) {
         // If sign in fails
@@ -92,27 +215,30 @@ const Login: NextPage = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    let cardData;
+    if (authType === 1) {
+      setFormData({ ...formData, [name]: value });
+    } else if (authType === 2) {
+      setLogInFormData({ ...logInFormData, [name]: value });
+    } else {
+      setResetPassFormData({ ...resetPassFormData, [name]: value });
+    }
   };
 
-  const handleCPass = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setCPass({ ...cPass, [name]: value });
-  };
 
   const resetForm = () => {
-    setConfirmPassError(false)
+    setConfirmPassError(false);
     setFormData({
       email: "",
       password: "",
+      confirmPassword: "",
     });
-    setCPass({ confirmPassword: "" });
   };
 
   return (
     <div className={styles.container}>
       <Head>
-        <title>Candlefish - {logIn ? "Log In" : "Sign Up"}</title>
+        <title>Candlefish - {authType ? "Log In" : "Sign Up"}</title>
         <meta name="description" content="Generated by create next app" />
         <link
           rel="icon"
@@ -225,34 +351,14 @@ const Login: NextPage = () => {
                               className="text-2xl text-slate-600 font-semibold"
                               id="logoFont"
                             >
-                              {logIn
-                                ? "Log In to your Account"
-                                : "Sign Up for new Account"}
+                              {showCardTitleText()}
                             </h1>
                           </div>
 
                           <div className="flex flex-col items-start gap-5 mb-5">
                             {/* place code here */}
                             <div className="flex flex-col gap-3 w-full justify-center">
-                              {logIn ? (
-                                <LogInCard
-                                  isAnimating={isAnimating}
-                                  onChange={handleChange}
-                                  valueEmail={formData.email}
-                                  valuePass={formData.password}
-                                  onClick={handleSubmit}
-                                />
-                              ) : (
-                                <SignUpCard
-                                  isAnimating={isAnimating}
-                                  onChange={handleChange}
-                                  valueEmail={formData.email}
-                                  valuePass={formData.password}
-                                  valueConfPass={cPass.confirmPassword}
-                                  onClick={handleSubmit}
-                                  onChangeCP={handleCPass}
-                                />
-                              )}
+                              {showAuthComponents()}
                               <span
                                 style={{
                                   display: confirmPassError ? "block" : "none",
@@ -273,7 +379,7 @@ const Login: NextPage = () => {
                                 onClick={handleSubmit}
                                 style={{ backgroundColor: "#5B85AA" }}
                               >
-                                {logIn ? "Log In" : "Sign Up"}
+                                {showSubmitBtnText()}
                               </button>
                               <div>or</div>
 
@@ -281,24 +387,21 @@ const Login: NextPage = () => {
                                 className={`rounded-sm pl-2 pr-2 pt-1 pb-1 text-sm`}
                                 style={{ color: "#5B85AA" }}
                                 onClick={() => {
-                                  setLogIn((prev) => !prev);
+                                  changeAuthCard();
                                   resetForm();
                                 }}
                               >
-                                {!logIn ? "Log In" : "Sign Up"}
+                                {showChangeCardBtnText()}
                               </button>
                             </div>
 
-                            <Link href="/resetpassword">
-                              <a>
-                                <button
-                                  className="rounded-sm pl-2 pr-2 pt-1 pb-1 text-sm hover:underline"
-                                  style={{ color: "#5B85AA" }}
-                                >
-                                  Forgot password?
-                                </button>
-                              </a>
-                            </Link>
+                            <button
+                              className="rounded-sm pl-2 pr-2 pt-1 pb-1 text-sm hover:underline"
+                              style={{ color: "#5B85AA" }}
+                              onClick={() => setAuthType(3)}
+                            >
+                              Forgot password?
+                            </button>
                           </div>
                         </div>
                       </div>

@@ -78,7 +78,7 @@ const BottomBorder = styled.div`
   z-index: 15;
 `;
 class AnimatedBorderDiv extends React.Component {
-  constructor(props) {
+  constructor(props: {} | Readonly<{}>) {
     super(props);
     this.onAnimationStart = this.onAnimationStart.bind(this);
     this.onAnimationEnd = this.onAnimationEnd.bind(this);
@@ -93,19 +93,19 @@ class AnimatedBorderDiv extends React.Component {
     this.prefixEventHandler(el, "AnimationEnd", this.onAnimationEnd);
   }
 
-  onAnimationStart(props) {
+  onAnimationStart(props: any) {
     console.log("Animation start props!!");
     console.log(props);
   }
 
-  onAnimationEnd(props) {
+  onAnimationEnd(props: any) {
     console.log("Animation end props!1");
     console.log(props);
 
     this.setState({ animateRemaningBorders: true });
   }
 
-  prefixEventHandler(node, name, handler, remove) {
+  prefixEventHandler(node: HTMLElement | null, name: string, handler: { (props: any): void; (props: any): void; }, remove: undefined) {
     var prefixes = ["webkit", "moz", "MS", "o", ""];
     for (var i = 0; i < prefixes.length; i++) {
       var eventName =
