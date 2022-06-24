@@ -395,13 +395,15 @@ const Login: NextPage = () => {
                               </button>
                             </div>
 
-                            <button
-                              className="rounded-sm pl-2 pr-2 pt-1 pb-1 text-sm hover:underline"
-                              style={{ color: "#5B85AA" }}
-                              onClick={() => setAuthType(3)}
-                            >
-                              Forgot password?
-                            </button>
+                            {authType !== 3 && (
+                              <button
+                                className="rounded-sm pl-2 pr-2 pt-1 pb-1 text-sm hover:underline"
+                                style={{ color: "#5B85AA" }}
+                                onClick={() => setAuthType(3)}
+                              >
+                                Forgot password?
+                              </button>
+                            )}
                           </div>
                         </div>
                       </div>
