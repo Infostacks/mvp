@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
 import styles from "../styles/Home.module.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 import { BsCart2 } from "react-icons/bs";
@@ -448,9 +448,9 @@ const Home: NextPage = () => {
                       </a>
                     </Link>
 
-                    <Link href="/characters">
+                    <Link href="/dashboard">
                       <a>
-                        <h3 className="text-xl text-white ml-10">Characters</h3>
+                        <h3 className="text-xl text-white ml-10">Dashboard</h3>
                       </a>
                     </Link>
                   </div>
