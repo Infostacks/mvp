@@ -1,4 +1,3 @@
-import Link from "next/link";
 import AnimatedBorderDiv from "../../pages/AnimatedBorderDiv";
 
 export interface InputProps {
