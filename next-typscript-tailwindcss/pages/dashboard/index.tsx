@@ -10,6 +10,8 @@ import WelcomeText from "../../components/dashboards/welcometext";
 import StatsCard from '../../components/dashboards/statscard'
 import PostNow from '../../components/dashboards/postnow'
 import ScreenPlayBox from '../../components/dashboards/screenplay'
+import TopPostBar from '../../components/dashboards/toppostbar'
+import RightSidePanel from '../../components/dashboards/rightsidepanel'
 
 const dashboard = () => {
   const [sidebar, setsidebar] = useState(false);
@@ -18,14 +20,14 @@ const dashboard = () => {
     setsidebar(!sidebar);
   };
   return (
-    <div className="w-screen h-screen flex flex-row xl:flex-row lg:flex-row md:flex-col sm:flex-col max-w-5xl">
+    <div className="w-screen h-screen flex flex-row justify-between gap-5 xl:flex-row lg:flex-row md:flex-col sm:flex-col">
       <Image
         src="https://images.unsplash.com/photo-1569982175971-d92b01cf8694?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80"
         unoptimized
         layout="fill"
         className="z-0"
       />
-
+      {/* Intro/Search Cards column  */}
       <div className="flex flex-col ml-28 mt-5">
         {/* Welcome text Here  */}
         <div className={`flex mt-8 shadow-lg`}>
@@ -47,9 +49,20 @@ const dashboard = () => {
         <ScreenPlayBox />
       </div>
 
+      {/* Top posts column  */}
+      <div className="flex flex-col ml-28 mt-10 z-50">
+        {/* Top Posts Bar  */}
+        <TopPostBar />
+      </div>
+
+      {/* Righ side panel */}
+      <div className="flex flex-col w-1/5 z-50">
+        <RightSidePanel />
+      </div>
+
       {/* Sidebar Here */}
       <div
-        className={`absolute w-full h-screen bg-opacity-20 bg-slate-300 shadow-lg
+        className={`fixed w-full h-screen bg-opacity-20 bg-slate-300 shadow-lg
       ${sidebar ? "z-50" : "z-0"}`}
       >
         {!sidebar ? (
@@ -81,7 +94,7 @@ const dashboard = () => {
               transition: {
                 y: {
                   // yoyo: Infinity,
-                  duration: 1.5,
+                  duration: 2.5,
                   ease: "easeOut",
                 },
               },
