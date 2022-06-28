@@ -620,7 +620,7 @@ const Home: NextPage = () => {
                 </div>
               </div>
             </div>
-            {/* end navbar area */}
+            {/* end sidebar area */}
           </div>
         </div>
       </main>

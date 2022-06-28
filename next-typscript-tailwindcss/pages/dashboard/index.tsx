@@ -1,27 +1,188 @@
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import Layout from "../../components/Layout";
-import imageLoader from "../../imageLoader";
-import mainBGImage from "../../public/assets_dash/bg2.png";
-import dashBGImage from "../../public/assets_dash/bg1.png";
-import Manubar from "../../components/dashboards/manubar";
+import SearchBox from "../../components/dashboards/searchbar";
+import { useState } from "react";
+import manubar from "../../public/assets_dash/manubar";
+import FormatAlignLeftIcon from "@mui/icons-material/FormatAlignLeft";
+import { MdClose } from "react-icons/md";
+import { CgProfile } from "react-icons/cg";
+import WelcomeText from "../../components/dashboards/welcometext";
+import StatsCard from '../../components/dashboards/statscard'
+import PostNow from '../../components/dashboards/postnow'
+import ScreenPlayBox from '../../components/dashboards/screenplay'
 
 const dashboard = () => {
+  const [sidebar, setsidebar] = useState(false);
+
+  const handleCloseSidebar = () => {
+    setsidebar(!sidebar);
+  };
   return (
     <div className="w-screen h-screen flex flex-row xl:flex-row lg:flex-row md:flex-col sm:flex-col max-w-5xl">
       <Image
         src="https://images.unsplash.com/photo-1569982175971-d92b01cf8694?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80"
         unoptimized
-        width="100%"
-        height="100%"
         layout="fill"
         className="z-0"
       />
-      <div className="absolute h-screen w-screen bg-opacity-20 bg-white z-50">
-        <Manubar />
+
+      <div className="flex flex-col ml-28 mt-5">
+        {/* Welcome text Here  */}
+        <div className={`flex mt-8 shadow-lg`}>
+          <WelcomeText />
+        </div>
+
+        {/* Search Box here  */}
+        <div className={`mt-10 flex shadow-lg`}>
+          <SearchBox />
+        </div>
+
+        {/* Stats Card here  */}
+        <StatsCard />
+
+        {/* Post Now here  */}
+        <PostNow />
+
+        {/* ScreenPlay Box here */}
+        <ScreenPlayBox />
       </div>
 
-      {/* code here  */}
+      {/* Sidebar Here */}
+      <div
+        className={`absolute w-full h-screen bg-opacity-20 bg-slate-300 shadow-lg
+      ${sidebar ? "z-50" : "z-0"}`}
+      >
+        {!sidebar ? (
+          <button
+            style={{ width: "30px" }}
+            onClick={handleCloseSidebar}
+            className="absolute mt-5 ml-3 z-50 p-3 hover:cursor-pointer"
+          >
+            <FormatAlignLeftIcon className="" />
+          </button>
+        ) : (
+          <button
+            type="button"
+            onClick={handleCloseSidebar}
+            className="absolute mt-5 ml-3 z-50 p-3 hover:rounded-full"
+          >
+            <MdClose className="text-2xl" />
+          </button>
+        )}
+
+        {/* Extended Navbar  */}
+        <motion.div
+          variants={{
+            hidden: {
+              opacity: 1,
+            },
+            visible: {
+              x: sidebar ? 0 : -20,
+              transition: {
+                y: {
+                  // yoyo: Infinity,
+                  duration: 1.5,
+                  ease: "easeOut",
+                },
+              },
+            },
+            removed: {
+              opacity: 1,
+            },
+          }}
+          initial="hidden"
+          animate="visible"
+          exit="removed"
+          className={`flex flex-col justify-end h-full bg-white z-50 rounded-tr-3xl rounded-br-3xl ${
+            sidebar ? "w-44" : "w-24"
+          }`}
+        >
+          <div className="flex flex-col h-full w-full justify-end items-center pb-24 pl-2">
+            <ul className="flex flex-col items-start justify-center h-full gap-16">
+              <li className="">
+                <a className="hover:cursor-pointer active:bg-transparent flex items-center">
+                  <CgProfile className="text-slate-500" />
+                  {sidebar ? (
+                    <span className="ml-5 text-lg font-semibold text-violet-400 hover:underline">
+                      Profile
+                    </span>
+                  ) : (
+                    ""
+                  )}
+                </a>
+              </li>
+              <li>
+                <a className="hover:cursor-pointer flex items-center">
+                  <Image
+                    src={manubar.gallery}
+                    unoptimized
+                    width="18"
+                    height="16"
+                  />
+                  {sidebar ? (
+                    <span className="ml-5 text-lg font-semibold text-violet-400 hover:underline">
+                      Gallery
+                    </span>
+                  ) : (
+                    ""
+                  )}
+                </a>
+              </li>
+              <li>
+                <a className="hover:cursor-pointer active:bg-transparent flex items-center">
+                  <Image
+                    src={manubar.browse}
+                    unoptimized
+                    width="18"
+                    height="15"
+                  />
+                  {sidebar ? (
+                    <span className="ml-5 text-lg font-semibold text-violet-400 hover:underline">
+                      Browse
+                    </span>
+                  ) : (
+                    ""
+                  )}
+                </a>
+              </li>
+              <li>
+                <a className="hover:cursor-pointer active:bg-transparent flex items-center">
+                  <Image
+                    src={manubar.cloud}
+                    unoptimized
+                    width="20"
+                    height="15"
+                  />
+                  {sidebar ? (
+                    <span className="ml-5 text-lg font-semibold text-violet-400 hover:underline">
+                      Cloud
+                    </span>
+                  ) : (
+                    ""
+                  )}
+                </a>
+              </li>
+            </ul>
+            <div className="flex justify-center">
+              <a className="hover:cursor-pointer active:bg-transparent flex items-center">
+                <Image
+                  src={manubar.settings}
+                  unoptimized
+                  width="20"
+                  height="20"
+                />
+                {sidebar ? (
+                  <span className="ml-5 text-lg font-semibold text-violet-400 hover:underline">
+                    Settings
+                  </span>
+                ) : (
+                  ""
+                )}
+              </a>
+            </div>
+          </div>
+        </motion.div>
+      </div>
     </div>
   );
 };

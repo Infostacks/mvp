@@ -4,71 +4,23 @@ import FormatAlignLeftIcon from "@mui/icons-material/FormatAlignLeft";
 import { MdClose } from "react-icons/md";
 import { CgProfile } from "react-icons/cg"
 import { useState } from "react";
-import Link from "next/link";
+// import Link from "next/link";
 import { motion } from "framer-motion";
 
-const Manubar = () => {
-  const [sidebar, setsidebar] = useState(false);
+export interface InputProps {
+  isSidebar: boolean;
+}
 
+const Manubar = (props: InputProps) => {
+  const [sidebar, setsidebar] = useState(false);
+  
   const handleCloseSidebar = () => {
     setsidebar(!sidebar);
+    props.isSidebar = sidebar
   };
 
   return (
-    <div className="w-full h-full">
-      {/* Collapsed Navebar */}
-      {/* <div className="flex w-16 h-full bg-white z-50 rounded-tr-3xl rounded-br-3xl">
-        <div className="flex flex-col justify-end pb-24 pl-2 w-full">
-          <ul className="flex flex-col items-center justify-center h-full gap-16 w-full">
-            <li className="">
-              <a className="hover:cursor-pointer active:bg-transparent">
-                <Image
-                  src={manubar.profile}
-                  unoptimized
-                  width="15"
-                  height="70"
-                />
-              </a>
-            </li>
-            <li>
-              <a className="hover:cursor-pointer hover:bg-slate-500">
-                <Image
-                  src={manubar.gallery}
-                  unoptimized
-                  width="18"
-                  height="16"
-                />
-              </a>
-            </li>
-            <li>
-              <a className="hover:cursor-pointer active:bg-transparent">
-                <Image
-                  src={manubar.browse}
-                  unoptimized
-                  width="18"
-                  height="15"
-                />
-              </a>
-            </li>
-            <li>
-              <a className="hover:cursor-pointer active:bg-transparent">
-                <Image src={manubar.cloud} unoptimized width="20" height="15" />
-              </a>
-            </li>
-          </ul>
-          <div className="flex justify-center">
-            <a className="hover:cursor-pointer active:bg-transparent">
-              <Image
-                src={manubar.settings}
-                unoptimized
-                width="20"
-                height="20"
-              />
-            </a>
-          </div>
-        </div>
-      </div> */}
-
+    <div className="w-full h-full z-50">
       {!sidebar ? (
         <button
           style={{ width: "30px" }}
