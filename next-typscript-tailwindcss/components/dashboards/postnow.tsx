@@ -4,7 +4,7 @@ import postNow from "../../public/assets_dash/postnowbox";
 const postnow = () => {
   return (
     <div className="mt-10 z-40">
-      <div className="bg-white bg-opacity-60 h-32 w-96 flex flex-row justify-between rounded-3xl shadow-md">
+      <div className="bg-white bg-opacity-70 h-32 w-96 flex flex-row justify-between rounded-3xl shadow-md">
         {/* profile icon  */}
         <div className="mt-5 ml-5">
           <Image
@@ -27,19 +27,19 @@ const postnow = () => {
           <div className="flex flex-row justify-between items-center">
             <div className="flex flex-row text-xs gap-2 z-50">
               <Image src={postNow.lock} unoptimized width="10" height="15" />
-              <div>Private post</div>
+              <div className="text-slate-600">Private post</div>
             </div>
 
             <div className="flex flex-row items-center text-xs gap-2 z-50">
-              <div>Post to</div>
+              <div className="text-slate-600">Post to</div>
               <div className="flex flex-row items-center justify-center">
                 <div className="flex flex-row absolute gap-3 font-semibold items-center justify-center z-50 text-xs">
-                  <div>TRAVEL</div>
+                  <div className="text-violet-600 font-bold">TRAVEL</div>
                   <Image
                     src={postNow.arrow_filled_bo}
                     unoptimized
                     width="8"
-                    height="4"
+                    height="6"
                     className="absolute"
                   />
                 </div>
