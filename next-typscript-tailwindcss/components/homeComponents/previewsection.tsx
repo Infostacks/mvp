@@ -1,11 +1,27 @@
 import { MdExpandMore } from "react-icons/md";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
+import lottie from 'lottie-web';
+import growBusiness from '../../public/jsonanims/growBusiness.json'
 
 const previewsection = () => {
+    const container = useRef(null);
+
+    useEffect(() =>{
+        lottie.loadAnimation({
+          container: container.current,
+          renderer: "svg",
+          loop: true,
+          autoplay: true,
+          animationData: require("../../public/jsonanims/growBusiness.json"),
+        });
+        lottie.setSpeed(0.4);
+    }, [])
+
   return (
     <div
-      className="flex flex-row items-center justify-center px-20 py-5 gap-5 w-full 
+      className="flex flex-row items-center justify-center h-screen px-20 py-5 gap-5 w-full 
      bg-gradient-to-r from-slate-100 to-violet-300"
     >
       {/* Left Side  */}
@@ -56,7 +72,8 @@ const previewsection = () => {
 
       {/* Right Side  */}
       <div className="flex flex-col justify-center items-center w-1/2">
-        <motion.div
+        <div className="container" id="container" ref={container}></div>
+        {/* <motion.div
           variants={{
             hidden: {
               opacity: 1,
@@ -86,7 +103,7 @@ const previewsection = () => {
             height="300"
             className="rounded-br-3xl z-0"
           />
-        </motion.div>
+        </motion.div>*/}
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import Head from "next/head";
 import HeaderSection from "../../components/homeComponents/header";
-import PreviewSection from '../../components/homeComponents/previewsection'
+import PreviewSection from "../../components/homeComponents/previewsection";
 
 const index = () => {
   return (
@@ -11,9 +11,13 @@ const index = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="flex flex-col justify-center items-center m-0 p-0 w-screen">
-        <HeaderSection />
-        <PreviewSection/>
+      <main className="flex flex-col items-center m-0 p-0 w-screen">
+        <div className="w-full absolute">
+          <HeaderSection />
+        </div>
+        <div className="w-full">
+          <PreviewSection />
+        </div>
       </main>
     </div>
   );

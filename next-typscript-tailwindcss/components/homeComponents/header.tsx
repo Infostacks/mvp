@@ -10,7 +10,7 @@ const header = () => {
   };
 
   return (
-    <div className="flex flex-row items-center justify-between h-20 w-full bg-gradient-to-r from-slate-100 to-violet-300 h">
+    <div className="flex flex-row items-center justify-between h-20 w-full">
       <h1 className="ml-5 text-2xl font-bold text-white tracking-widest">
         <Link href="/">
           <a className="text-violet-900">CANDLEFISH</a>
