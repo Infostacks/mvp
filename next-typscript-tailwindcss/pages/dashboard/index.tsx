@@ -20,17 +20,22 @@ const dashboard = () => {
     setsidebar(!sidebar);
   };
   return (
-    <div className="w-screen h-screen flex flex-row justify-between gap-5 xl:flex-row lg:flex-row md:flex-col sm:flex-col">
-      <Image
-        src="https://images.unsplash.com/photo-1569982175971-d92b01cf8694?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80"
+    <div
+      className="relative w-screen h-screen flex flex-row justify-between gap-5 xl:flex-row lg:flex-row md:flex-col sm:flex-col 
+      bg-no-repeat bg-fixed bg-cover bg-opacity-25
+    bg-[url('https://images.unsplash.com/photo-1483478550801-ceba5fe50e8e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=100')]"
+    >
+      {/* <Image
+        src="https://images.unsplash.com/photo-1483478550801-ceba5fe50e8e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=100"
         unoptimized
         layout="fill"
-        className="z-0"
-      />
+        objectFit="cover"
+        className="z-0 opacity-60 fixed"
+      /> */}
       {/* Intro/Search Cards column  */}
-      <div className="flex flex-col ml-28 mt-5">
+      <div className="flex flex-col ml-28 mt-5 w-">
         {/* Welcome text Here  */}
-        <div className={`flex mt-8 shadow-lg`}>
+        <div className={`flex mt-8`}>
           <WelcomeText />
         </div>
 

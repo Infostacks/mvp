@@ -6,7 +6,7 @@ const welcometext = () => {
     <div className="flex flex-row justify-center items-center z-30 gap-4">
       {/* profile pic  */}
       <div className="flex flex-col items-end justify-end">
-        <div className="z-40 shadow-md">
+        <div className="z-40">
           <Image src={welText.profilePic} unoptimized width="55" height="55" />
         </div>
         <div className="absolute flex flex-row items-center">
