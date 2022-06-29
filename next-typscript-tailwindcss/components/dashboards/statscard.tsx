@@ -3,7 +3,7 @@ import statBox from "../../public/assets_dash/statbox";
 
 const statscard = () => {
   return (
-    <div className="z-40 mt-10">
+    <div className="z-40">
       <div className="flex flex-row w-96 rounded-3xl justify-between items-center bg-white shadow-md">
         <div className="bg-indigo-400 w-1/3 h-48 flex items-center rounded-tl-3xl rounded-bl-3xl rounded-br-3xl z-30">
           <div className="flex flex-col justify-center items-center text-slate-200 text-xs p-0 -rotate-90">

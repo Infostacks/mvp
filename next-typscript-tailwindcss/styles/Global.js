@@ -13,6 +13,11 @@ const styles = {
   flexCenterCol: "flex flex-col justify-center items-center",
   flexCol: "flex flex-col",
 
+  xlWidth: "xl",
+  lgWidth: "lg",
+  mdWidth: "md",
+  smWidth: "",
+
   homeGBURL:
     "bg-[url('https://images.unsplash.com/photo-1438382458652-54431bf59e01?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=874&q=80')]",
 };

@@ -19,52 +19,55 @@ const toppostbar = () => {
         <div className="flex flex-col justify-between items-center gap-8">
           {/* post 1 */}
           <div className="relative flex flex-col z-50">
-            <div className="">
-              <Image
-                src={photoList[0]}
-                unoptimized
-                width="370"
-                height="270"
-                className="shadow-md rounded-3xl z-50"
-              />
-            </div>
-            {/* <h2 className="absolute flex">Synergy</h2> */}
+            <Image
+              src={photoList[0]}
+              unoptimized
+              width="370"
+              height="270"
+              className="shadow-md rounded-3xl z-50 opacity-80"
+            />
+            <h2 className="absolute flex text-white z-50 left-32 bottom-3 font-semibold">
+              Technology
+            </h2>
           </div>
           {/* post 2 */}
-          <div className="flex flex-col z-50">
-            <div>
-              <Image
-                src={photoList[1]}
-                unoptimized
-                width="370"
-                height="270"
-                className="shadow-md rounded-3xl z-50"
-              />
-            </div>
+          <div className="relative flex flex-col z-50">
+            <Image
+              src={photoList[1]}
+              unoptimized
+              width="370"
+              height="270"
+              className="shadow-md rounded-3xl z-50 opacity-80"
+            />
+            <h2 className="absolute flex text-black bg-white bg-opacity-20 z-50 content-center left-32 bottom-3 font-semibold">
+              Latest Trends
+            </h2>
           </div>
           {/* post 3 */}
-          <div className="flex flex-col z-50">
-            <div>
-              <Image
-                src={photoList[2]}
-                unoptimized
-                width="370"
-                height="270"
-                className="shadow-md rounded-3xl z-50"
-              />
-            </div>
+          <div className="relative flex flex-col z-50">
+            <Image
+              src={photoList[2]}
+              unoptimized
+              width="370"
+              height="270"
+              className="shadow-md rounded-3xl z-50 opacity-80"
+            />
+            <h2 className="absolute flex text-white z-50 left-32 bottom-3 font-semibold">
+              Infrastructure
+            </h2>
           </div>
           {/* post 4 */}
-          <div className="flex flex-col z-50">
-            <div>
-              <Image
-                src={photoList[3]}
-                unoptimized
-                width="370"
-                height="270"
-                className="shadow-md rounded-3xl z-50"
-              />
-            </div>
+          <div className="relative flex flex-col z-50">
+            <Image
+              src={photoList[3]}
+              unoptimized
+              width="370"
+              height="270"
+              className="shadow-md rounded-3xl z-50 opacity-80"
+            />
+            <h2 className="absolute flex text-white z-50 left-32 bottom-3 font-semibold">
+              Research
+            </h2>
           </div>
         </div>
       </div>
@@ -74,13 +77,7 @@ const toppostbar = () => {
         <h2 className="font-semibold text-slate-800">Linked accounts</h2>
         <div className="flex flex-row items-center w-full gap-28">
           <div className="hover:cursor-pointer">
-            <Image
-              src={topPostBar.vimeo}
-              unoptimized
-              width="30"
-              height="30"
-              className=""
-            />
+            <Image src={topPostBar.vimeo} unoptimized width="30" height="30" />
           </div>
           <div className="hover:cursor-pointer">
             <Image
@@ -88,7 +85,6 @@ const toppostbar = () => {
               unoptimized
               width="30"
               height="30"
-              className=""
             />
           </div>
           <div className="hover:cursor-pointer">
@@ -97,7 +93,6 @@ const toppostbar = () => {
               unoptimized
               width="30"
               height="30"
-              className=""
             />
           </div>
         </div>

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import screenPlay from "../../public/assets_dash/screenplaybox";
+import styles from "../../styles/Global.js";
 
 const screenplay = () => {
   return (
@@ -22,18 +23,20 @@ const screenplay = () => {
           </div>
         </div>
       </div>
-        {/* Right side content  */}
-        <div className="absolute flex flex-row justify-around ml-32 mt-5 z-30 text-xs font-semibold">
-          <div>Goal progress</div>
-          <div className="ml-14">Daily Records</div>
-        </div>
+      {/* Right side content  */}
+      <div className="absolute flex flex-row justify-around ml-36 gap-32 mt-5 z-30 text-xs font-semibold">
+        <div>Goal progress</div>
+        <div className="ml-14">Daily Records</div>
+      </div>
       <Image
         src={screenPlay.screenplayBG}
         unoptimized
-        width="383"
-        height="185"
+        width={`${styles.xlWidth ? "683" : "383"}`}
+        height={`${styles.xlWidth ? "320" : "185"}`}
         className="rounded-br-3xl"
       />
+      {/* width="683" height="320" */}
+      {/* width="383" height="185" */}
     </div>
   );
 };
