@@ -1,5 +1,6 @@
 import Head from "next/head";
 import HeaderSection from "../../components/homeComponents/header";
+import PreviewSection from '../../components/homeComponents/previewsection'
 
 const index = () => {
   return (
@@ -12,6 +13,7 @@ const index = () => {
 
       <main className="flex flex-col justify-center items-center m-0 p-0 w-screen">
         <HeaderSection />
+        <PreviewSection/>
       </main>
     </div>
   );
