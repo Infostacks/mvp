@@ -15,7 +15,9 @@
     "@hookform/resolvers": "^2.9.0",
     "@lottiefiles/lottie-player": "^1.5.7",
     "@mui/icons-material": "^5.8.4",
+    "@testing-library/user-event": "^14.2.1",
     "@use-gesture/react": "^10.2.15",
+    "animate.css": "^4.1.1",
     "firebase": "^9.8.3",
     "framer-motion": "^6.3.11",
     "joi-browser": "^13.4.0",
@@ -26,6 +28,7 @@
     "react-chartjs-2": "^4.2.0",
     "react-dom": "18.1.0",
     "react-icons": "^4.4.0",
+    "react-on-screen": "^2.1.1",
     "react-spring": "^9.4.5",
     "recoil": "^0.7.3",
     "styled-components": "^5.3.5"
