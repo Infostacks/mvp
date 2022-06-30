@@ -1,40 +1,60 @@
 import { MdExpandMore } from "react-icons/md";
-import Image from "next/image";
-import myGif from "../../public/jsonanims/previewBG.gif";
+// import Image from "next/image";
 import { motion } from "framer-motion";
-import React, { useEffect, useRef } from "react";
-import Lottie from "lottie-web";
-import * as LottiePlayer from "@lottiefiles/lottie-player";
-import growBusiness from '../../public/jsonanims/growBusiness.json'
-import styles from '../../styles/Global.js'
+import React, { useEffect, useRef, useState } from "react";
 
 const previewsection = () => {
-    // const container = useRef(null);
+  const animList = [
+    "https://assets9.lottiefiles.com/packages/lf20_hcwpcdew.json",
+    "https://assets2.lottiefiles.com/packages/lf20_01jwptn4.json",
+    "https://assets4.lottiefiles.com/packages/lf20_mjr11zfo.json",
+    "https://assets4.lottiefiles.com/packages/lf20_pwohahvd.json",
+    "https://assets4.lottiefiles.com/packages/lf20_jtbfg2nb.json",
+    "https://assets8.lottiefiles.com/packages/lf20_s72aydoa.json",
+    "https://assets4.lottiefiles.com/packages/lf20_rhe84poa.json",
+    "https://assets4.lottiefiles.com/packages/lf20_fdo4fhy6.json",
+    "https://assets4.lottiefiles.com/packages/lf20_wqd1jwoz.json",
+    "https://assets4.lottiefiles.com/packages/lf20_8morfz5o/divices2.json",
+    "https://assets4.lottiefiles.com/packages/lf20_9oliqaij.json",
+    "https://assets4.lottiefiles.com/packages/lf20_2lruogho.json",
+    "https://assets4.lottiefiles.com/packages/lf20_xfx6wio6.json",
+    "https://assets4.lottiefiles.com/packages/lf20_6YVCqP.json",
+    "https://assets8.lottiefiles.com/packages/lf20_yjkyGT.json",
+    "https://assets8.lottiefiles.com/private_files/lf30_vAtD7F.json",
+    "https://assets8.lottiefiles.com/private_files/lf30_FQVNNa.json",
+    "https://assets8.lottiefiles.com/private_files/lf30_51QyOY.json",
+  ];
 
-    const ref = useRef(null);
-    React.useEffect(() => {
-      import("@lottiefiles/lottie-player");
-    });
+  const [animListNo, setAnimListNo] = useState(0);
+  const isMounted = useRef(false);
 
-    const defaultOptions = {
-      loop: true,
-      autoplay: true,
-      animationData: growBusiness,
-      rendererSettings: {
-        preserveAspectRatio: "xMidYMid slice",
-      },
-    };
+  useEffect(() => {
+    console.log("im here");
+    let number = localStorage.getItem("animList");
+    console.log("number 1st: ", number);
+    // number = animListNo + 1 >= animList.length ? "0" : (animListNo + 1).toString();
+    // console.log("number 2nd: ", number);
+    // localStorage.setItem("animList", (Number(number)+1).toString());
+    // setAnimListNo(Number(number));
 
-    // useEffect(() =>{
-    //     lottie.loadAnimation({
-    //       container: container.current,
-    //       renderer: "svg",
-    //       loop: true,
-    //       autoplay: true,
-    //       animationData: require("../../public/jsonanims/growBusiness.json"),
-    //     });
-    //     lottie.setSpeed(0.4);
-    // }, [])
+    if (number === undefined) {
+      setAnimListNo(0);
+      localStorage.setItem("animList", "0");
+    } else {
+      number =
+      Number(number) + 1 >= animList.length
+      ? "0"
+      : (Number(number) + 1).toString();
+      console.log("number 2nd: ", number);
+      localStorage.setItem("animList", number);
+      setAnimListNo(Number(number));
+    }
+  }, []);
+
+  const ref = useRef(null);
+  useEffect(() => {
+    import("@lottiefiles/lottie-player");
+  },[]);
 
   return (
     <div
@@ -91,8 +111,7 @@ const previewsection = () => {
 
       {/* Right Side  */}
       <div className="flex flex-col justify-center items-center w-1/2">
-
-        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+        {/* Lottie animation code here */}
         <lottie-player
           id="firstLottie"
           ref={ref}
@@ -100,12 +119,12 @@ const previewsection = () => {
           // controls
           loop
           // mode="normal"
-          src="https://assets2.lottiefiles.com/packages/lf20_01jwptn4.json"
-          // style={{ width: "300px", height: "300px" }}
+          // src="https://assets2.lottiefiles.com/packages/lf20_01jwptn4.json"
+          src={animList[animListNo]}
         ></lottie-player>
       </div>
     </div>
   );
 };
 
-export default previewsection;
+export default React.memo(previewsection);
