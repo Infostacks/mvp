@@ -29,3 +29,11 @@ a {
 #logoFont{
   font-family: 'Overpass', sans-serif;
 }
+
+/* .previewBG{
+  background-image: url(../public/jsonanims/previewBG.gif);
+  width: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+} */

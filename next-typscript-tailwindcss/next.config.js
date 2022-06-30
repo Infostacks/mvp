@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["rickandmortyapi.com"],
+    domains: ["rickandmortyapi.com", "media.giphy.com"],
     loader: "custom",
     path: "/",
   },
@@ -15,7 +15,6 @@ const nextConfig = {
   //     },
   //   ];
   // }
-  
-}
+};
 
 module.exports = nextConfig
