@@ -3,37 +3,10 @@ import Image from "next/image";
 import productImages from '../../public/assets/home'
 import { motion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
-import animData from "../utils/data.js";
 
 
 const promotionsection = () => {
-  const animList = animData;
-
-  const [animListNo, setAnimListNo] = useState(0);
-
-  useEffect(() => {
-    let number = localStorage.getItem("animList");
-
-    if (number === undefined) {
-      setAnimListNo(0);
-      localStorage.setItem("animList", "0");
-    } else {
-      number =
-      Number(number) + 1 >= animList.length
-      ? "0"
-      : (Number(number) + 1).toString();
-      console.log("number 2nd: ", number);
-      localStorage.setItem("animList", number);
-      setAnimListNo(Number(number));
-    }
   
-  }, []);
-
-  const ref = useRef(null);
-  useEffect(() => {
-    import("@lottiefiles/lottie-player");
-  }, []);
-
   return (
     <div
       className="flex flex-row items-center justify-center h-screen px-20 py-5 gap-5 w-full 

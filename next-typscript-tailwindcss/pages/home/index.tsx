@@ -17,14 +17,14 @@ const index = () => {
         <div className="w-full absolute">
           <HeaderSection />
         </div>
-        <div className="w-full">
+        <div className="w-full h-screen">
           <PreviewSection />
         </div>
-        <div className="w-full">
-          <PromotionSection/>
+        <div className="w-full h-screen">
+          <PromotionSection />
         </div>
         <div className="w-full">
-          <FeaturedSection/>
+          <FeaturedSection />
         </div>
       </main>
     </div>

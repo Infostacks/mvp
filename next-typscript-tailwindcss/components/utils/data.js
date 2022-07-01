@@ -19,4 +19,57 @@ const animList = [
   "https://assets8.lottiefiles.com/private_files/lf30_51QyOY.json",
 ];
 
-export default animList;
+const memberData = [
+  {
+    name: "Alina Jia",
+    designation: "SENIOR DESIGNER",
+    img: "https://samartheme1.vercel.app/images/team/pic1.jpg",
+  },
+  {
+    name: "Suresh Doe",
+    designation: "SENIOR DESIGNER",
+    img: "https://samartheme1.vercel.app/images/team/pic2.jpg",
+  },
+  {
+    name: "Domina Li",
+    designation: "SENIOR DESIGNER",
+    img: "https://samartheme1.vercel.app/images/team/pic3.jpg",
+  },
+  {
+    name: "Alina Jia",
+    designation: "SENIOR DESIGNER",
+    img: "https://samartheme1.vercel.app/images/team/pic1.jpg",
+  },
+  {
+    name: "Suresh Doe",
+    designation: "SENIOR DESIGNER",
+    img: "https://samartheme1.vercel.app/images/team/pic2.jpg",
+  },
+  {
+    name: "Domina Li",
+    designation: "SENIOR DESIGNER",
+    img: "https://samartheme1.vercel.app/images/team/pic3.jpg",
+  },
+  {
+    name: "Alina Jia",
+    designation: "SENIOR DESIGNER",
+    img: "https://samartheme1.vercel.app/images/team/pic1.jpg",
+  },
+  {
+    name: "Suresh Doe",
+    designation: "SENIOR DESIGNER",
+    img: "https://samartheme1.vercel.app/images/team/pic2.jpg",
+  },
+  {
+    name: "Domina Li",
+    designation: "SENIOR DESIGNER",
+    img: "https://samartheme1.vercel.app/images/team/pic3.jpg",
+  },
+  {
+    name: "Alina Jia",
+    designation: "SENIOR DESIGNER",
+    img: "https://samartheme1.vercel.app/images/team/pic1.jpg",
+  },
+];
+
+export  { animList, memberData };

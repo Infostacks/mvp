@@ -2,10 +2,10 @@ import { MdExpandMore } from "react-icons/md";
 // import Image from "next/image";
 import { motion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
-import animData from "../utils/data.js";
+import {animList} from "../utils/data";
 
 const previewsection = () => {
-  const animList = animData;
+  // const animList = animData;
   const [isVisible, setIsVisible] = useState(false);
 
   const [animListNo, setAnimListNo] = useState(0);
