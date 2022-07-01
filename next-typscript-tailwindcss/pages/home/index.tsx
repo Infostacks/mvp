@@ -1,6 +1,8 @@
 import Head from "next/head";
 import HeaderSection from "../../components/homeComponents/header";
 import PreviewSection from "../../components/homeComponents/previewsection";
+import PromotionSection from '../../components/homeComponents/promotionsection';
+import FeaturedSection from '../../components/homeComponents/featuredsection'
 
 const index = () => {
   return (
@@ -17,6 +19,12 @@ const index = () => {
         </div>
         <div className="w-full">
           <PreviewSection />
+        </div>
+        <div className="w-full">
+          <PromotionSection/>
+        </div>
+        <div className="w-full">
+          <FeaturedSection/>
         </div>
       </main>
     </div>

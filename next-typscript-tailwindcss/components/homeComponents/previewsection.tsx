@@ -13,29 +13,29 @@ const previewsection = () => {
   useEffect(() => {
     let number = localStorage.getItem("animList");
 
-    // if (number === undefined) {
-    //   setAnimListNo(0);
-    //   localStorage.setItem("animList", "0");
-    // } else {
-    //   number =
-    //   Number(number) + 1 >= animList.length
-    //   ? "0"
-    //   : (Number(number) + 1).toString();
-    //   console.log("number 2nd: ", number);
-    //   localStorage.setItem("animList", number);
-    //   setAnimListNo(Number(number));
-    // }
-
-    function changeNumber() {
+    if (number === undefined) {
+      setAnimListNo(0);
+      localStorage.setItem("animList", "0");
+    } else {
       number =
-        Number(number) + 1 >= animList.length
-          ? "0"
-          : (Number(number) + 1).toString();
+      Number(number) + 1 >= animList.length
+      ? "0"
+      : (Number(number) + 1).toString();
+      console.log("number 2nd: ", number);
       localStorage.setItem("animList", number);
       setAnimListNo(Number(number));
     }
 
-    setInterval(changeNumber, 3000);
+    // function changeNumber() {
+    //   number =
+    //     Number(number) + 1 >= animList.length
+    //       ? "0"
+    //       : (Number(number) + 1).toString();
+    //   localStorage.setItem("animList", number);
+    //   setAnimListNo(Number(number));
+    // }
+
+    // setInterval(changeNumber, 3000);
 
     // if(isVisible){
     //   number =
@@ -117,7 +117,7 @@ const previewsection = () => {
           ref={ref}
           autoplay
           // controls
-          // loop
+          loop
           // complete={() => (setIsVisible(true))}
           mode="normal"
           // src="https://assets2.lottiefiles.com/packages/lf20_01jwptn4.json"
