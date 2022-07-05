@@ -9,12 +9,29 @@ import { memberData } from "../utils/data";
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
+import SwiperCore, { Navigation, EffectFade} from 'swiper'
 
 // Import Swiper styles
 import "swiper/css";
+import 'swiper/css/navigation'
+import 'swiper/css/effect-fade'
+// import 'swiper/components/navigation/navigation.scss'
+// import 'swiper/components/navigation/pagination.scss'
+// import 'swiper/components/navigation/scrollbar.scss'
+
 
 const featuredsection = () => {
   // console.log(memberData);
+  // SwiperCore.use({Navigation, Pagination, Scrollbar})
+
+  // let swiper = new Swiper('.caruosal', {
+  //   slidesPerView : 3,
+  //   spaceBetween: 30,
+  //   paginaitonion: {
+  //     el: "swiper-pagination"
+  //     clickable: true
+  //   }
+  // })
 
   return (
     <div
@@ -35,18 +52,20 @@ const featuredsection = () => {
       </div>
 
       <div className="flex justify-center drop-shadow-md ">
-        <div className="flex flex-row w-4/5 overflow-hidden z-50 items-center justify-center">
+        <div className="flex flex-row w-4/5 z-50 items-center justify-center">
           <Swiper
-            // spaceBetween={50}
-            slidesPerView={3}
-            grabCursor={true}
-            // className="portfolio-slider"
-            onSlideChange={() => console.log("slide change")}
-            onSwiper={(swiper) => console.log(swiper)}
+            modules={[Navigation, EffectFade]}
+            navigation
+            // effect="slide"
+            speed={800}
+            slidesPerView={1}
+            className="swiper"
+            grabCursor = {true}
           >
           {memberData.map((member) => {
             return (
-                <SwiperSlide className="flex flex-col p-3 items-center">
+              <SwiperSlide className="flex flex-col swiper-slide">
+                <div className="flex flex-row ">
                   {/* image  */}
                   <div className=" absolute">
                     <Image
@@ -81,7 +100,8 @@ const featuredsection = () => {
                       </div>
                     </div>
                   </div>
-                </SwiperSlide>
+                </div>
+              </SwiperSlide>
             );
           })}
           </Swiper>

@@ -10,46 +10,54 @@ const previewsection = () => {
 
   const [animListNo, setAnimListNo] = useState(0);
 
+  const renderAnimSVG = () => {
+    return (
+      <lottie-player
+        id="firstLottie"
+        ref={ref}
+        autoplay
+        // controls
+        loop
+        // complete={() => (setIsVisible(true))}
+        mode="normal"
+        // src="https://assets2.lottiefiles.com/packages/lf20_01jwptn4.json"
+        src={animList[animListNo]}
+      ></lottie-player>
+    );
+  }
+
   useEffect(() => {
-    let number = localStorage.getItem("animList");
+    // let number = localStorage.getItem("animList");
 
-    if (number === undefined) {
-      setAnimListNo(0);
-      localStorage.setItem("animList", "0");
-    } else {
-      number =
-      Number(number) + 1 >= animList.length
-      ? "0"
-      : (Number(number) + 1).toString();
-      console.log("number 2nd: ", number);
-      localStorage.setItem("animList", number);
-      setAnimListNo(Number(number));
-    }
+    let number = 0;
 
-    // function changeNumber() {
-    //   number =
-    //     Number(number) + 1 >= animList.length
-    //       ? "0"
-    //       : (Number(number) + 1).toString();
-    //   localStorage.setItem("animList", number);
-    //   setAnimListNo(Number(number));
-    // }
-
-    // setInterval(changeNumber, 3000);
-
-    // if(isVisible){
+    // if (number === undefined) {
+    //   setAnimListNo(0);
+    //   localStorage.setItem("animList", "0");
+    // } else {
     //   number =
     //   Number(number) + 1 >= animList.length
     //   ? "0"
     //   : (Number(number) + 1).toString();
+    //   console.log("number 2nd: ", number);
     //   localStorage.setItem("animList", number);
     //   setAnimListNo(Number(number));
-
-    //   setTimeout(() => {
-    //     setIsVisible(false);
-    //   }, 1500);
     // }
-  }, [animList]);
+
+    function changeNumber() {
+      number =
+        Number(number) + 1 >= animList.length
+          ? 0
+          : (Number(number) + 1);
+          renderAnimSVG();
+          setAnimListNo(number);
+      // console.log("animList", number);
+    }
+
+
+    setInterval(changeNumber, 5000);
+
+  }, [animListNo]);
 
   const ref = useRef(null);
   useEffect(() => {
@@ -64,18 +72,57 @@ const previewsection = () => {
       {/* Left Side  */}
       <div className="flex justify-center w-1/2">
         <div className="flex flex-col justify-center gap-5 w-2/3">
-          <h3 className="text-violet-500 text-lg">WE CREATE IDEAS</h3>
-          <h1 className="text-3xl font-extrabold text-slate-800">
+          <h3 className="text-violet-500 text-2xl">
+            {"WE CREATE IDEAS".split("").map((character, i) => {
+              return (
+                <motion.span
+                  initial={{
+                    opacity: 0,
+                    translateX: i % 2 === 0 ? -50 : 50,
+                    translateY: -50,
+                  }}
+                  animate={{ opacity: 1, translateX: 0, translateY: 0 }}
+                  transition={{ duration: 0.3, delay: i * 0.2 }}
+                >
+                  {character}
+                </motion.span>
+              );
+            })}
+          </h3>
+          <motion.h1
+            initial={{
+              opacity: 0,
+              translateY: -50,
+            }}
+            animate={{ opacity: 1, translateY: [10, -5, 0] }}
+            transition={{ duration: 2 }}
+            className="text-3xl font-extrabold text-slate-800"
+          >
             Build Stunning <span className="text-violet-500">Website</span>{" "}
             InfoStack Tech
-          </h1>
-          <p className="text-sm text-slate-600">
+          </motion.h1>
+          <motion.p
+            initial={{
+              opacity: 0,
+            }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 3, delay: 0.5 }}
+            className="text-sm text-slate-600"
+          >
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet,
             repellendus nihil fuga unde voluptas voluptates perspiciatis
             aspernatur.
-          </p>
+          </motion.p>
           <div className="flex flex-row items-center justify-start gap-3">
-            <button className="rounded-full bg-violet-500 p-2 text-3xl text-white">
+            <motion.button
+              initial={{
+                opacity: 0,
+                translateY: -250,
+              }}
+              animate={{ opacity: 1, translateY: [30, -25, 20, -15, 10, 0] }}
+              transition={{ duration: 3, delay: 0.5, type: "spring" }}
+              className="rounded-full bg-violet-500 p-2 text-3xl text-white"
+            >
               <motion.div
                 variants={{
                   hidden: {
@@ -101,7 +148,7 @@ const previewsection = () => {
               >
                 <MdExpandMore />
               </motion.div>
-            </button>
+            </motion.button>
             <span className="text-violet-500 font-semibold hover:text-violet-700 hover:cursor-pointer">
               Learn More
             </span>
@@ -112,6 +159,7 @@ const previewsection = () => {
       {/* Right Side  */}
       <div className="flex flex-col justify-center items-center w-1/2">
         {/* Lottie animation code here */}
+
         <lottie-player
           id="firstLottie"
           ref={ref}

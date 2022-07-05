@@ -23,7 +23,7 @@ const index = () => {
         <div className="w-full h-screen">
           <PromotionSection />
         </div>
-        <div className="w-full">
+        <div className="w-full h-screen">
           <FeaturedSection />
         </div>
       </main>
