@@ -3,7 +3,7 @@ import popularthisweek from "../../public/assets_dash/popularthisweekbox";
 
 const rightsidepanel = () => {
   return (
-    <div className="bg-white h-screen items-center w-full rounded-tl-3xl p-7 inline-table rounded-bl-3xl">
+    <div className="fixed bg-white h-screen items-center w-full rounded-tl-3xl p-7 inline-table rounded-bl-3xl">
       <div className="relative flex flex-col justify-between">
         <div className="absolute">
           <Image

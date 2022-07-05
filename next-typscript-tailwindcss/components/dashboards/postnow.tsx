@@ -3,7 +3,7 @@ import postNow from "../../public/assets_dash/postnowbox";
 
 const postnow = () => {
   return (
-    <div className="mt-10 z-40">
+    <div className="z-40">
       <div className="bg-white bg-opacity-70 h-32 w-96 flex flex-row justify-between rounded-3xl shadow-md">
         {/* profile icon  */}
         <div className="mt-5 ml-5">

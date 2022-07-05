@@ -4,7 +4,7 @@ import searchBox from "../../public/assets_dash/searchbox";
 const searchbar = () => {
   return (
     <div className="flex flex-row">
-      <div className="flex flex-row justify-end z-30 shadow-md">
+      <div className="flex flex-row justify-end z-30">
         <div className="flex absolute flex-row items-center justify-center hover:cursor-pointer">
           <div className="absolute z-50">
             <Image
@@ -20,7 +20,7 @@ const searchbar = () => {
         </div>
         <input
           type="text"
-          className="rounded-full h-12 w-96 p-5 text-md text-violet-400 border-lime-400"
+          className="rounded-full h-12 w-96 p-5 text-md text-violet-400 border-lime-400 shadow-md"
           placeholder="Search something here..."
           onChange={(e)=>e.target.value}
         />

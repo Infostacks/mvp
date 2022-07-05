@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false,
   images: {
-    domains: ["rickandmortyapi.com"],
+    domains: ["rickandmortyapi.com", "media.giphy.com"],
     loader: "custom",
     path: "/",
   },
@@ -15,7 +15,6 @@ const nextConfig = {
   //     },
   //   ];
   // }
-  
-}
+};
 
 module.exports = nextConfig
