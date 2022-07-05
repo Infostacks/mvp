@@ -3,23 +3,57 @@ import Image from "next/image";
 import productImages from '../../public/assets/home'
 import { motion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
+import { useInView } from "react-intersection-observer";
+import { useAnimation } from "framer-motion"
 
 
 const promotionsection = () => {
-  
+  const {ref, inView} = useInView({
+    threshold: 0
+  });
+  const leftAnimation = useAnimation();
+  const rightAnimation = useAnimation();
+
+  useEffect(() => {
+    if(inView){
+      leftAnimation.start({
+        x: 0,
+        opacity: 1,
+        transition: {
+          duration: 5, bounce: 0.3
+        }
+      });
+
+      rightAnimation.start({
+        x: 0,
+        opacity: 1,
+        transition: {
+          duration: 5,
+          bounce: 0.3,
+        },
+      });
+    }
+    if(!inView){
+      leftAnimation.start({ x: "-100vw", opacity: 0 });
+      rightAnimation.start({ x: "100vw", opacity: 0 });
+    }
+  },[inView])
+
   return (
     <div
+      ref={ref}
       className="flex flex-row items-center justify-center h-screen px-20 py-5 gap-5 w-full 
      bg-gradient-to-r from-violet-300 to-slate-100"
     >
       {/* Left Side  */}
       <div className="flex justify-center w-1/2">
         <motion.div
-          initial={{
-            opacity: 0,
-          }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 3, delay: 0.5 }}
+          // initial={{
+          //   opacity: 0,
+          // }}
+          // animate={{ opacity: 1 }}
+          // transition={{ duration: 3, delay: 0.5 }}
+          animate={leftAnimation}
         >
           <Image
             src={productImages.product1}
@@ -36,7 +70,7 @@ const promotionsection = () => {
       <div className="flex flex-col justify-center gap-5 w-2/3">
         <h3 className="text-violet-500 text-xl flex flex-row">
           {"Every Purchase Will Be Made With Pleasure"
-            .split(" ")
+            .split("")
             .map((character, i) => {
               return (
                 <div>
@@ -47,31 +81,33 @@ const promotionsection = () => {
                       translateY: -50,
                     }}
                     animate={{ opacity: 1, translateX: 0, translateY: 0 }}
-                    transition={{ duration: 1, delay: i * 0.5 }}
+                    transition={{ duration: 0.6, delay: i * 0.5 }}
                   >
-                    {character + " "}
+                    {character}
                   </motion.span>
                 </div>
               );
             })}
         </h3>
         <motion.h1
-          initial={{
-            opacity: 0,
-            translateY: -50,
-          }}
-          animate={{ opacity: 1, translateY: [10, -5, 0] }}
-          transition={{ duration: 2 }}
+          animate={rightAnimation}
+          // initial={{
+          //   opacity: 0,
+          //   translateY: -50,
+          // }}
+          // animate={{ opacity: 1, translateY: [10, -5, 0] }}
+          // transition={{ duration: 2 }}
           className="text-3xl font-extrabold text-slate-800"
         >
           Upto <span className="text-violet-500">70%</span> OFF...
         </motion.h1>
         <motion.p
-          initial={{
-            opacity: 0,
-          }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 3, delay: 0.5 }}
+          animate={rightAnimation}
+          // initial={{
+          //   opacity: 0,
+          // }}
+          // animate={{ opacity: 1 }}
+          // transition={{ duration: 3, delay: 0.5 }}
           className="text-sm text-slate-600"
         >
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet,
