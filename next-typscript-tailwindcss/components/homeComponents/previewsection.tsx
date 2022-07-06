@@ -68,14 +68,14 @@ const previewsection = () => {
     //   setAnimListNo(Number(number));
     // }
     function changeNumber() {
-      number = Number(number) + 1 === animList.length ? 0 : Number(number) + 1;
+      number = (Number(number) + 1) === animList.length ? 0 : Number(number) + 1;
       setAnimListNo(number);
       console.log("animList", number);
       return animListNo;
     }
 
-    setInterval(() => animListNo, 2000);
-  }, [animListNo]);
+    setInterval(changeNumber, 2000);
+  }, [animList]);
 
   const uRef = useRef(null);
   useEffect(() => {
@@ -127,6 +127,9 @@ const previewsection = () => {
             >
               <motion.div
                 variants={{
+                  hidden: {
+                    opacity: 1,
+                  },
                   visible: {
                     rotateZ: [25, -25],
                     transition: {
@@ -138,7 +141,11 @@ const previewsection = () => {
                       },
                     },
                   },
+                  removed: {
+                    opacity: 1,
+                  },
                 }}
+                initial="hidden"
                 animate="visible"
               >
                 <MdExpandMore />
@@ -166,9 +173,20 @@ const previewsection = () => {
           // src="https://assets2.lottiefiles.com/packages/lf20_01jwptn4.json"
           src={animList[animListNo]}
         ></lottie-player> */}
-        {animListNo ? (
-          <LottieAnim svgLink={animList[animListNo]} ref={uRef}></LottieAnim>
-        ): ""}
+        {animListNo && (
+          <lottie-player
+            id="firstLottie"
+            ref={uRef}
+            autoplay
+            // controls
+            loop
+            // complete={() => (setIsVisible(true))}
+            mode="normal"
+            // src="https://assets2.lottiefiles.com/packages/lf20_01jwptn4.json"
+            src={animList[animListNo]}
+          ></lottie-player>
+        )}
+        {/* <LottieAnim svgLink={animList[animListNo]} ref={uRef}></LottieAnim> */}
       </div>
     </div>
   );
