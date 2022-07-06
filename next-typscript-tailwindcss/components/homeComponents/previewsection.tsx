@@ -1,34 +1,58 @@
-import { MdExpandMore } from "react-icons/md";
-// import Image from "next/image";
-import { motion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
-import {animList} from "../utils/data";
+import { MdExpandMore } from "react-icons/md";
+import { motion, useAnimation } from "framer-motion";
+import { animList } from "../utils/data";
+import { useInView } from "react-intersection-observer";
+import LottieAnim from "./lottieAnim";
+import { url } from "inspector";
 
 const previewsection = () => {
-  // const animList = animData;
-  const [isVisible, setIsVisible] = useState(false);
+  const { ref, inView } = useInView({
+    threshold: [0, 0.5, 1.0],
+  });
+  const leftAnimation = useAnimation();
+  const rightAnimation = useAnimation();
+  const btnAnimation = useAnimation();
+
+  useEffect(() => {
+    if (inView) {
+      leftAnimation.start({
+        x: 0,
+        opacity: 1,
+        transition: {
+          duration: 1.5,
+          bounce: 0.5,
+        },
+      });
+
+      rightAnimation.start({
+        x: 0,
+        opacity: 1,
+        transition: {
+          duration: 1.5,
+          bounce: 0.5,
+        },
+      });
+
+      btnAnimation.start({
+        opacity: 1,
+        translateY: [30, -25, 20, -15, 10, 0],
+        transition: { duration: 3, delay: 0.5, type: "spring" },
+      });
+    }
+    if (!inView) {
+      leftAnimation.start({ x: "-5vw", opacity: 0 });
+      rightAnimation.start({ x: "5vw", opacity: 0 });
+      btnAnimation.start({ opacity: 0, translateY: "-80vh" });
+    }
+  }, [inView]);
+
+  // const [isVisible, setIsVisible] = useState(false);
 
   const [animListNo, setAnimListNo] = useState(0);
 
-  const renderAnimSVG = () => {
-    return (
-      <lottie-player
-        id="firstLottie"
-        ref={ref}
-        autoplay
-        // controls
-        loop
-        // complete={() => (setIsVisible(true))}
-        mode="normal"
-        // src="https://assets2.lottiefiles.com/packages/lf20_01jwptn4.json"
-        src={animList[animListNo]}
-      ></lottie-player>
-    );
-  }
-
   useEffect(() => {
     // let number = localStorage.getItem("animList");
-
     let number = 0;
 
     // if (number === undefined) {
@@ -43,29 +67,24 @@ const previewsection = () => {
     //   localStorage.setItem("animList", number);
     //   setAnimListNo(Number(number));
     // }
-
     function changeNumber() {
-      number =
-        Number(number) + 1 >= animList.length
-          ? 0
-          : (Number(number) + 1);
-          renderAnimSVG();
-          setAnimListNo(number);
-      // console.log("animList", number);
+      number = Number(number) + 1 === animList.length ? 0 : Number(number) + 1;
+      setAnimListNo(number);
+      console.log("animList", number);
+      return animListNo;
     }
 
-
-    setInterval(changeNumber, 5000);
-
+    setInterval(() => animListNo, 2000);
   }, [animListNo]);
 
-  const ref = useRef(null);
+  const uRef = useRef(null);
   useEffect(() => {
     import("@lottiefiles/lottie-player");
   }, []);
 
   return (
     <div
+      ref={ref}
       className="flex flex-row items-center justify-center h-screen px-20 py-5 gap-5 w-full 
      bg-gradient-to-r from-slate-100 to-violet-300"
     >
@@ -90,44 +109,24 @@ const previewsection = () => {
             })}
           </h3>
           <motion.h1
-            initial={{
-              opacity: 0,
-              translateY: -50,
-            }}
-            animate={{ opacity: 1, translateY: [10, -5, 0] }}
-            transition={{ duration: 2 }}
+            animate={leftAnimation}
             className="text-3xl font-extrabold text-slate-800"
           >
             Build Stunning <span className="text-violet-500">Website</span>{" "}
             InfoStack Tech
           </motion.h1>
-          <motion.p
-            initial={{
-              opacity: 0,
-            }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 3, delay: 0.5 }}
-            className="text-sm text-slate-600"
-          >
+          <motion.p animate={rightAnimation} className="text-sm text-slate-600">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet,
             repellendus nihil fuga unde voluptas voluptates perspiciatis
             aspernatur.
           </motion.p>
           <div className="flex flex-row items-center justify-start gap-3">
             <motion.button
-              initial={{
-                opacity: 0,
-                translateY: -250,
-              }}
-              animate={{ opacity: 1, translateY: [30, -25, 20, -15, 10, 0] }}
-              transition={{ duration: 3, delay: 0.5, type: "spring" }}
+              animate={btnAnimation}
               className="rounded-full bg-violet-500 p-2 text-3xl text-white"
             >
               <motion.div
                 variants={{
-                  hidden: {
-                    opacity: 1,
-                  },
                   visible: {
                     rotateZ: [25, -25],
                     transition: {
@@ -139,11 +138,7 @@ const previewsection = () => {
                       },
                     },
                   },
-                  removed: {
-                    opacity: 1,
-                  },
                 }}
-                initial="hidden"
                 animate="visible"
               >
                 <MdExpandMore />
@@ -160,7 +155,7 @@ const previewsection = () => {
       <div className="flex flex-col justify-center items-center w-1/2">
         {/* Lottie animation code here */}
 
-        <lottie-player
+        {/* <lottie-player
           id="firstLottie"
           ref={ref}
           autoplay
@@ -170,7 +165,10 @@ const previewsection = () => {
           mode="normal"
           // src="https://assets2.lottiefiles.com/packages/lf20_01jwptn4.json"
           src={animList[animListNo]}
-        ></lottie-player>
+        ></lottie-player> */}
+        {animListNo ? (
+          <LottieAnim svgLink={animList[animListNo]} ref={uRef}></LottieAnim>
+        ): ""}
       </div>
     </div>
   );
