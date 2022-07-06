@@ -3,6 +3,7 @@ import HeaderSection from "../../components/homeComponents/header";
 import PreviewSection from "../../components/homeComponents/previewsection";
 import PromotionSection from '../../components/homeComponents/promotionsection';
 import FeaturedSection from '../../components/homeComponents/featuredsection'
+import ProudProjects from '../../components/homeComponents/proudprojects'
 
 const index = () => {
   return (
@@ -23,8 +24,11 @@ const index = () => {
         <div className="w-full h-screen">
           <PromotionSection />
         </div>
-        <div className="w-full h-screen">
+        <div className="h-screen">
           <FeaturedSection />
+        </div>
+        <div className="w-full h-screen">
+          <ProudProjects />
         </div>
       </main>
     </div>

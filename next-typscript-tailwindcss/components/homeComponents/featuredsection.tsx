@@ -35,7 +35,7 @@ const featuredsection = () => {
 
   return (
     <div
-      className="flex flex-col items-center justify-center h-screen px-20 py-5 gap-5 w-full 
+      className="flex flex-col items-center justify-center h-screen px-20 py-5 gap-5 w-full mx-10 
      bg-white"
     >
       {/* Team  */}
@@ -51,7 +51,7 @@ const featuredsection = () => {
         </h1>
       </div>
 
-      <div className="flex justify-center drop-shadow-md ">
+      <div className="flex justify-center drop-shadow-md h-screen">
         <div className="flex flex-row w-4/5 z-50 items-center justify-center">
           <Swiper
             modules={[Navigation, EffectFade]}

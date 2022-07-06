@@ -54,7 +54,7 @@ const promotionsection = () => {
      bg-gradient-to-r from-violet-300 to-slate-100"
     >
       {/* Left Side  */}
-      <div className="flex justify-center w-1/2">
+      <div className="flex justify-center items-center w-1/2 h-screen">
         <motion.div
           // initial={{
           //   opacity: 0,
@@ -74,8 +74,7 @@ const promotionsection = () => {
       </div>
 
       {/* Right Side  */}
-      <div className="flex flex-col justify-center items-center w-1/2"></div>
-      <div className="flex flex-col justify-center gap-5 w-2/3">
+      <div className="flex flex-col justify-center gap-5 w-1/2">
         <motion.h3 animate={leftAnimation} className="text-violet-500 text-xl flex flex-row">
           Every Purchase Will Be Made With Pleasure
         </motion.h3>
