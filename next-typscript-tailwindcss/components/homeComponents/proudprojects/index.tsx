@@ -1,26 +1,27 @@
 import React, { useState } from "react";
 import Menu from "./menu";
 import Categories from "./categories";
-import { proudeProjects } from "../../utils/data";
+import { proudProjects } from "../../utils/data";
 
 const allCategories = [
   "all",
-  ...new Set(proudeProjects.map((item) => item.category)),
+  ...new Set(proudProjects.map((item) => item.category)),
 ];
 
 const proudprojects = () => {
-  const [menuItems, setMenuItems] = useState(proudeProjects);
+  const [menuItems, setMenuItems] = useState(proudProjects);
   const [categories, setCategories] = useState(allCategories);
 
   const filterItems = (category) => {
     if (category === "all") {
-      setMenuItems(proudeProjects);
+      setMenuItems(proudProjects);
       return;
     }
-    const newItems = proudeProjects.filter(
+    const newItems = proudProjects.filter(
       (item) => item.category === category
     );
     setMenuItems(newItems);
+    console.log("menue items: ", menuItems)
   };
 
   return (

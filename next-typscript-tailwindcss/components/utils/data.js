@@ -21,7 +21,7 @@ const animList = [
 
 const memberData = [
   {
-    name: "Alina Jia",
+    name: "Alina Jia 1",
     designation: "SENIOR DESIGNER",
     img: "https://samartheme1.vercel.app/images/team/pic1.jpg",
   },
@@ -73,7 +73,7 @@ const memberData = [
 ];
 
 // proud Projects data 
-const proudeProjects = [
+const proudProjects = [
   {
     id: 1,
     category: "web design",
@@ -131,4 +131,4 @@ const proudeProjects = [
 ];
 
 
-export  { animList, memberData, proudeProjects };
+export  { animList, memberData, proudProjects };
