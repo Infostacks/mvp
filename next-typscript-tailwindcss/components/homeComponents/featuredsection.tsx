@@ -40,7 +40,7 @@ const featuredsection = () => {
       </div>
 
       <div className="App">
-        <div className="container drop-shadow-md">
+        <div className="container drop-shadow-md hover:cursor-grab">
           <div className="card-container flex rounded-2xl">
             <div className="flex flex-row gap-3 bg-violet-100 p-3 card-container-content">
               {memberData.map((member) => {

@@ -4,7 +4,6 @@ import { motion, useAnimation } from "framer-motion";
 import { animList } from "../utils/data";
 import { useInView } from "react-intersection-observer";
 import LottieAnim from "./lottieAnim";
-import { url } from "inspector";
 
 const previewsection = () => {
   const { ref, inView } = useInView({

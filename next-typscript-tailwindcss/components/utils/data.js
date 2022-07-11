@@ -130,5 +130,22 @@ const proudProjects = [
   },
 ];
 
+const companiesList = [
+  "https://arbisoft.com/wp-content/uploads/2019/05/logo-microsoft.png",
+  "https://arbisoft.com/wp-content/uploads/2019/12/cheetah.png",
+  "https://arbisoft.com/wp-content/uploads/2019/05/UCSD.png",
+  "https://arbisoft.com/wp-content/uploads/2019/05/kayak-logo.png",
+  "https://arbisoft.com/wp-content/uploads/2019/06/tenmarks.png",
+  "https://arbisoft.com/wp-content/uploads/2019/05/payperks.png",
+  ":https://arbisoft.com/wp-content/uploads/2019/11/travelliance.jpg",
+  "https://arbisoft.com/wp-content/uploads/2019/05/mit-1.png",
+  "https://arbisoft.com/wp-content/uploads/2019/05/Indeed_logo.png",
+  "https://arbisoft.com/wp-content/uploads/2019/06/parktag.png",
+  "https://arbisoft.com/wp-content/uploads/2019/11/stanford.png",
+  "https://arbisoft.com/wp-content/uploads/2019/05/edx-logo-registered.png",
+  "https://arbisoft.com/wp-content/uploads/2019/05/wanderu.png",
+  "https://arbisoft.com/wp-content/uploads/2019/05/logo-world-bank.png",
+  "https://arbisoft.com/wp-content/uploads/2019/06/mcdonalds.png",
+];
 
-export  { animList, memberData, proudProjects };
+export  { animList, memberData, proudProjects, companiesList };
