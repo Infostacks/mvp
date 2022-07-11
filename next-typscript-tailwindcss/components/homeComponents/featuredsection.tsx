@@ -41,11 +41,11 @@ const featuredsection = () => {
 
       <div className="App">
         <div className="container">
-          <div className="card-container">
-            <div className="card-container-content">
+          <div className="card-container flex">
+            <div className="flex flex-row gap-3 bg-pink-200 p-3 card-container-content">
               {memberData.map((member) => {
                 return (
-                  <div className="card">
+                  <div className="flex flex-row">
                     {/* image  */}
                     <div className=" absolute">
                       <Image
@@ -57,9 +57,9 @@ const featuredsection = () => {
                       />
                     </div>
                     {/* intro  */}
-                    <div className="flex flex-row justify-between bg-white rounded-xl px-7 py-7 z-50 drop-shadow-md mt-72 ml-7 gap-3 w-72">
+                    <div className="flex flex-row justify-between bg-white rounded-xl px-4 py-6 z-50 drop-shadow-md mt-72 ml-4 gap-3 w-full">
                       {/* text  */}
-                      <div className="flex flex-col justify-center gap-1">
+                      <div className="flex flex-col flex-wrap justify-center gap-1">
                         <h1 className="text-2xl font-bold text-violet-900">
                           {member.name}
                         </h1>

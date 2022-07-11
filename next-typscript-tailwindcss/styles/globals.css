@@ -39,17 +39,17 @@ a {
   overflow-x: hidden;
   white-space: nowrap;
   /* width: 80vw; */
-  direction: rtl;
-  margin: 0 auto;
+  /* direction: ltr; */
+  /* margin: 0 auto; */
   z-index: 100px;
 }
-.card-container-content {
+/* .card-container-content {
   background-color: bisque;
   width: 100%;
   direction: ltr;
-}
-.card {
+} */
+/* .card {
   border-radius: 2px;
   margin: 0 5px;
   display: inline-block;
-}
+} */
