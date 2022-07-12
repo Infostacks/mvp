@@ -6,7 +6,7 @@ import { useInView } from "react-intersection-observer";
 
 const footer = () => {
     return (
-        <div className="flex flex-col items-center justify-center px-40 py-20 gap-5 w-full bg-gradient-to-r from-violet-300 to-slate-100">
+        <div className="flex flex-col items-center justify-center px-40 py-20 gap-5 w-full bg-gradient-to-t from-violet-500 to-white">
             {/* adress details  */}
             <div className="flex flex-row justify-between w-full items-center">
                 {/* <Image 
