@@ -43,7 +43,7 @@ const index = () => {
         <div className="w-full h-screen">
           <Contact />
         </div>
-        <div className="w-full h-full">
+        <div className="w-full">
           <Footer />
         </div>
       </main>
