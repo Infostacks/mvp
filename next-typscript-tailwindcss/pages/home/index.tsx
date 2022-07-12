@@ -34,18 +34,18 @@ const index = () => {
         <div className="w-full h-full">
           <ProudProjects />
         </div> */}
-        {/* <div className="w-screen h-full">
+        <div className="w-screen h-full mt-5">
           <Companies />
-        </div> */}
+        </div>
         {/* <div className="w-full h-screen">
           <Process />
-        </div> */}
+        </div>
         <div className="w-full h-screen">
           <Contact />
         </div>
         <div className="w-full">
           <Footer />
-        </div>
+        </div> */}
       </main>
     </div>
   );

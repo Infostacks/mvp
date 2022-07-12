@@ -137,7 +137,7 @@ const companiesList = [
   "https://arbisoft.com/wp-content/uploads/2019/05/kayak-logo.png",
   "https://arbisoft.com/wp-content/uploads/2019/06/tenmarks.png",
   "https://arbisoft.com/wp-content/uploads/2019/05/payperks.png",
-  ":https://arbisoft.com/wp-content/uploads/2019/11/travelliance.jpg",
+  // ":https://arbisoft.com/wp-content/uploads/2019/11/travelliance.jpg",
   "https://arbisoft.com/wp-content/uploads/2019/05/mit-1.png",
   "https://arbisoft.com/wp-content/uploads/2019/05/Indeed_logo.png",
   "https://arbisoft.com/wp-content/uploads/2019/06/parktag.png",

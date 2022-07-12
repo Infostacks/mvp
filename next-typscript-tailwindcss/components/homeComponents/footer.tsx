@@ -1,5 +1,7 @@
 import Image from 'next/image'
 import { FaInstagram } from 'react-icons/fa';
+import { GoDeviceMobile } from 'react-icons/go'
+import { BiMapPin } from 'react-icons/bi'
 import { GrFacebookOption, GrTwitter } from 'react-icons/gr';
 import { motion, useAnimation } from 'framer-motion';
 import { useInView } from "react-intersection-observer";
@@ -7,6 +9,7 @@ import { useInView } from "react-intersection-observer";
 const footer = () => {
     return (
         <div className="flex flex-col items-center justify-center px-40 py-20 gap-5 w-full bg-gradient-to-t from-violet-500 to-white">
+            
             {/* adress details  */}
             <div className="flex flex-row justify-between w-full items-center">
                 {/* <Image 
@@ -17,14 +20,18 @@ const footer = () => {
                 <div>Logo</div>
                 <div className='flex flex-row gap-5'>
                     <div className='flex flex-row gap-3 items-center'>
-                        <div className='hover:cursor-pointer'>svg</div>
+                        <div className='hover:cursor-pointer text-4xl text-slate-100 hover:text-violet-900'>
+                            <GoDeviceMobile/>
+                        </div>
                         <div className='flex flex-col'>
                             <div className='text-sm font-semibold'>+92 987-3445-54</div>
                             <div className='text-sm font-semibold'>info@example.com</div>
                         </div>
                     </div>
                     <div className='flex flex-row gap-3 items-center'>
-                        <div className='hover:cursor-pointer'>svg</div>
+                        <div className='hover:cursor-pointer text-4xl text-slate-100 hover:text-violet-900'>
+                            <BiMapPin />
+                        </div>
                         <div className='flex flex-col'>
                             <div className='text-sm font-semibold'>Wapda Town</div>
                             <div className='text-sm font-semibold'>Lahore, Pakistan</div>
@@ -63,11 +70,11 @@ const footer = () => {
                         Our Links
                     </div>
                     <div className='flex flex-col text-xs gap-2'>
-                        <div className='hover:cursor-pointer'>Home</div>
-                        <div className='hover:cursor-pointer'>About Us</div>
-                        <div className='hover:cursor-pointer'>Services</div>
-                        <div className='hover:cursor-pointer'>Team</div>
-                        <div className='hover:cursor-pointer'>Blog</div>
+                        <div className='hover:cursor-pointer hover:translate-x-3'>Home</div>
+                        <div className='hover:cursor-pointer hover:translate-x-3'>About Us</div>
+                        <div className='hover:cursor-pointer hover:translate-x-3'>Services</div>
+                        <div className='hover:cursor-pointer hover:translate-x-3'>Team</div>
+                        <div className='hover:cursor-pointer hover:translate-x-3'>Blog</div>
                     </div>
                 </div>
                 <div className='flex flex-col gap-5'>
@@ -75,11 +82,11 @@ const footer = () => {
                         Our Services
                     </div>
                     <div className='flex flex-col text-xs gap-2'>
-                        <div className='hover:cursor-pointer'>Strategy & Reserch</div>
-                        <div className='hover:cursor-pointer'>Web Development</div>
-                        <div className='hover:cursor-pointer'>Web Solution</div>
-                        <div className='hover:cursor-pointer'>Digital Marketing</div>
-                        <div className='hover:cursor-pointer'>App Design</div>
+                        <div className='hover:cursor-pointer hover:translate-x-3'>Strategy & Reserch</div>
+                        <div className='hover:cursor-pointer hover:translate-x-3'>Web Development</div>
+                        <div className='hover:cursor-pointer hover:translate-x-3'>Web Solution</div>
+                        <div className='hover:cursor-pointer hover:translate-x-3'>Digital Marketing</div>
+                        <div className='hover:cursor-pointer hover:translate-x-3'>App Design</div>
                     </div>
                 </div>
                 <div className='flex flex-col gap-5'>
@@ -87,11 +94,11 @@ const footer = () => {
                         Other Links
                     </div>
                     <div className='flex flex-col text-xs gap-2'>
-                        <div className='hover:cursor-pointer'>FAQ</div>
-                        <div className='hover:cursor-pointer'>Portfolio</div>
-                        <div className='hover:cursor-pointer'>Privacy Policy</div>
-                        <div className='hover:cursor-pointer'>Terms & Conditions</div>
-                        <div className='hover:cursor-pointer'>Support</div>
+                        <div className='hover:cursor-pointer hover:translate-x-3'>FAQ</div>
+                        <div className='hover:cursor-pointer hover:translate-x-3'>Portfolio</div>
+                        <div className='hover:cursor-pointer hover:translate-x-3'>Privacy Policy</div>
+                        <div className='hover:cursor-pointer hover:translate-x-3'>Terms & Conditions</div>
+                        <div className='hover:cursor-pointer hover:translate-x-3'>Support</div>
                     </div>
                 </div>
             </div>
