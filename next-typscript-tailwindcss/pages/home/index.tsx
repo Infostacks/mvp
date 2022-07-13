@@ -19,7 +19,7 @@ const index = () => {
       </Head>
 
       <main className="flex flex-col items-center m-0 p-0 w-screen">
-        {/* <div className="w-full absolute">
+        <div className="w-full absolute">
           <HeaderSection />
         </div>
         <div className="w-full h-screen">
@@ -33,11 +33,11 @@ const index = () => {
         </div>
         <div className="w-full h-full">
           <ProudProjects />
-        </div> */}
-        <div className="w-screen h-full mt-5">
+        </div>
+        <div className="w-screen h-full mt-5 mb-5">
           <Companies />
         </div>
-        {/* <div className="w-full h-screen">
+        <div className="w-full h-screen">
           <Process />
         </div>
         <div className="w-full h-screen">
@@ -45,7 +45,7 @@ const index = () => {
         </div>
         <div className="w-full">
           <Footer />
-        </div> */}
+        </div>
       </main>
     </div>
   );
