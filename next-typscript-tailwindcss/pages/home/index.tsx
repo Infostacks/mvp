@@ -3,6 +3,11 @@ import HeaderSection from "../../components/homeComponents/header";
 import PreviewSection from "../../components/homeComponents/previewsection";
 import PromotionSection from '../../components/homeComponents/promotionsection';
 import FeaturedSection from '../../components/homeComponents/featuredsection'
+import ProudProjects from '../../components/homeComponents/proudprojects'
+import Companies from '../../components/homeComponents/companies'
+import Process from '../../components/homeComponents/process'
+import Contact from '../../components/homeComponents/contact'
+import Footer from '../../components/homeComponents/footer'
 
 const index = () => {
   return (
@@ -23,8 +28,23 @@ const index = () => {
         <div className="w-full h-screen">
           <PromotionSection />
         </div>
-        <div className="w-full">
+        <div className="h-screen w-4/5">
           <FeaturedSection />
+        </div>
+        <div className="w-full h-full">
+          <ProudProjects />
+        </div>
+        <div className="w-screen h-full mt-5 mb-5">
+          <Companies />
+        </div>
+        <div className="w-full h-screen">
+          <Process />
+        </div>
+        <div className="w-full h-screen">
+          <Contact />
+        </div>
+        <div className="w-full">
+          <Footer />
         </div>
       </main>
     </div>

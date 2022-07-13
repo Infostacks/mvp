@@ -21,7 +21,7 @@ const animList = [
 
 const memberData = [
   {
-    name: "Alina Jia",
+    name: "Alina Jia 1",
     designation: "SENIOR DESIGNER",
     img: "https://samartheme1.vercel.app/images/team/pic1.jpg",
   },
@@ -72,4 +72,80 @@ const memberData = [
   },
 ];
 
-export  { animList, memberData };
+// proud Projects data 
+const proudProjects = [
+  {
+    id: 1,
+    category: "web design",
+    img: "https://images.unsplash.com/photo-1587440871875-191322ee64b0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80",
+    link: `lorem10`,
+  },
+  {
+    id: 2,
+    category: "mobile app",
+    img: "https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+    link: `lorem10`,
+  },
+  {
+    id: 3,
+    category: "Branding",
+    img: "https://images.unsplash.com/photo-1627384113710-424c9181ebbb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+    link: `lorem10`,
+  },
+  {
+    id: 4,
+    category: "mobile app",
+    img: "https://images.unsplash.com/photo-1514575110897-1253ff7b2ccb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+    link: `lorem10`,
+  },
+  {
+    id: 5,
+    category: "Web development",
+    img: "https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+    link: `lorem10`,
+  },
+  {
+    id: 6,
+    category: "SEO",
+    img: "https://images.unsplash.com/photo-1434626881859-194d67b2b86f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=874&q=80",
+    link: `lorem10`,
+  },
+  {
+    id: 7,
+    category: "web design",
+    img: "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+    link: `lorem10`,
+  },
+  {
+    id: 8,
+    category: "Web development",
+    img: "https://images.unsplash.com/photo-1542744094-3a31f272c490?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+    link: `lorem10`,
+  },
+  {
+    id: 9,
+    category: "Branding",
+    img: "https://images.unsplash.com/photo-1634449278211-eca7f696940e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+    link: `lorem10`,
+  },
+];
+
+const companiesList = [
+  "https://arbisoft.com/wp-content/uploads/2019/05/logo-microsoft.png",
+  "https://arbisoft.com/wp-content/uploads/2019/12/cheetah.png",
+  "https://arbisoft.com/wp-content/uploads/2019/05/UCSD.png",
+  "https://arbisoft.com/wp-content/uploads/2019/05/kayak-logo.png",
+  "https://arbisoft.com/wp-content/uploads/2019/06/tenmarks.png",
+  "https://arbisoft.com/wp-content/uploads/2019/05/payperks.png",
+  // ":https://arbisoft.com/wp-content/uploads/2019/11/travelliance.jpg",
+  "https://arbisoft.com/wp-content/uploads/2019/05/mit-1.png",
+  "https://arbisoft.com/wp-content/uploads/2019/05/Indeed_logo.png",
+  "https://arbisoft.com/wp-content/uploads/2019/06/parktag.png",
+  "https://arbisoft.com/wp-content/uploads/2019/11/stanford.png",
+  "https://arbisoft.com/wp-content/uploads/2019/05/edx-logo-registered.png",
+  "https://arbisoft.com/wp-content/uploads/2019/05/wanderu.png",
+  "https://arbisoft.com/wp-content/uploads/2019/05/logo-world-bank.png",
+  "https://arbisoft.com/wp-content/uploads/2019/06/mcdonalds.png",
+];
+
+export  { animList, memberData, proudProjects, companiesList };
