@@ -42,7 +42,7 @@ const featuredsection = () => {
       <div className="App">
         <div className="container drop-shadow-md hover:cursor-grab">
           <div className="card-container flex rounded-2xl">
-            <div className="flex flex-row gap-3 bg-violet-100 p-3 card-container-content">
+            <div className="flex flex-row gap-3 p-3 card-container-content">
               {memberData.map((member) => {
                 return (
                   <div className="flex flex-row">
