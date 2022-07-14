@@ -43,9 +43,9 @@ const featuredsection = () => {
         <div className="container drop-shadow-md hover:cursor-grab">
           <div className="card-container flex rounded-2xl">
             <div className="flex flex-row gap-3 p-3 card-container-content">
-              {memberData.map((member) => {
+              {memberData.map((member,index) => {
                 return (
-                  <div className="flex flex-row">
+                  <div className="flex flex-row" key={index}>
                     {/* image  */}
                     <div className=" absolute">
                       <Image

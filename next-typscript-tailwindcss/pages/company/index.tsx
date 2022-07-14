@@ -10,7 +10,7 @@ const index = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <main>
-                <div className="w-screen h-full bg-violet-50">
+                <div className="bg-violet-50">
                     <CompanySignUp/>
                 </div>
             </main>
