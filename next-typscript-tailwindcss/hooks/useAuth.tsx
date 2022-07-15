@@ -84,7 +84,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       .then((userCredential) => {
         setUser(userCredential.user);
         // router.push("/characters");
-        router.push("/")
+        router.push("/home")
         setLoading(false);
       })
       .catch((error))

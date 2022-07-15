@@ -1,9 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MdExpandMore } from "react-icons/md";
 import { motion, useAnimation } from "framer-motion";
 import { animList } from "../utils/data";
 import { useInView } from "react-intersection-observer";
-import LottieAnim from "./lottieAnim";
+import Lottie from 'react-lottie-player'
+import axios from "axios";
 
 const previewsection = () => {
   const { ref, inView } = useInView({
@@ -12,6 +13,15 @@ const previewsection = () => {
   const leftAnimation = useAnimation();
   const rightAnimation = useAnimation();
   const btnAnimation = useAnimation();
+  const [animListNo, setAnimListNo] = useState(0);
+
+  const [animationData, setAnimationData] = useState(null);
+
+
+  console.log("animListNo", animListNo)
+
+
+
 
   useEffect(() => {
     if (inView) {
@@ -46,50 +56,55 @@ const previewsection = () => {
     }
   }, [inView]);
 
-  // const [isVisible, setIsVisible] = useState(false);
 
-  const [animListNo, setAnimListNo] = useState(0);
+
+
+
+
+
+  const loadAnimData = async (sourceUrl) => {
+    try {
+      const { data } = await axios.get(sourceUrl);
+      
+      setAnimationData(data)
+    } catch (error) {
+      console.log("Error", error)
+    }
+  }
+
 
   useEffect(() => {
-    // let number = localStorage.getItem("animList");
-    let number = 0;
+    loadAnimData(animList[0])
 
-    // if (number === undefined) {
-    //   setAnimListNo(0);
-    //   localStorage.setItem("animList", "0");
-    // } else {
-    //   number =
-    //   Number(number) + 1 >= animList.length
-    //   ? "0"
-    //   : (Number(number) + 1).toString();
-    //   console.log("number 2nd: ", number);
-    //   localStorage.setItem("animList", number);
-    //   setAnimListNo(Number(number));
-    // }
-    function changeNumber() {
-      number = Number(number) + 1 === animList.length ? 0 : Number(number) + 1;
-      setAnimListNo(number);
-      console.log("animList", number);
-      return animListNo;
+  }, [])
+
+  useEffect(() => {
+
+    const changeNumber = () => {
+      let n = Number(animListNo) + 1 === animList.length ? 0 : Number(animListNo) + 1;
+      setAnimListNo(n);
+      loadAnimData(animList[n])
     }
+    let timerID = setInterval(changeNumber, 8000);
 
-    let timerID = setInterval(changeNumber, 2000);
     return () => clearInterval(timerID);
+
   }, [animListNo]);
 
-  const uRef = useRef(null);
-  useEffect(() => {
-    import("@lottiefiles/lottie-player");
-  }, []);
+
+
+
+
+
 
   return (
     <div
       ref={ref}
-      className="flex flex-row items-center justify-center h-screen px-20 py-5 gap-5 w-full 
+      className="flex flex-col md:flex-row lg:flex-row xl:flex-row items-center justify-center h-screen px-20 py-5 gap-5 
      bg-gradient-to-r from-slate-100 to-violet-300"
     >
       {/* Left Side  */}
-      <div className="flex justify-center w-1/2">
+      <div className="flex justify-center xl:w-1/2 lg:w-1/2 md:w-1/2 h-1/2 w-screen">
         <div className="flex flex-col justify-center gap-5 w-2/3">
           <h3 className="text-violet-500 text-2xl">
             {"WE CREATE IDEAS".split("").map((character, i) => {
@@ -102,6 +117,7 @@ const previewsection = () => {
                   }}
                   animate={{ opacity: 1, translateX: 0, translateY: 0 }}
                   transition={{ duration: 0.3, delay: i * 0.2 }}
+                  key={i}
                 >
                   {character}
                 </motion.span>
@@ -159,23 +175,22 @@ const previewsection = () => {
       </div>
 
       {/* Right Side  */}
-      <div className="flex flex-col justify-center items-center w-1/2">
-        {/* Lottie animation code here */}
+      <div className="flex flex-col justify-center items-center xl:w-1/2 lg:w-1/2 md:w-1/2  h-1/2 w-screen">
 
-        {/* <lottie-player
-          id="firstLottie"
-          ref={ref}
-          autoplay
-          // controls
-          loop
-          // complete={() => (setIsVisible(true))}
-          mode="normal"
-          // src="https://assets2.lottiefiles.com/packages/lf20_01jwptn4.json"
-          src={animList[animListNo]}
-        ></lottie-player> */}
-        {animListNo && (
-          <LottieAnim svgLink={animList[animListNo]} ref={uRef}></LottieAnim>
-        )}
+        <motion.div
+          initial={{
+          opacity: 0,
+        }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 1}}>
+          <Lottie
+            loop
+            animationData={animationData}
+            play
+            speed={0.3}
+          />
+        </motion.div>
+
       </div>
     </div>
   );

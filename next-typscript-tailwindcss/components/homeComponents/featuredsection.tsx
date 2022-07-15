@@ -8,8 +8,20 @@ import { GrTwitter } from "react-icons/gr";
 import { memberData } from "../utils/data";
 
 import ScrollBooster from "scrollbooster";
+import Slider from 'react-slick';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const featuredsection = () => {
+  // let settings = {
+  //   dots: true,
+  //   Infinite: true,
+  //   speed: 500,
+  //   slidesToShow: 3,
+  //   slidesToScroll: 1,
+  //   cssEase: "linear"
+  // }
+  
   useEffect(() => {
     new ScrollBooster({
       viewport: document.querySelector(".card-container"),
@@ -17,7 +29,7 @@ const featuredsection = () => {
       direction: "horizontal",
       scrollMode: "transform",
       bounce: true,
-      // emulateScroll: true // scroll on wheel events
+      emulateScroll: true, // scroll on wheel events
     });
   }, []);
 
@@ -42,10 +54,10 @@ const featuredsection = () => {
       <div className="App">
         <div className="container drop-shadow-md hover:cursor-grab">
           <div className="card-container flex rounded-2xl">
-            <div className="flex flex-row gap-3 bg-violet-100 p-3 card-container-content">
-              {memberData.map((member) => {
+            <div className="flex flex-row gap-3 p-3 card-container-content">
+              {memberData.map((member,index) => {
                 return (
-                  <div className="flex flex-row">
+                  <div className="flex flex-row" key={index}>
                     {/* image  */}
                     <div className=" absolute">
                       <Image

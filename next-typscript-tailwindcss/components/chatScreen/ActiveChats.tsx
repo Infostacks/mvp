@@ -1,4 +1,6 @@
-const chatSection = () => {
+
+
+const ActiveChats = () => {
     return (
         <div>
             Enter
@@ -6,4 +8,6 @@ const chatSection = () => {
     );
 }
 
-export default chatSection;
+
+
+export default ActiveChats;

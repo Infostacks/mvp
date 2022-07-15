@@ -1,4 +1,6 @@
-const profileSection = () => {
+
+
+const CurrentChat = () => {
     return (
         <div>
             Enter
@@ -6,4 +8,6 @@ const profileSection = () => {
     );
 }
 
-export default profileSection;
+export 
+
+default CurrentChat;

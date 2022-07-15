@@ -1,9 +1,14 @@
+
+
+
 const index = () => {
     return (
         <div>
-            Enter
+            Home
         </div>
     );
 }
 
-export default index;
+export 
+
+default index;
