@@ -8,8 +8,20 @@ import { GrTwitter } from "react-icons/gr";
 import { memberData } from "../utils/data";
 
 import ScrollBooster from "scrollbooster";
+import Slider from 'react-slick';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 const featuredsection = () => {
+  // let settings = {
+  //   dots: true,
+  //   Infinite: true,
+  //   speed: 500,
+  //   slidesToShow: 3,
+  //   slidesToScroll: 1,
+  //   cssEase: "linear"
+  // }
+  
   useEffect(() => {
     new ScrollBooster({
       viewport: document.querySelector(".card-container"),
@@ -17,7 +29,7 @@ const featuredsection = () => {
       direction: "horizontal",
       scrollMode: "transform",
       bounce: true,
-      // emulateScroll: true // scroll on wheel events
+      emulateScroll: true, // scroll on wheel events
     });
   }, []);
 

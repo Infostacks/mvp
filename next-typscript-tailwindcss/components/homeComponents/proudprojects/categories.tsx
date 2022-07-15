@@ -2,12 +2,12 @@
 
 const categories = ({ categories, filterItems }) => {
   return (
-    <div className="flex flex-wrap gap-8 p-0">
-      {categories.map((category: any, index:any) => {
+    <div className="flex flex-wrap xl:flex-row lg:flex-row md:flex-row flex-col xl:gap-8 lg:gap-8 md:gap-8 gap-0 p-0 ">
+      {categories.map((category: any, index: any) => {
         return (
           <button
             type="button"
-            className="font-semibold text-sm capitalize py-2 px-5 hover:bg-violet-700 hover:text-white hover:rounded-2xl"
+            className="font-semibold text-sm capitalize py-2 px-5 hover:bg-violet-700 hover:text-white active:text-white active:bg-violet-900 hover:rounded-2xl"
             key={index}
             onClick={() => filterItems(category)}
           >
