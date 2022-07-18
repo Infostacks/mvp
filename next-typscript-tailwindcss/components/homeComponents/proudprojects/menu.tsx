@@ -11,7 +11,6 @@ const menu = ({ items }) => {
           <div key={id} className="">
             <Link
               href=""
-              // href={link}
             >
               <a>
                 <motion.div

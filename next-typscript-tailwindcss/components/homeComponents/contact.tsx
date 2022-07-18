@@ -86,7 +86,6 @@ const contact = () => {
                 className="border-[1px] border-zinc-200 text-sm rounded-3xl focus:outline-none px-5 py-2 bg-violet-100 w-full h-[10rem]"
                 placeholder="Message"
               />
-              {/* <input type="submit" value="Send" className="" /> */}
               <div className="flex flex-row items-center justify-start gap-3">
                 <motion.button
                   animate={btnAnimation}
@@ -123,7 +122,6 @@ const contact = () => {
                   Submit Now
                 </span>
               </div>
-              {/* <span>{done && "Thanks for Contacting me"}</span> */}
             </form>
           </div>
         </div>
@@ -131,14 +129,12 @@ const contact = () => {
         {/* Right Side  */}
         <div className="flex flex-col justify-center items-center xl:w-1/2 xl:h-full lg:h-full md:h-full lg:w-1/2 md:w-1/2  h-1/2 w-screen">
           {/* Lottie animation code here */}
-
           <lottie-player
             id="firstLottie"
             ref={ref}
             autoplay
             loop
             mode="normal"
-            // src="https://assets2.lottiefiles.com/packages/lf20_01jwptn4.json"
             src="https://assets8.lottiefiles.com/packages/lf20_7wwm6az7.json"
           ></lottie-player>
         </div>

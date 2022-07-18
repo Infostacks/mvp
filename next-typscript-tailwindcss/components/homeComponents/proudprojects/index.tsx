@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import Menu from "./menu";
-import Categories from "./categories";
-// import Categories from "./menu1";
+import Menu from "./Menu";
+import Categories from "./Categories";
 import { proudProjects } from "../../utils/data";
-import CurrentChat from '../../ChatScreen/CurrentChat';
 
 const allCategories = [
   "all",

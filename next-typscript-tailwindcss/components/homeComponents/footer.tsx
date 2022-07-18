@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import { FaInstagram } from 'react-icons/fa';
 import { GoDeviceMobile } from 'react-icons/go'
 import { BiMapPin } from 'react-icons/bi'
@@ -9,7 +8,7 @@ import { useEffect } from 'react';
 
 const footer = () => {
   
-  const { ref, inView } = useInView({
+  const { inView } = useInView({
     threshold: [0, 0.5, 1.0],
   });
   const hoverAnimation = useAnimation();
@@ -34,11 +33,6 @@ const footer = () => {
         <div className="flex flex-col justify-center xl:px-40 lg:px-40 md:px-24 px-10 py-20 gap-5 w-full bg-gradient-to-b from-white to-transparent bg-violet-100 bg-opacity-70">
           {/* adress details  */}
           <div className="flex flex-row justify-between w-full items-center">
-            {/* <Image 
-                    src="https://samartheme1.vercel.app/images/logo-white.png"
-                    unoptimized
-                    width={150}
-                    height={50}/> */}
             <img
               className="h-8 w-8"
               src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"

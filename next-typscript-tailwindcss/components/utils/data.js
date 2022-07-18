@@ -25,6 +25,91 @@ const previewTextData = [
     subHeading: "Build Stunning Website InfoStack Tech",
     desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, repellendus nihil fuga unde voluptas voluptates perspiciatis aspernatur.",
   },
+  // {
+  //   heading: "WE CREATE IDEAS",
+  //   subHeading: "Build Stunning Website InfoStack Tech",
+  //   desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, repellendus nihil fuga unde voluptas voluptates perspiciatis aspernatur.",
+  // },
+  // {
+  //   heading: "WE CREATE IDEAS",
+  //   subHeading: "Build Stunning Website InfoStack Tech",
+  //   desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, repellendus nihil fuga unde voluptas voluptates perspiciatis aspernatur.",
+  // },
+  // {
+  //   heading: "WE CREATE IDEAS",
+  //   subHeading: "Build Stunning Website InfoStack Tech",
+  //   desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, repellendus nihil fuga unde voluptas voluptates perspiciatis aspernatur.",
+  // },
+  // {
+  //   heading: "WE CREATE IDEAS",
+  //   subHeading: "Build Stunning Website InfoStack Tech",
+  //   desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, repellendus nihil fuga unde voluptas voluptates perspiciatis aspernatur.",
+  // },
+  // {
+  //   heading: "WE CREATE IDEAS",
+  //   subHeading: "Build Stunning Website InfoStack Tech",
+  //   desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, repellendus nihil fuga unde voluptas voluptates perspiciatis aspernatur.",
+  // },
+  // {
+  //   heading: "WE CREATE IDEAS",
+  //   subHeading: "Build Stunning Website InfoStack Tech",
+  //   desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, repellendus nihil fuga unde voluptas voluptates perspiciatis aspernatur.",
+  // },
+  // {
+  //   heading: "WE CREATE IDEAS",
+  //   subHeading: "Build Stunning Website InfoStack Tech",
+  //   desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, repellendus nihil fuga unde voluptas voluptates perspiciatis aspernatur.",
+  // },
+  // {
+  //   heading: "WE CREATE IDEAS",
+  //   subHeading: "Build Stunning Website InfoStack Tech",
+  //   desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, repellendus nihil fuga unde voluptas voluptates perspiciatis aspernatur.",
+  // },
+  // {
+  //   heading: "WE CREATE IDEAS",
+  //   subHeading: "Build Stunning Website InfoStack Tech",
+  //   desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, repellendus nihil fuga unde voluptas voluptates perspiciatis aspernatur.",
+  // },
+  // {
+  //   heading: "WE CREATE IDEAS",
+  //   subHeading: "Build Stunning Website InfoStack Tech",
+  //   desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, repellendus nihil fuga unde voluptas voluptates perspiciatis aspernatur.",
+  // },
+  // {
+  //   heading: "WE CREATE IDEAS",
+  //   subHeading: "Build Stunning Website InfoStack Tech",
+  //   desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, repellendus nihil fuga unde voluptas voluptates perspiciatis aspernatur.",
+  // },
+  // {
+  //   heading: "WE CREATE IDEAS",
+  //   subHeading: "Build Stunning Website InfoStack Tech",
+  //   desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, repellendus nihil fuga unde voluptas voluptates perspiciatis aspernatur.",
+  // },
+  // {
+  //   heading: "WE CREATE IDEAS",
+  //   subHeading: "Build Stunning Website InfoStack Tech",
+  //   desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, repellendus nihil fuga unde voluptas voluptates perspiciatis aspernatur.",
+  // },
+  // {
+  //   heading: "WE CREATE IDEAS",
+  //   subHeading: "Build Stunning Website InfoStack Tech",
+  //   desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, repellendus nihil fuga unde voluptas voluptates perspiciatis aspernatur.",
+  // },
+  // {
+  //   heading: "WE CREATE IDEAS",
+  //   subHeading: "Build Stunning Website InfoStack Tech",
+  //   desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, repellendus nihil fuga unde voluptas voluptates perspiciatis aspernatur.",
+  // },
+  // {
+  //   heading: "WE CREATE IDEAS",
+  //   subHeading: "Build Stunning Website InfoStack Tech",
+  //   desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, repellendus nihil fuga unde voluptas voluptates perspiciatis aspernatur.",
+  // },
+  // {
+  //   heading: "WE CREATE IDEAS",
+  //   subHeading: "Build Stunning Website InfoStack Tech",
+  //   desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, repellendus nihil fuga unde voluptas voluptates perspiciatis aspernatur.",
+  // },
 ];
 
 const memberData = [

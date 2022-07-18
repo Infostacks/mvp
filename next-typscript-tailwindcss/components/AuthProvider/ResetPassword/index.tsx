@@ -1,4 +1,4 @@
-import AnimatedBorderDiv from "../../pages/AnimatedBorderDiv";
+import AnimatedBorderDiv from "../../../pages/AnimatedBorderDiv";
 
 export interface InputProps {
   isAnimating: boolean;

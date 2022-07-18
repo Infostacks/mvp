@@ -35,8 +35,6 @@ const screenplay = () => {
         height={`${styles.xlWidth ? "320" : "185"}`}
         className="rounded-br-3xl"
       />
-      {/* width="683" height="320" */}
-      {/* width="383" height="185" */}
     </div>
   );
 };

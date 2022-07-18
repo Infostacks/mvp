@@ -21,12 +21,6 @@ const previewsection = () => {
 
   const [animationData, setAnimationData] = useState(null);
 
-  // console.log("animListNo", animListNo);
-
-  useEffect(()=>{
-    
-  })
-
   useEffect(() => {
     if (inView) {
       leftAnimation.start({
@@ -63,9 +57,6 @@ const previewsection = () => {
   const loadAnimData = async (sourceUrl) => {
     try {
       const { data } = await axios.get(sourceUrl);
-      // const { data } = await axios.get(
-      //   "https://assets6.lottiefiles.com/packages/lf20_xsicerbj.json"
-      // );
 
       setAnimationData(data);
     } catch (error) {
@@ -85,6 +76,11 @@ const previewsection = () => {
         Number(animListNo) + 1 === animList.length ? 0 : Number(animListNo) + 1;
       setAnimListNo(n);
       loadAnimData(animList[n]);
+
+      // setHeading(previewTextData[n].heading);
+      // setSubheading(previewTextData[n].subHeading);
+      // setDesc(previewTextData[n].desc);
+      
     };
     let timerID = setInterval(changeNumber, 8000);
 

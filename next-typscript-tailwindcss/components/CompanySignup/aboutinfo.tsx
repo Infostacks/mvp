@@ -1,12 +1,7 @@
-import { motion } from "framer-motion";
-import Image from "next/image";
 import { useInView } from "react-intersection-observer";
 import React, { useEffect, useRef, useState } from "react";
 
 const aboutinfo = () => {
-    const { ref, inView } = useInView({
-        threshold: [0, 0.5, 1.0],
-    });
 
     const uRef = useRef(null);
     useEffect(() => {
@@ -71,8 +66,6 @@ const aboutinfo = () => {
                                 id="fullname"
                                 name="fullname"
                                 type="text"
-                                // value=""
-                                // onChange={}
                                 className={`w-72 h-7 pl-2 border-[1px] rounded-sm text-md z-12`}
                             />
                         </div>
@@ -84,8 +77,6 @@ const aboutinfo = () => {
                                 id="username"
                                 name="username"
                                 type="text"
-                                // value=""
-                                // onChange={}
                                 className={`w-72 h-7 pl-2 border-[1px] rounded-sm text-md z-12`}
                             />
                         </div>
@@ -100,8 +91,6 @@ const aboutinfo = () => {
                                 id="industry"
                                 name="industry"
                                 type="text"
-                                // value=""
-                                // onChange={}
                                 className={`w-72 h-7 pl-2 border-[1px] rounded-sm text-md z-12`}
                             />
                         </div>
@@ -113,8 +102,6 @@ const aboutinfo = () => {
                                 id="address"
                                 name="address"
                                 type="text"
-                                // value=""
-                                // onChange={}
                                 className={`w-72 h-7 pl-2 border-[1px] rounded-sm text-md z-12`}
                             />
                         </div>
@@ -129,8 +116,6 @@ const aboutinfo = () => {
                                 id="location"
                                 name="location"
                                 type="text"
-                                // value=""
-                                // onChange={}
                                 className={`w-72 h-7 pl-2 border-[1px] rounded-sm text-md z-12`}
                             />
                         </div>
@@ -142,8 +127,6 @@ const aboutinfo = () => {
                                 id="country"
                                 name="country"
                                 type="text"
-                                // value=""
-                                // onChange={}
                                 className={`w-72 h-7 pl-2 border-[1px] rounded-sm text-md z-12`}
                             />
                         </div>
@@ -155,8 +138,6 @@ const aboutinfo = () => {
                         <textarea
                             id="about"
                             name="about"
-                            // value=""
-                            // onChange={}
                             className={`w-full h-40 pl-2 border-[1px] rounded-sm text-md z-12`}
                         />
                     </div>
@@ -178,8 +159,6 @@ const aboutinfo = () => {
                                 id="projectname"
                                 name="projectname"
                                 type="text"
-                                // value=""
-                                // onChange={}
                                 className={`w-72 h-7 pl-2 border-[1px] rounded-sm text-md z-12`}
                             />
                         </div>
@@ -191,8 +170,6 @@ const aboutinfo = () => {
                                 id="techstack"
                                 name="techstack"
                                 type="text"
-                                // value=""
-                                // onChange={}
                                 className={`w-72 h-7 pl-2 border-[1px] rounded-sm text-md z-12`}
                             />
                         </div>
@@ -234,8 +211,6 @@ const aboutinfo = () => {
                             id="linkto"
                             name="linkto"
                             type="text"
-                            // value=""
-                            // onChange={}
                             className={`w-full h-7 pl-2 border-[1px] rounded-sm text-md z-12`}
                         />
                     </div>
@@ -246,7 +221,6 @@ const aboutinfo = () => {
                     <button
                         type="submit"
                         className={`rounded-sm w-28 text-white pt-1 pb-1 text-sm `}
-                        // onClick={handleSubmit}
                         style={{ backgroundColor: "#5B85AA" }}
                     >
                         Submit Info
