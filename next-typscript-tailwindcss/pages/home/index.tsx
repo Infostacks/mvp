@@ -18,20 +18,20 @@ const index = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="flex flex-col items-center m-0 p-0 w-screen overflow-x-hidden">
+      <main className="flex flex-col items-center m-0 p-0 w-screen overflow-x-hidden scroll-smooth">
         <div className="w-screen sticky">
           <HeaderSection />
         </div>
-        <div className="w-screen h-screen">
+        <div className="w-screen h-screen inset-x-0">
           <PreviewSection />
         </div>
-        <div className="w-screen h-screen">
+        <div className="w-screen h-screen inset-x-0">
           <PromotionSection />
         </div>
-        <div className="h-screen w-4/5">
+        <div className="h-screen w-screen inset-x-0">
           <FeaturedSection />
         </div>
-        <div className="w-full h-full bg-slate-50 py-5">
+        <div className="w-full h-full bg-slate-50 py-5 inset-x-0">
           <ProudProjects />
         </div>
         <div className="w-screen h-full mt-5 mb-5">

@@ -38,7 +38,7 @@ const Home: NextPage = () => {
         <div className="w-full h-full">
           <div className="h-full flex">
             {/* main content area */}
-            <div className="sticky flex flex-row m-0 w-full h-screen">
+            <div className="fixed flex flex-row m-0 w-screen h-screen">
               {/* block 1 */}
               <motion.div
                 initial={{
@@ -413,58 +413,62 @@ const Home: NextPage = () => {
             <div
               className={`absolute top-0 left-0 right-0 z-30 flex items-center flex-col justify-between`}
             >
-              <div className="w-full flex py-2 px-0 bg-black justify-center">
-                <div className="w-full flex justify-center">
-                  <a
-                    className="underline text-white text-base"
-                    href="https://www.candlefish.com/collections/seasonal-favorites"
-                    target="_blank"
-                  >
-                    We are ready for Spring! Shop our fresh and floral Spring
-                    Collection here.
-                  </a>
-                </div>
-              </div>
-
-              {/* navbar area */}
-              <div className="w-full">
-                <div className="flex flex-row justify-between ml-6 mr-5 mt-4">
-                  <div className="flex flex-row justify-center items-center gap-2">
-                    {/* sidebar icon  */}
-                    <button
-                      style={{ color: "white", width: "30px" }}
-                      className="hover:cursor-pointer"
-                      onClick={handleCloseSidebar}
+              <div className="flex flex-col w-full fixed">
+                <div className="w-full flex py-2 px-0 bg-black justify-center">
+                  <div className="w-full flex justify-center">
+                    <a
+                      className="underline text-white text-base"
+                      href="https://www.candlefish.com/collections/seasonal-favorites"
+                      target="_blank"
                     >
-                      <FormatAlignLeftIcon />
-                    </button>
-                    {/* logo candlefish  */}
-
-                    <Link href="/login">
-                      <a>
-                        <h3 className="text-2xl text-white tracking-wider">
-                          CANDLEFISH
-                        </h3>
-                      </a>
-                    </Link>
-
-                    <Link href="/dashboard">
-                      <a>
-                        <h3 className="text-xl text-white ml-10">Dashboard</h3>
-                      </a>
-                    </Link>
+                      We are ready for Spring! Shop our fresh and floral Spring
+                      Collection here.
+                    </a>
                   </div>
-                  {/* cart icon  */}
-                  <span>
-                    <Link href="/login">
-                      <a>
-                        <BsCart2
-                          style={{ color: "white" }}
-                          className="w-10 h-10 mr-5"
-                        />
-                      </a>
-                    </Link>
-                  </span>
+                </div>
+
+                {/* navbar area */}
+                <div className="w-full">
+                  <div className="flex flex-row justify-between ml-6 mr-5 mt-4">
+                    <div className="flex flex-row justify-center items-center gap-2">
+                      {/* sidebar icon  */}
+                      <button
+                        style={{ color: "white", width: "30px" }}
+                        className="hover:cursor-pointer"
+                        onClick={handleCloseSidebar}
+                      >
+                        <FormatAlignLeftIcon />
+                      </button>
+                      {/* logo candlefish  */}
+
+                      <Link href="/login">
+                        <a>
+                          <h3 className="text-2xl text-white tracking-wider">
+                            CANDLEFISH
+                          </h3>
+                        </a>
+                      </Link>
+
+                      <Link href="/dashboard">
+                        <a>
+                          <h3 className="text-xl text-white ml-10">
+                            Dashboard
+                          </h3>
+                        </a>
+                      </Link>
+                    </div>
+                    {/* cart icon  */}
+                    <span>
+                      <Link href="/login">
+                        <a>
+                          <BsCart2
+                            style={{ color: "white" }}
+                            className="w-10 h-10 mr-5"
+                          />
+                        </a>
+                      </Link>
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -476,13 +480,13 @@ const Home: NextPage = () => {
               ${sidebar ? "bg-black bg-opacity-30" : ""}`}
               onClick={handleCloseSidebar}
             >
-              <div>
+              <div className="h-full">
                 <div className="flex flex-col z-50 top-0">
-              {/* sidebar bg image  */}
-              <img
-                src="	https://candlefish-assets.s3.amazonaws.com/assets/side-nav-background.png"
-                className={`h-full min-h-screen w-fit object-cover`}
-              />
+                  {/* sidebar bg image  */}
+                  <img
+                    src="	https://candlefish-assets.s3.amazonaws.com/assets/side-nav-background.png"
+                    className={`h-full min-h-screen w-fit object-cover`}
+                  />
                   {/* close button  */}
                   <button
                     type="button"

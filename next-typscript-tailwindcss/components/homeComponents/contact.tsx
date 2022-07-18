@@ -129,7 +129,7 @@ const contact = () => {
         </div>
 
         {/* Right Side  */}
-        <div className="flex flex-col justify-center items-center xl:w-1/2 lg:w-1/2 md:w-1/2  h-1/2 w-screen">
+        <div className="flex flex-col justify-center items-center xl:w-1/2 xl:h-full lg:h-full md:h-full lg:w-1/2 md:w-1/2  h-1/2 w-screen">
           {/* Lottie animation code here */}
 
           <lottie-player
