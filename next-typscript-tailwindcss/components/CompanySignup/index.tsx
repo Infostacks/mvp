@@ -1,4 +1,4 @@
-import AboutInfo from './aboutinfo'
+import AboutInfo from './AboutInfo'
 
 const index = () => {
     return (

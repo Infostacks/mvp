@@ -1,7 +1,5 @@
-// import Link from "next/link";
 import useAuth from "../../hooks/useAuth";
 import styles from '../../styles/Global.js'
-// import Image from "next/image";
 import React, { useState } from "react";
 import { Transition } from "@headlessui/react";
 

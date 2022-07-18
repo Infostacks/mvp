@@ -3,14 +3,12 @@ import Head from "next/head";
 import Link from "next/link";
 import styles from "../styles/Home.module.css";
 import { useState } from "react";
-import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 import { BsCart2 } from "react-icons/bs";
 import { MdClose } from "react-icons/md";
 import FormatAlignLeftIcon from "@mui/icons-material/FormatAlignLeft";
 
 const Home: NextPage = () => {
-  const router = useRouter();
   const [sidebar, setsidebar] = useState(false);
 
   const [block1, setBlock1] = useState(false);
@@ -67,7 +65,6 @@ const Home: NextPage = () => {
                     }}
                     animate={{
                       opacity: block1 ? 1 : 0,
-                      // y: block1 ? -30 : 0,
                       transition: { duration: 0.25 },
                     }}
                     exit={{

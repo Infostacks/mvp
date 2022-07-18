@@ -4,7 +4,6 @@ import FormatAlignLeftIcon from "@mui/icons-material/FormatAlignLeft";
 import { MdClose } from "react-icons/md";
 import { CgProfile } from "react-icons/cg"
 import { useState } from "react";
-// import Link from "next/link";
 import { motion } from "framer-motion";
 
 export interface InputProps {
@@ -49,7 +48,6 @@ const Manubar = (props: InputProps) => {
             x: sidebar ? 0 : -20,
             transition: {
               y: {
-                // yoyo: Infinity,
                 duration: 1.5,
                 ease: "easeOut",
               },

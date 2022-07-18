@@ -1,18 +1,17 @@
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import SearchBox from "../../components/dashboards/searchbar";
+import SearchBox from "../../components/DashboardUI/SearchBar";
 import { useState } from "react";
 import manubar from "../../public/assets_dash/manubar";
 import FormatAlignLeftIcon from "@mui/icons-material/FormatAlignLeft";
 import { MdClose } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
-import WelcomeText from "../../components/dashboards/welcometext";
-import StatsCard from "../../components/dashboards/statscard";
-import PostNow from "../../components/dashboards/postnow";
-import ScreenPlayBox from "../../components/dashboards/screenplay";
-import TopPostBar from "../../components/dashboards/toppostbar";
-import RightSidePanel from "../../components/dashboards/rightsidepanel";
-import BarChart from "../../components/dashboards/BarChart";
+import WelcomeText from "../../components/DashboardUI/WelcomeText";
+import StatsCard from "../../components/DashboardUI/StatsSard";
+import PostNow from "../../components/DashboardUI/PostNow";
+import ScreenPlayBox from "../../components/DashboardUI/ScreenPlay";
+import TopPostBar from "../../components/DashboardUI/TopPostBar";
+import RightSidePanel from "../../components/DashboardUI/RightSidePanel";
 
 const dashboard = () => {
   const [sidebar, setsidebar] = useState(false);
@@ -94,7 +93,6 @@ const dashboard = () => {
                 x: sidebar ? 0 : -20,
                 transition: {
                   y: {
-                    // yoyo: Infinity,
                     duration: 2.5,
                     ease: "easeOut",
                   },

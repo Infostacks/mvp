@@ -1,5 +1,4 @@
 
-
 const categories = ({ categories, filterItems, currentCategory }) => {
   console.log(currentCategory)
   return (

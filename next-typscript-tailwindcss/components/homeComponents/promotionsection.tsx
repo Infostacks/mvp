@@ -2,7 +2,7 @@ import { MdExpandMore } from "react-icons/md";
 import Image from "next/image";
 import productImages from "../../public/assets/home";
 import { motion } from "framer-motion";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import { useAnimation } from "framer-motion";
 
@@ -57,11 +57,6 @@ const promotionsection = () => {
         {/* Left Side  */}
         <div className="flex justify-center items-center xl:w-1/2 lg:w-1/2 md:w-1/2 h-1/2 w-full">
           <motion.div
-            // initial={{
-            //   opacity: 0,
-            // }}
-            // animate={{ opacity: 1 }}
-            // transition={{ duration: 3, delay: 0.5 }}
             animate={leftAnimation}
           >
             <Image

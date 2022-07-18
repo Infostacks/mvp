@@ -1,5 +1,5 @@
 import Head from "next/head";
-import CompanySignUp from '../../components/conpamySignup'
+import CompanySignUp from '../../components/CompanySignup'
 
 const index = () => {
     return (

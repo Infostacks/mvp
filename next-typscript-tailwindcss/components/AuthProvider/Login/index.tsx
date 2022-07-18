@@ -1,15 +1,15 @@
-import AnimatedBorderDiv from "../../pages/AnimatedBorderDiv";
+import AnimatedBorderDiv from "../../../pages/AnimatedBorderDiv";
 
 export interface InputProps {
   isAnimating: boolean;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   valueEmail: string;
   valuePass: string;
-  valueConfPass: string;
   onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-const SignUpCard = (props: InputProps) => {
+const LogInCard = (props: InputProps) => {
+  
   return (
     <div className="flex flex-col gap-3">
       {props.isAnimating ? (
@@ -40,17 +40,6 @@ const SignUpCard = (props: InputProps) => {
               className={`w-72 h-7 pl-2 bg-white border-2 rounded-sm text-lg z-12 focus:outline-none`}
             />
           </AnimatedBorderDiv>
-          <label className="text-xs text-slate-500">Confirm Password:</label>
-          <AnimatedBorderDiv>
-            <input
-              id="confirmPassword"
-              name="confirmPassword"
-              type="password"
-              value={props.valueConfPass}
-              onChange={props.onChange}
-              className={`w-72 h-7 pl-2 border-2 rounded-sm text-md z-12 focus:outline-none`}
-            />
-          </AnimatedBorderDiv>
         </div>
       ) : (
         <div className="flex flex-col gap-2">
@@ -76,19 +65,10 @@ const SignUpCard = (props: InputProps) => {
             onChange={props.onChange}
             className={`w-72 h-7 pl-2 border-2 rounded-sm text-md z-12 focus:outline-none`}
           />
-          <label className="text-xs text-slate-500">Confirm Password:</label>
-          <input
-            id="confirmPassword"
-            name="confirmPassword"
-            type="password"
-            value={props.valueConfPass}
-            onChange={props.onChange}
-            className={`w-72 h-7 pl-2 border-2 rounded-sm text-md z-12 focus:outline-none`}
-          />
         </div>
       )}
     </div>
   );
 };
 
-export default SignUpCard;
+export default LogInCard;

@@ -1,7 +1,5 @@
-import { MdExpandMore } from "react-icons/md";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect } from "react";
 import { GrFacebookOption } from "react-icons/gr";
 import { FaInstagram } from "react-icons/fa";
 import { GrTwitter } from "react-icons/gr";
@@ -10,15 +8,6 @@ import { memberData } from "../utils/data";
 import ScrollBooster from "scrollbooster";
 
 const featuredsection = () => {
-  // let settings = {
-  //   dots: true,
-  //   Infinite: true,
-  //   speed: 500,
-  //   slidesToShow: 3,
-  //   slidesToScroll: 1,
-  //   cssEase: "linear"
-  // }
-  
   useEffect(() => {
     new ScrollBooster({
       viewport: document.querySelector(".card-container"),

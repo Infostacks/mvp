@@ -3,13 +3,13 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import { BsFillCloudLightningRainFill } from "react-icons/bs";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect, ChangeEvent, MouseEvent } from "react";
+import { useState, useEffect } from "react";
 import useAuth from "../hooks/useAuth";
 import Joi from "joi-browser";
 import _ from "lodash";
-import LogInCard from "../components/login";
-import SignUpCard from "../components/signup";
-import ResetPassCard from "../components/resetPassword/index";
+import LogInCard from "../components/AuthProvider/Login";
+import SignUpCard from "../components/AuthProvider/SignUp";
+import ResetPassCard from "../components/AuthProvider/ResetPassword/index";
 
 const Login: NextPage = () => {
   const [isAnimating, setIsAnimating] = useState(false);
@@ -65,7 +65,7 @@ const Login: NextPage = () => {
     if (authType === 1 || authType === 3) {
       return setAuthType(2);    // if (login/resetPass then change to signup)
     } else {
-      return setAuthType(1);    // if ()
+      return setAuthType(1); 
     }
   };
 
@@ -178,7 +178,7 @@ const Login: NextPage = () => {
     if (data) {
       // If validation fails
       setErrors(data);
-      setIsAnimating(true); // Set isAnimating to true
+      setIsAnimating(true);
       setTimeout(() => {
         setIsAnimating(false);
       }, 1500);
@@ -205,7 +205,7 @@ const Login: NextPage = () => {
       } catch (err) {
         // If sign in fails
         console.log(err);
-        setIsAnimating(true); // Set isAnimating to true
+        setIsAnimating(true);
         setTimeout(() => {
           setIsAnimating(false);
         }, 1500);
@@ -215,7 +215,6 @@ const Login: NextPage = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    let cardData;
     if (authType === 1) {
       setFormData({ ...formData, [name]: value });
     } else if (authType === 2) {
@@ -303,7 +302,6 @@ const Login: NextPage = () => {
                       x: isAnimating ? [0, 25, -25, 25, -25, 0] : 0,
                       transition: {
                         y: {
-                          // yoyo: Infinity,
                           duration: 1.5,
                           ease: "easeOut",
                         },
@@ -321,8 +319,6 @@ const Login: NextPage = () => {
                   <AnimatePresence>
                     <motion.div
                       animate={{
-                        // x: [0, 0, 0, -100, -100, 100, 100, 0],
-                        // rotate: [0, 45, -45, 45, -45, 0],
                         rotate: 360,
                       }}
                       initial={{
