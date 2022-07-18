@@ -3,6 +3,7 @@ import Menu from "./menu";
 import Categories from "./categories";
 // import Categories from "./menu1";
 import { proudProjects } from "../../utils/data";
+import CurrentChat from '../../chatScreen/CurrentChat';
 
 const allCategories = [
   "all",
@@ -12,8 +13,10 @@ const allCategories = [
 const proudprojects = () => {
   const [menuItems, setMenuItems] = useState(proudProjects);
   const [categories, setCategories] = useState(allCategories);
+  const [currentCat, setCurrentCat] = useState("all")
 
   const filterItems = (category) => {
+    setCurrentCat(category);
     if (category === "all") {
       setMenuItems(proudProjects);
       return;
@@ -32,7 +35,7 @@ const proudprojects = () => {
           <h2>Proud Projects</h2>
         </div>
         <div className="rounded-xl px-8 py-3 xl:mx-72 lg:mx-40 md:mx-40 mx-10 bg-violet-100 text-violet-500">
-          <Categories categories={categories} filterItems={filterItems} />
+          <Categories categories={categories} filterItems={filterItems} currentCategory={currentCat} />
         </div>
         <div className="">
           <Menu items={menuItems} />

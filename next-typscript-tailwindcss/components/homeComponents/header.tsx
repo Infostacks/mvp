@@ -1,7 +1,7 @@
-import Link from "next/link";
+// import Link from "next/link";
 import useAuth from "../../hooks/useAuth";
 import styles from '../../styles/Global.js'
-import Image from "next/image";
+// import Image from "next/image";
 import React, { useState } from "react";
 import { Transition } from "@headlessui/react";
 
@@ -13,7 +13,7 @@ const header = () => {
   };
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div>
+    <div className="">
       <nav className="bg-gray-800 z-[1200px]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
@@ -63,7 +63,7 @@ const header = () => {
                       Contact Us
                     </a>
                     <a
-                      className={`text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium`}
+                      className={`text-gray-300 hover:bg-gray-700 hover:text-white hover:cursor-pointer px-3 py-2 rounded-md text-sm font-medium`}
                       onClick={handleLogout}
                     >
                       Logout

@@ -15,21 +15,31 @@ const menu = ({ items }) => {
             >
               <a>
                 <motion.div
-                  className="opacity-50"
-                  whileHover={{
-                    opacity: 1,
-                    scale: 1.15,
-                    boxShadow: "0px 0px 0px rgb(255,255,255)",
+                initial={{
+                  opacity: 0,
+                }}
+                  animate={{
+                    opacity:1,
                   }}
-                  transition={{ duration: .3 }}
+                  transition={{ duration: 1, }}
                 >
-                  <Image
-                    src={img}
-                    unoptimized
-                    width="200"
-                    height="200"
-                    alt={title}
-                  />
+                  <motion.div
+                    className="opacity-50"
+                    whileHover={{
+                      opacity: 1,
+                      scale: 1.15,
+                      rotate: id % 2 === 0 ? -5 : 5,
+                    }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <Image
+                      src={img}
+                      unoptimized
+                      width="200"
+                      height="200"
+                      alt={title}
+                    />
+                  </motion.div>
                 </motion.div>
               </a>
             </Link>
