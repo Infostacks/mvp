@@ -18,32 +18,32 @@ const index = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="flex flex-col items-center m-0 p-0 w-screen overflow-x-hidden scroll-smooth">
-        <div className="w-screen sticky">
+      <main className="flex flex-col items-center m-0 p-0 w-screen overflow-x-hidden scroll-smooth snap-y snap-mandatory overflow-scroll">
+        <div className="w-screen sticky snap-start">
           <HeaderSection />
         </div>
-        <div className="w-screen h-screen inset-x-0">
+        <div className="w-screen h-screen snap-start">
           <PreviewSection />
         </div>
-        <div className="w-screen h-screen inset-x-0">
+        <div className="w-screen h-screen snap-start">
           <PromotionSection />
         </div>
-        <div className="h-screen w-screen inset-x-0">
+        <div className="h-screen w-screen snap-start">
           <FeaturedSection />
         </div>
-        <div className="w-full h-full bg-slate-50 py-5 inset-x-0">
+        <div className="w-screen h-full bg-slate-50 py-5">
           <ProudProjects />
         </div>
-        <div className="w-screen h-full mt-5 mb-5">
+        <div className="w-screen h-full mt-5 mb-5 snap-start">
           <Companies />
         </div>
-        {/* <div className="w-full h-screen">
+        {/* <div className="w-full h-screen">b
           <Process />
         </div> */}
-        <div className="w-screen h-screen py-5">
+        <div className="w-screen h-screen py-5 snap-start">
           <Contact />
         </div>
-        <div className="w-screen">
+        <div className="w-screen snap-start">
           <Footer />
         </div>
       </main>

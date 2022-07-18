@@ -4,7 +4,7 @@ import {motion} from 'framer-motion';
 
 const menu = ({ items }) => {
   return (
-    <div className="flex flex-row justify-center items-center flex-wrap gap-5 xl:px-72 lg:px-40 md:px-40">
+    <div className="flex flex-row justify-center items-center flex-wrap gap-5 xl:px-28 lg:px-28 md:px-28">
       {items.map((menuItem: any) => {
         const { id, link, img, title } = menuItem;
         return (
@@ -15,13 +15,13 @@ const menu = ({ items }) => {
             >
               <a>
                 <motion.div
-                initial={{
-                  opacity: 0,
-                }}
-                  animate={{
-                    opacity:1,
+                  initial={{
+                    opacity: 0,
                   }}
-                  transition={{ duration: 1, }}
+                  animate={{
+                    opacity: 1,
+                  }}
+                  transition={{ duration: 1 }}
                 >
                   <motion.div
                     className="opacity-50"

@@ -19,6 +19,14 @@ const animList = [
   "https://assets8.lottiefiles.com/private_files/lf30_51QyOY.json",
 ];
 
+const previewTextData = [
+  {
+    heading: "WE CREATE IDEAS",
+    subHeading: "Build Stunning Website InfoStack Tech",
+    desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet, repellendus nihil fuga unde voluptas voluptates perspiciatis aspernatur.",
+  },
+];
+
 const memberData = [
   {
     name: "Alina Jia 1",
@@ -72,7 +80,7 @@ const memberData = [
   },
 ];
 
-// proud Projects data 
+// proud Projects data
 const proudProjects = [
   {
     id: 1,
@@ -147,4 +155,4 @@ const companiesList = [
   "https://arbisoft.com/wp-content/uploads/2019/06/mcdonalds.png",
 ];
 
-export  { animList, memberData, proudProjects, companiesList };
+export { animList, previewTextData, memberData, proudProjects, companiesList };
