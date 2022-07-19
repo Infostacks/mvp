@@ -5,8 +5,6 @@ import { animList, previewTextData } from "../utils/data";
 import { useInView } from "react-intersection-observer";
 import Lottie from "react-lottie-player";
 import axios from "axios";
-import { existsSync } from "fs";
-import { duration } from "@mui/material";
 
 const previewsection = () => {
   const { ref, inView } = useInView({
@@ -103,7 +101,7 @@ const previewsection = () => {
             animate={{
               opacity: changeText === true ? 1 : 0,
             }}
-            transition={{ repeat: Infinity, duration: 8, delay: 0.01 }}
+            transition={{ duration: 1, delay: 0.01 }}
             exit={{
               opacity: 0,
             }}

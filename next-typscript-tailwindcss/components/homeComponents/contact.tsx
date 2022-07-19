@@ -68,7 +68,7 @@ const contact = () => {
             >
               We Love To Help Great Companies To Enlarge Their Revenues.
             </motion.h1>
-            <form className="flex flex-col gap-2 items-centre z-50 drop-shadow-sm xl:w-3/5 lg:w-3/5 w-5/6">
+            <form className="flex flex-col gap-2 items-centre z-40 drop-shadow-sm xl:w-3/5 lg:w-3/5 w-5/6">
               <input
                 type="text"
                 name="user_name"

@@ -10,9 +10,25 @@ const header = () => {
     await logout();
   };
   const [isOpen, setIsOpen] = useState(false);
+  const [navbar, setNavbar] = useState(false);
+
+  const changeNavBG = () => {
+    if(window.scrollY >= 100){
+      setNavbar(true);
+    }else{
+      setNavbar(false);
+    }
+  }
+
+  window.addEventListener('scroll', changeNavBG);
+
   return (
-    <div className="">
-      <nav className="bg-gray-800 z-[1200px]">
+    <div>
+      <nav
+        className={`${
+          navbar ? "bg-violet-500 drop-shadow-md" : "bg-transparent"
+        } z-[1200px]`}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex justify-between items-center w-full">
@@ -28,40 +44,60 @@ const header = () => {
                   <div className="ml-10 flex items-baseline space-x-4">
                     <a
                       href="#"
-                      className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium"
+                      className={`${
+                        navbar ? "text-white" : "text-gray-800"
+                      }hover:bg-gray-700  px-3 py-2 rounded-md text-sm font-medium`}
                     >
                       Services
                     </a>
 
                     <a
                       href="#"
-                      className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                      className={`${
+                        navbar ? "text-white" : "text-gray-800"
+                      } hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium`}
                     >
                       Team
                     </a>
 
                     <a
                       href="#"
-                      className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                      className={`${
+                        navbar ? "text-white" : "text-gray-800"
+                      } hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium`}
                     >
                       Projects
                     </a>
 
                     <a
                       href="#"
-                      className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                      className={`${
+                        navbar ? "text-white" : "text-gray-800"
+                      } hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium`}
                     >
                       Blog
                     </a>
 
                     <a
                       href="#"
-                      className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                      className={`${
+                        navbar ? "text-white" : "text-gray-800"
+                      } hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium`}
                     >
                       Contact Us
                     </a>
                     <a
-                      className={`text-gray-300 hover:bg-gray-700 hover:text-white hover:cursor-pointer px-3 py-2 rounded-md text-sm font-medium`}
+                      href="#"
+                      className={`${
+                        navbar ? "text-white" : "text-gray-800"
+                      } hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium`}
+                    >
+                      Admin Panel
+                    </a>
+                    <a
+                      className={`${
+                        navbar ? "text-white" : "text-gray-800"
+                      } hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium`}
                       onClick={handleLogout}
                     >
                       Logout
@@ -138,30 +174,36 @@ const header = () => {
 
                 <a
                   href="#"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                  className="text-gray-800 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                 >
                   Team
                 </a>
 
                 <a
                   href="#"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                  className="text-gray-800 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                 >
                   Projects
                 </a>
 
                 <a
                   href="#"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                  className="text-gray-800 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                 >
                   Blog
                 </a>
 
                 <a
                   href="#"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                  className="text-gray-800 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                 >
                   Contact Us
+                </a>
+                <a
+                  href="#"
+                  className="text-gray-800 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                >
+                  Admin Panel
                 </a>
                 <a
                   className={`text-violet-700 rounded-full drop-shadow-xl px-5 py-2 hover:text-xl ${styles.buttonHover}`}
@@ -174,7 +216,6 @@ const header = () => {
           )}
         </Transition>
       </nav>
-
     </div>
   );
 };

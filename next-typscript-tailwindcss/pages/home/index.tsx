@@ -17,29 +17,29 @@ const index = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="flex flex-col items-center m-0 p-0 w-screen overflow-x-hidden scroll-smooth snap-y snap-mandatory overflow-scroll">
-        <div className="w-screen sticky snap-start">
+      <main className="flex flex-col items-center m-0 p-0 w-screen overflow-x-hidden">
+        <div className="w-screen fixed top-0 z-50">
           <HeaderSection />
         </div>
-        <div className="w-screen h-screen snap-start">
+        <div className="w-screen h-screen">
           <PreviewSection />
         </div>
-        <div className="w-screen h-screen snap-start">
+        <div className="w-screen h-screen">
           <PromotionSection />
         </div>
-        <div className="h-screen w-screen snap-start">
+        <div className="h-screen w-screen">
           <FeaturedSection />
         </div>
         <div className="w-screen h-full bg-slate-50 py-5">
           <ProudProjects />
         </div>
-        <div className="w-screen h-full mt-5 mb-5 snap-start">
+        <div className="w-screen h-full mt-5 mb-5">
           <Companies />
         </div>
-        <div className="w-screen h-screen py-5 snap-start">
+        <div className="w-screen h-screen py-5">
           <Contact />
         </div>
-        <div className="w-screen snap-start">
+        <div className="w-screen">
           <Footer />
         </div>
       </main>
