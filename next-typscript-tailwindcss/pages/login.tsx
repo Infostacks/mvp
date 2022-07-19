@@ -250,10 +250,10 @@ const Login: NextPage = () => {
         bg-[url('https://images.unsplash.com/photo-1438382458652-54431bf59e01?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=874&q=80')]"
       >
         <div className="flex justify-center items-center w-screen h-screen bg-opacity-90 bg-slate-700 shadow-lg z-50">
-          <div className="absolute h-3/4 w-3/4 bg-white flex flex-row xl:flex-row lg:flex-row md:flex-col sm:flex-col max-w-5xl">
+          <div className="absolute h-3/4 w-3/4 bg-white flex xl:flex-row lg:flex-row md:flex-col flex-col max-w-5xl">
             {/* Left Side Logo  */}
             <div
-              className="xl:w-1/3 lg:w-1/3 md:h-1/3 sm:h-1/3 xl:h-full lg:h-full md:w-full sm:w-full flex flex-col gap-5 items-center justify-center text-white"
+              className="xl:w-1/3 xl:h-full lg:w-1/3 lg:h-full md:h-1/3 md:w-full h-1/3 w-full flex flex-col gap-5 items-center justify-center text-white"
               style={{ backgroundColor: "#414770" }}
             >
               <motion.span
@@ -291,7 +291,7 @@ const Login: NextPage = () => {
             </div>
 
             {/* LogIn Card  */}
-            <div className="xl:w-2/3 lg:w-2/3 md:h-2/3 sm:h-2/3 xl:h-full lg:h-full md:w-full sm:w-full bg-slate-200 flex justify-center items-center">
+            <div className="xl:w-2/3 xl:h-full lg:w-2/3 lg:h-full md:h-2/3 md:w-full h-2/3 w-full bg-slate-200 flex justify-center items-center">
               <AnimatePresence initial={false}>
                 <motion.div
                   variants={{
