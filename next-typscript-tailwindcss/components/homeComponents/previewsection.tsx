@@ -16,8 +16,8 @@ const previewsection = () => {
   const [animListNo, setAnimListNo] = useState(0);
 
   const [animationData, setAnimationData] = useState(null);
-  const [changeText, setChangeText] = useState(true);
-  console.log(changeText);
+  // const [changeText, setChangeText] = useState(true);
+  // console.log(changeText);
 
   useEffect(() => {
     if (inView) {
@@ -64,7 +64,7 @@ const previewsection = () => {
   // play 1st animation on each pageload
   useEffect(() => {
     loadAnimData(animList[0]);
-    setChangeText(false);
+    // setChangeText(false);
   }, []);
 
   // change animation after specified time
@@ -75,15 +75,15 @@ const previewsection = () => {
       setAnimListNo(n);
       loadAnimData(animList[n]);
 
-      setTimeout(() => {
-        setChangeText(true);
-      }, 300);
-      setChangeText(true);
+      // setTimeout(() => {
+      //   setChangeText(true);
+      // }, 300);
+      // setChangeText(true);
     };
     let timerID = setInterval(changeNumber, 8000);
 
     return () => clearInterval(timerID);
-  }, [animListNo, changeText]);
+  }, [animListNo]);
 
   return (
     <div className="bubblePattern scrollbar-hide">
@@ -95,16 +95,16 @@ const previewsection = () => {
         {/* Left Side  */}
         <div className="flex justify-center xl:w-1/2 lg:w-1/2 md:w-1/2 h-1/2 w-screen">
           <motion.div
-            initial={{
-              opacity: 1,
-            }}
-            animate={{
-              opacity: changeText === true ? 1 : 0,
-            }}
-            transition={{ duration: 1, delay: 0.01 }}
-            exit={{
-              opacity: 0,
-            }}
+            // initial={{
+            //   opacity: 1,
+            // }}
+            // animate={{
+            //   opacity: changeText === true ? 1 : 0,
+            // }}
+            // transition={{ duration: 1, delay: 0.01 }}
+            // exit={{
+            //   opacity: 0,
+            // }}
             // key={i}
             className="w-full h-full"
           >
@@ -116,24 +116,24 @@ const previewsection = () => {
                     return (
                       <AnimatePresence>
                         <motion.span
-                          initial={{
-                            opacity: 0,
-                            translateX: i % 2 === 0 ? -50 : 50,
-                            translateY: -50,
-                          }}
-                          animate={{
-                            opacity: changeText === true ? 1 : 0,
-                            translateX:
-                              changeText === true ? 0 : i % 2 === 0 ? -50 : 50,
-                            translateY: changeText === true ? 0 : -50,
-                          }}
-                          transition={{
-                            duration: 0.3,
-                            delay: i * 0.1,
-                          }}
-                          exit={{
-                            opacity: 0,
-                          }}
+                          // initial={{
+                          //   opacity: 0,
+                          //   translateX: i % 2 === 0 ? -50 : 50,
+                          //   translateY: -50,
+                          // }}
+                          // animate={{
+                          //   opacity: changeText === true ? 1 : 0,
+                          //   translateX:
+                          //     changeText === true ? 0 : i % 2 === 0 ? -50 : 50,
+                          //   translateY: changeText === true ? 0 : -50,
+                          // }}
+                          // transition={{
+                          //   duration: 0.3,
+                          //   delay: i * 0.1,
+                          // }}
+                          // exit={{
+                          //   opacity: 0,
+                          // }}
                         >
                           {character}
                         </motion.span>
@@ -143,20 +143,20 @@ const previewsection = () => {
               </h3>
               <AnimatePresence>
                 <motion.h1
-                  initial={{
-                    x: "-5vw",
-                    opacity: 0,
-                  }}
-                  animate={{
-                    x: 0,
-                    opacity: changeText === true ? 1 : 0,
-                  }}
-                  transition={{
-                    repeat: Infinity,
-                    duration: 8,
-                    bounce: 0.01,
-                  }}
-                  exit={{ x: "-5vw", opacity: 0 }}
+                  // initial={{
+                  //   x: "-5vw",
+                  //   opacity: 0,
+                  // }}
+                  // animate={{
+                  //   x: 0,
+                  //   opacity: changeText === true ? 1 : 0,
+                  // }}
+                  // transition={{
+                  //   repeat: Infinity,
+                  //   duration: 8,
+                  //   bounce: 0.01,
+                  // }}
+                  // exit={{ x: "-5vw", opacity: 0 }}
                   className="text-3xl font-extrabold text-slate-800"
                 >
                   {previewTextData[animListNo].subHeading}
@@ -164,20 +164,20 @@ const previewsection = () => {
               </AnimatePresence>
               <AnimatePresence>
                 <motion.p
-                  initial={{
-                    x: "5vw",
-                    opacity: 0,
-                  }}
-                  animate={{
-                    x: 0,
-                    opacity: changeText === true ? 1 : 0,
-                  }}
-                  transition={{
-                    repeat: Infinity,
-                    duration: 8,
-                    bounce: 0.01,
-                  }}
-                  exit={{ x: "5vw", opacity: 0 }}
+                  // initial={{
+                  //   x: "5vw",
+                  //   opacity: 0,
+                  // }}
+                  // animate={{
+                  //   x: 0,
+                  //   opacity: changeText === true ? 1 : 0,
+                  // }}
+                  // transition={{
+                  //   repeat: Infinity,
+                  //   duration: 8,
+                  //   bounce: 0.01,
+                  // }}
+                  // exit={{ x: "5vw", opacity: 0 }}
                   className="text-sm text-slate-600"
                 >
                   {previewTextData[animListNo].desc}

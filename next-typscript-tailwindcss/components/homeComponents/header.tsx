@@ -26,7 +26,7 @@ const header = () => {
     <div>
       <nav
         className={`${
-          navbar ? "bg-violet-500 drop-shadow-md" : "bg-transparent"
+          navbar ? "bg-teal-500 bg-opacity-90 drop-shadow-md" : "bg-transparent"
         } z-[1200px]`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -164,7 +164,7 @@ const header = () => {
         >
           {(ref) => (
             <div className="md:hidden" id="mobile-menu">
-              <div ref={ref} className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+              <div ref={ref} className="mx-2 pt-2 pb-3 border-t-[1px] space-y-1 sm:px-3">
                 <a
                   href="#"
                   className="hover:bg-gray-700 text-white block px-3 py-2 rounded-md text-base font-medium"
