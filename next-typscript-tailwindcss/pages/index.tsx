@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 import { BsCart2 } from "react-icons/bs";
 import { MdClose } from "react-icons/md";
 import FormatAlignLeftIcon from "@mui/icons-material/FormatAlignLeft";
+import "../styles/Conversation.module.css"
 
 const Home: NextPage = () => {
   const router = useRouter();
